@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cittofhir</title>
+<style>
+  :root { --bg:#f7f8fa; --fg:#1b1f24; --muted:#667085; --card:#fff; --line:#e2e5ea; --acc:#0b6bcb; --warn:#b54708; --err:#b42318; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#14171c; --fg:#e8eaed; --muted:#9aa3b0; --card:#1c2128; --line:#2c333d; --acc:#5aa9ff; --warn:#f0a35e; --err:#ff7b72; } }
+  * { box-sizing: border-box; }
+  body { margin:0; font:15px/1.5 system-ui,sans-serif; background:var(--bg); color:var(--fg); }
+  main { max-width:960px; margin:0 auto; padding:24px 16px 64px; }
+  h1 { margin:0 0 4px; } p.sub { color:var(--muted); margin:0 0 20px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px; margin-bottom:16px; }
+  .row { display:flex; flex-wrap:wrap; gap:12px; align-items:end; }
+  label { display:flex; flex-direction:column; gap:4px; font-size:13px; color:var(--muted); }
+  input, select { font:inherit; padding:7px 9px; border:1px solid var(--line); border-radius:6px; background:var(--bg); color:var(--fg); }
+  input[type=text] { min-width:320px; }
+  button { font:inherit; padding:8px 14px; border-radius:6px; border:1px solid var(--acc); background:var(--acc); color:#fff; cursor:pointer; }
+  button.ghost { background:transparent; color:var(--acc); }
+  button.small { padding:3px 9px; font-size:13px; }
+  ul { margin:6px 0 0; padding-left:20px; } .warn { color:var(--warn); } .err { color:var(--err); }
+  .res { border-top:1px solid var(--line); padding:8px 0; }
+  .res:first-child { border-top:0; }
+  .res header { display:flex; gap:10px; align-items:center; flex-wrap:wrap; }
+  .res .name { font-weight:600; flex:1; min-width:200px; word-break:break-all; }
+  .tag { font-size:12px; color:var(--muted); border:1px solid var(--line); border-radius:99px; padding:1px 8px; }
+  pre { max-height:360px; overflow:auto; background:var(--bg); border:1px solid var(--line); border-radius:6px; padding:10px; font-size:12px; margin:8px 0 0; }
+  .hidden { display:none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>cittofhir</h1>
+  <p class="sub">Excel de parásitos → recursos FHIR R4 (CodeSystem, ValueSet, ConceptMap, ObservationDefinition, Bundle)</p>
+
+  <div class="card">
+    <div class="row">
+      <label>Archivo Excel (vacío = data/Repositorio.xlsx)
+        <input type="file" id="file" accept=".xlsx">
+      </label>
+      <label>URL base canónica
+        <input type="text" id="base" value="https://cittofhir.example.org/fhir">
+      </label>
+      <label>Tipo de Bundle
+        <select id="btype"><option value="collection">collection</option><option value="transaction">transaction</option></select>
+      </label>
+      <button id="gen">Generar</button>
+    </div>
+  </div>
+
+  <div id="out" class="hidden">
+    <div class="card" id="summary"></div>
+    <div class="card">
+      <div class="row" style="justify-content:space-between;align-items:center">
+        <strong>Recursos</strong>
+        <span>
+          <button class="ghost small" id="all">Descargar todos</button>
+          <button class="ghost small" id="save">Guardar en carpeta out/</button>
+        </span>
+      </div>
+      <div id="list"></div>
+      <div id="saved" class="sub"></div>
+    </div>
+  </div>
+</main>
+<script>
+const $ = (id) => document.getElementById(id);
+let files = [];
+const esc = (s) => s.replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+
+async function call(path) {
+  const f = $("file").files[0];
+  const q = new URLSearchParams({ baseUrl: $("base").value.trim(), bundleType: $("btype").value });
+  const r = await fetch(`/api/${path}?${q}`, { method: "POST", body: f ? await f.arrayBuffer() : undefined });
+  const j = await r.json();
+  if (!r.ok) throw new Error(j.error || "Error");
+  return j;
+}
+function download(name, obj) {
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(obj, null, 2)], { type: "application/fhir+json" }));
+  a.download = name; a.click(); URL.revokeObjectURL(a.href);
+}
+$("gen").onclick = async () => {
+  $("gen").disabled = true;
+  try {
+    const r = await call("generate");
+    files = r.files;
+    $("out").classList.remove("hidden");
+    $("saved").textContent = "";
+    $("summary").innerHTML =
+      `<strong>${r.rows}</strong> filas leídas → <strong>${files.length}</strong> recursos.` +
+      (r.issues.length ? `<div class="err">Problemas estructurales (${r.issues.length}):<ul>${r.issues.map((i) => `<li>${esc(i)}</li>`).join("")}</ul></div>` : `<div>Chequeos estructurales: sin problemas.</div>`) +
+      (r.warnings.length ? `<details><summary class="warn">${r.warnings.length} avisos sobre los datos</summary><ul>${r.warnings.map((w) => `<li>${esc(w)}</li>`).join("")}</ul></details>` : "");
+    $("list").innerHTML = files.map((f, i) =>
+      `<div class="res"><header><span class="name">${esc(f.filename)}</span><span class="tag">${f.resourceType}</span>
+       <button class="ghost small" data-v="${i}">Ver</button><button class="small" data-d="${i}">Descargar</button></header>
+       <pre class="hidden" id="p${i}"></pre></div>`).join("");
+  } catch (e) { alert(e.message); }
+  $("gen").disabled = false;
+};
+$("list").onclick = (e) => {
+  const v = e.target.dataset.v, d = e.target.dataset.d;
+  if (v !== undefined) {
+    const p = $("p" + v);
+    if (!p.textContent) p.textContent = JSON.stringify(files[v].json, null, 2);
+    p.classList.toggle("hidden");
+  }
+  if (d !== undefined) download(files[d].filename, files[d].json);
+};
+$("all").onclick = () => files.forEach((f) => download(f.filename, f.json));
+$("save").onclick = async () => {
+  try { const r = await call("save"); $("saved").textContent = `${r.count} archivos guardados en ${r.dir}`; }
+  catch (e) { alert(e.message); }
+};
+</script>
+</body>
+</html>
