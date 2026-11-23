@@ -708,7 +708,7 @@ function ContenidoMapeos({ datos, onCerrar }: { datos: DatosMapeos; onCerrar: ()
             {datos.sincronizacion.versiones})
           </span>
         </div>
-        <div className="flex items-center gap-space-sm">
+        <div className="flex items-center gap-space-sm ml-auto">
           {hayCambios && <span className="font-tag-xs text-tag-xs text-clinical-warning">Cambios sin guardar</span>}
           <button type="button" onClick={onCerrar} className="px-space-lg py-2 rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-label-sm transition-colors">
             Cancelar
