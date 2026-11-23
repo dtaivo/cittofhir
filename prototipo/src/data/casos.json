@@ -1,7 +1,7 @@
 {
   "_nota": "DATOS SINTÉTICOS. Casos de ejemplo para la cola de Limpieza Guiada.",
   "totalPendientes": 235,
-  "resueltosPrevios": 11,
+  "resueltosPrevios": 12,
   "filtros": { "todos": 235, "snomed": 148, "duplicados": 87 },
   "casos": [
     {

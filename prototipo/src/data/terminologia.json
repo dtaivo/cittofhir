@@ -1,28 +1,120 @@
 {
   "_nota": "Subconjunto ilustrativo. Los códigos deben verificarse contra los servidores oficiales SNOMED CT y LOINC antes de cualquier uso real.",
   "especies": [
-    { "codigo": "243644005", "display": "Entamoeba histolytica", "sistema": "http://snomed.info/sct" },
-    { "codigo": "243574004", "display": "Giardia intestinalis", "sistema": "http://snomed.info/sct" },
-    { "codigo": "27950002", "display": "Ascaris lumbricoides", "sistema": "http://snomed.info/sct" },
-    { "codigo": "243590003", "display": "Cryptosporidium parvum", "sistema": "http://snomed.info/sct" },
-    { "codigo": "243602003", "display": "Trypanosoma cruzi", "sistema": "http://snomed.info/sct" }
+    {
+      "codigo": "243644005",
+      "display": "Entamoeba histolytica",
+      "sistema": "http://snomed.info/sct",
+      "ncbi": "5759"
+    },
+    {
+      "codigo": "243645006",
+      "display": "Entamoeba dispar",
+      "sistema": "http://snomed.info/sct",
+      "ncbi": "29838"
+    },
+    {
+      "codigo": "42566000",
+      "display": "Entamoeba coli",
+      "sistema": "http://snomed.info/sct",
+      "ncbi": "5760"
+    },
+    {
+      "codigo": "243574004",
+      "display": "Giardia intestinalis",
+      "sistema": "http://snomed.info/sct",
+      "ncbi": "5741"
+    },
+    {
+      "codigo": "27950002",
+      "display": "Ascaris lumbricoides",
+      "sistema": "http://snomed.info/sct",
+      "ncbi": "6252"
+    },
+    {
+      "codigo": "243590003",
+      "display": "Cryptosporidium parvum",
+      "sistema": "http://snomed.info/sct",
+      "ncbi": "5807"
+    },
+    {
+      "codigo": "243602003",
+      "display": "Trypanosoma cruzi",
+      "sistema": "http://snomed.info/sct",
+      "ncbi": "5693"
+    }
   ],
   "estadios": [
-    { "codigo": "trofozoito", "display": "Trofozoíto (Forma vegetativa móvil)" },
-    { "codigo": "quiste", "display": "Quiste (Forma de resistencia)" },
-    { "codigo": "huevo", "display": "Huevo fértil" },
-    { "codigo": "ooquiste", "display": "Ooquiste esporulado" },
-    { "codigo": "tripomastigote", "display": "Tripomastigote sanguíneo" }
+    {
+      "codigo": "trofozoito",
+      "display": "Trofozoíto (Forma vegetativa móvil)"
+    },
+    {
+      "codigo": "quiste",
+      "display": "Quiste (Forma de resistencia / maduro)"
+    },
+    {
+      "codigo": "prequiste",
+      "display": "Pre-quiste"
+    },
+    {
+      "codigo": "ooquiste",
+      "display": "Ooquiste"
+    },
+    {
+      "codigo": "huevo",
+      "display": "Huevo fértil / infértil"
+    },
+    {
+      "codigo": "larva",
+      "display": "Larva (Rhabditoide / Filariforme)"
+    },
+    {
+      "codigo": "tripomastigote",
+      "display": "Tripomastigote sanguíneo"
+    }
   ],
   "tinciones": [
-    { "codigo": "lugol", "display": "Lugol directo (Solución yodo-yodurada)" },
-    { "codigo": "giemsa", "display": "Giemsa rápida" },
-    { "codigo": "ziehl", "display": "Ziehl-Neelsen modificado (Kinyoun)" },
-    { "codigo": "fresco", "display": "Examen en fresco (sin tinción)" }
+    {
+      "codigo": "lugol",
+      "display": "Lugol directo (Solución yodo-yodurada)"
+    },
+    {
+      "codigo": "fresco",
+      "display": "Examen en fresco con solución salina 0.9%"
+    },
+    {
+      "codigo": "hematoxilina",
+      "display": "Hematoxilina férrica de Heidenhain"
+    },
+    {
+      "codigo": "ziehl",
+      "display": "Tinción de Kinyoun (Ácido-alcohol resistente mod.)"
+    },
+    {
+      "codigo": "gomori",
+      "display": "Tricrómica de Gomori"
+    },
+    {
+      "codigo": "giemsa",
+      "display": "Tinción Giemsa rápida"
+    }
   ],
   "aumentos": [
-    { "codigo": "10x", "display": "10x - Campo panorámico", "calibracion": "0.88 µm/pixel" },
-    { "codigo": "40x", "display": "40x - Campo seco de alta magnificación", "calibracion": "0.22 µm/pixel" },
-    { "codigo": "100x", "display": "100x - Inmersión en aceite", "calibracion": "0.09 µm/pixel" }
+    {
+      "codigo": "10x",
+      "display": "10x - Panorámico / Rastreo",
+      "calibracion": "0.88 µm/pixel"
+    },
+    {
+      "codigo": "40x",
+      "display": "40x - Campo seco de alta magnificación",
+      "calibracion": "0.22 µm/pixel"
+    },
+    {
+      "codigo": "100x",
+      "display": "100x - Inmersión en aceite de cedro",
+      "calibracion": "0.09 µm/pixel"
+    }
   ]
 }

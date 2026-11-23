@@ -2,6 +2,7 @@ import { Navigate, Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout";
 import Carga from "./pages/Carga";
 import FueraDeAlcance from "./pages/FueraDeAlcance";
+import Limpieza from "./pages/Limpieza";
 
 export default function App() {
   return (
@@ -9,7 +10,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Navigate to="/carga" replace />} />
         <Route path="/carga" element={<Carga />} />
-        <Route path="/limpieza" element={<FueraDeAlcance titulo="Limpieza Guiada" icono="rule" />} />
+        <Route path="/limpieza" element={<Limpieza />} />
         <Route path="/mapeos" element={<FueraDeAlcance titulo="Mapeo LOINC/SNOMED" icono="translate" />} />
         <Route path="/confirmacion" element={<FueraDeAlcance titulo="Confirmación y Exportación" icono="verified" />} />
         <Route path="/visor" element={<FueraDeAlcance titulo="Visor Citológico" icono="fullscreen" />} />

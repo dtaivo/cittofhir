@@ -95,6 +95,7 @@ export interface OpcionTerminologia {
   display: string;
   sistema?: string;
   calibracion?: string;
+  ncbi?: string;
 }
 
 export interface Terminologia {
