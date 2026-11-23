@@ -3,6 +3,7 @@ import { Layout } from "./components/Layout";
 import Carga from "./pages/Carga";
 import FueraDeAlcance from "./pages/FueraDeAlcance";
 import Limpieza from "./pages/Limpieza";
+import MapeosModal from "./pages/Mapeos";
 
 export default function App() {
   return (
@@ -11,7 +12,14 @@ export default function App() {
         <Route path="/" element={<Navigate to="/carga" replace />} />
         <Route path="/carga" element={<Carga />} />
         <Route path="/limpieza" element={<Limpieza />} />
-        <Route path="/mapeos" element={<FueraDeAlcance titulo="Mapeo LOINC/SNOMED" icono="translate" />} />
+        <Route
+          path="/mapeos"
+          element={
+            <Limpieza>
+              <MapeosModal />
+            </Limpieza>
+          }
+        />
         <Route path="/confirmacion" element={<FueraDeAlcance titulo="Confirmación y Exportación" icono="verified" />} />
         <Route path="/visor" element={<FueraDeAlcance titulo="Visor Citológico" icono="fullscreen" />} />
         <Route path="/auditoria" element={<FueraDeAlcance titulo="Auditoría & Logs" icono="fact_check" />} />

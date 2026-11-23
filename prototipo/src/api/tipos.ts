@@ -123,6 +123,7 @@ export interface DatosMapeos {
   pestanas: { id: string; nombre: string; total: number }[];
   reglas: ReglaMapeo[];
   opcionesPendiente: { ontologia: Ontologia; codigo: string; display: string }[];
+  sincronizacion: { hace: string; versiones: string };
 }
 
 export interface EventoAuditoria {

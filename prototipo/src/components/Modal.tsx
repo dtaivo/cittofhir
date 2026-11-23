@@ -21,6 +21,9 @@ export function Modal({
   className?: string;
 }) {
   const caja = useRef<HTMLDivElement>(null);
+  // Se guarda en una referencia para no reiniciar el foco cada vez que la página se actualiza.
+  const cerrarRef = useRef(onCerrar);
+  cerrarRef.current = onCerrar;
 
   useEffect(() => {
     if (!abierto) return;
@@ -32,7 +35,7 @@ export function Modal({
     function tecla(e: KeyboardEvent) {
       if (e.key === "Escape") {
         e.stopPropagation();
-        onCerrar();
+        cerrarRef.current();
       }
       if (e.key !== "Tab" || !caja.current) return;
       const lista = [...caja.current.querySelectorAll<HTMLElement>(ENFOCABLES)];
@@ -52,7 +55,7 @@ export function Modal({
       document.body.style.overflow = "";
       anterior?.focus();
     };
-  }, [abierto, onCerrar]);
+  }, [abierto]);
 
   if (!abierto) return null;
   return (
