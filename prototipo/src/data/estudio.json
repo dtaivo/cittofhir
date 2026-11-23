@@ -1,0 +1,52 @@
+{
+  "_nota": "DATOS SINTÉTICOS. Ningún dato corresponde a pacientes reales.",
+  "estudio": { "nombre": "Chagas & Giardia 2025", "lote": "HEC-900", "perfil": "Observation Parasitology IG-CL", "specimenDb": "v4.0.1", "parser": "v4.1.0-rc", "loinc": "2.76" },
+  "usuario": { "nombre": "Dra. V. Morales", "rol": "Microbiología & FHIR Spec" },
+  "servidor": { "nombre": "FHIR Server R4", "estado": "Online" },
+  "archivoEjemplo": { "nombre": "Metadatos_Muestras_Parasitologia_Lote_2025_02.xlsx", "tamanoBytes": 4404019, "columnas": 16 },
+  "esquema": [
+    { "columna": "id_muestra", "destino": "Specimen.identifier" },
+    { "columna": "especie_observada", "destino": "Observation.code (SNOMED/LOINC)" },
+    { "columna": "estadio_evolutivo", "destino": "Observation.component[stage]" },
+    { "columna": "aumento_objetivo", "destino": "DeviceMetric / Specimen.note" },
+    { "columna": "protocolo_tincion", "destino": "Specimen.processing.procedure" },
+    { "columna": "fecha_toma_muestra", "destino": "Specimen.collection.collectedDateTime" }
+  ],
+  "diagnostico": { "total": 1420, "conformes": 1185, "alertas": 148, "duplicados": 87 },
+  "hallazgos": [
+    {
+      "id": "taxonomia",
+      "icono": "spellcheck",
+      "titulo": "Inconsistencia Taxonómica & Código SNOMED",
+      "prioridad": "Alta prioridad",
+      "severidad": "alta",
+      "descripcion": "Sinonimias no normalizadas: \"G. lamblia\" vs \"Giardia duodenalis\". Ausencia de código SNOMED CT 243574004.",
+      "impacta": "Observation.code.coding",
+      "detalle": "Campos: especie_observada",
+      "casos": 84
+    },
+    {
+      "id": "optica",
+      "icono": "zoom_in",
+      "titulo": "Parámetros Ópticos y Tinción Indefinidos",
+      "prioridad": "Media",
+      "severidad": "media",
+      "descripcion": "Falta de aumento microscópico (40x / 100x inmersión) o método colorimétrico sin tag (Lugol vs Giemsa no estandarizado).",
+      "impacta": "Specimen.processing.procedure",
+      "detalle": "Campos: aumento, protocol_tin",
+      "casos": 64
+    },
+    {
+      "id": "duplicados",
+      "icono": "content_copy",
+      "titulo": "Colisión de Identificador de Muestra",
+      "prioridad": "Duplicados",
+      "severidad": "duplicado",
+      "descripcion": "Múltiples capturas del mismo código de lámina (ID_LAM-094, ID_LAM-102) con fechas desfasadas en < 30 segundos.",
+      "impacta": "Specimen.identifier.value",
+      "detalle": "Sugerencia: Agrupación en Serie",
+      "casos": 87
+    }
+  ],
+  "muestraTestigo": { "id": "LAM-094-A", "imagen": "/img/giardia-100x.jpg", "alt": "Campo de microscopía con trofozoítos de Giardia teñidos con Giemsa, 100x inmersión", "objetivo": "100x Inmersión", "tincion": "Giemsa rápida", "alerta": "Taxonomía ambigua" }
+}

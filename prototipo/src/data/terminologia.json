@@ -1,0 +1,28 @@
+{
+  "_nota": "Subconjunto ilustrativo. Los códigos deben verificarse contra los servidores oficiales SNOMED CT y LOINC antes de cualquier uso real.",
+  "especies": [
+    { "codigo": "243644005", "display": "Entamoeba histolytica", "sistema": "http://snomed.info/sct" },
+    { "codigo": "243574004", "display": "Giardia intestinalis", "sistema": "http://snomed.info/sct" },
+    { "codigo": "27950002", "display": "Ascaris lumbricoides", "sistema": "http://snomed.info/sct" },
+    { "codigo": "243590003", "display": "Cryptosporidium parvum", "sistema": "http://snomed.info/sct" },
+    { "codigo": "243602003", "display": "Trypanosoma cruzi", "sistema": "http://snomed.info/sct" }
+  ],
+  "estadios": [
+    { "codigo": "trofozoito", "display": "Trofozoíto (Forma vegetativa móvil)" },
+    { "codigo": "quiste", "display": "Quiste (Forma de resistencia)" },
+    { "codigo": "huevo", "display": "Huevo fértil" },
+    { "codigo": "ooquiste", "display": "Ooquiste esporulado" },
+    { "codigo": "tripomastigote", "display": "Tripomastigote sanguíneo" }
+  ],
+  "tinciones": [
+    { "codigo": "lugol", "display": "Lugol directo (Solución yodo-yodurada)" },
+    { "codigo": "giemsa", "display": "Giemsa rápida" },
+    { "codigo": "ziehl", "display": "Ziehl-Neelsen modificado (Kinyoun)" },
+    { "codigo": "fresco", "display": "Examen en fresco (sin tinción)" }
+  ],
+  "aumentos": [
+    { "codigo": "10x", "display": "10x - Campo panorámico", "calibracion": "0.88 µm/pixel" },
+    { "codigo": "40x", "display": "40x - Campo seco de alta magnificación", "calibracion": "0.22 µm/pixel" },
+    { "codigo": "100x", "display": "100x - Inmersión en aceite", "calibracion": "0.09 µm/pixel" }
+  ]
+}

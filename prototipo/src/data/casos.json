@@ -1,0 +1,81 @@
+{
+  "_nota": "DATOS SINTÉTICOS. Casos de ejemplo para la cola de Limpieza Guiada.",
+  "totalPendientes": 235,
+  "resueltosPrevios": 11,
+  "filtros": { "todos": 235, "snomed": 148, "duplicados": 87 },
+  "casos": [
+    {
+      "id": "LAM-0842", "titulo": "Trofozoíto entamoeba", "muestra": "Muestra coprológica: HEC-904-B", "categoria": "snomed",
+      "imagen": "/img/entamoeba-lugol.jpg", "imagenGrande": "/img/entamoeba-trofozoito.jpg", "imagenAlt": "Frotis teñido con Lugol con trofozoíto de Entamoeba",
+      "aumentoMiniatura": "40x", "insignia": { "texto": "2 Alertas", "tono": "error" },
+      "etiquetas": [ { "texto": "Taxonomía no canónica", "tono": "neutral" }, { "texto": "Duplicado de #LAM-0841", "tono": "info" } ],
+      "archivoOriginal": "IMG_SCAN_20250212_0842_RAW.TIFF", "comparaCon": "LAM-0841",
+      "textoCrudo": "Entamoba histolyt (quiste/trofo?)",
+      "sospechaDuplicado": { "con": "LAM-0841", "similitud": 94.2, "segundos": 32 },
+      "sugerencia": "Clasificar como Escaneo repetido y estandarizar a Entamoeba histolytica estadio trofozoíto maduro.",
+      "propuesta": { "relacion": "repetido", "especie": "243644005", "estadio": "trofozoito", "tincion": "lugol", "aumento": "40x" },
+      "deteccionTincion": "Yodo Lugol por cromatometría de fondo"
+    },
+    {
+      "id": "LAM-0843", "titulo": "Giardia sp. forma vegetativa", "muestra": "Muestra aspirado: DUO-102", "categoria": "snomed",
+      "imagen": "/img/giardia-trofozoito.jpg", "imagenGrande": "/img/giardia-trofozoito.jpg", "imagenAlt": "Campo de alta resolución con trofozoítos flagelados de Giardia",
+      "aumentoMiniatura": "100x", "insignia": { "texto": "Tinción ?", "tono": "neutral" },
+      "etiquetas": [ { "texto": "Coloración no especificada", "tono": "neutral" } ],
+      "archivoOriginal": "IMG_SCAN_20250212_0843_RAW.TIFF", "comparaCon": null,
+      "textoCrudo": "Giardia sp. veget.",
+      "sospechaDuplicado": null,
+      "sugerencia": "Normalizar a Giardia intestinalis y registrar la tinción como Giemsa rápida según el patrón cromático.",
+      "propuesta": { "relacion": "nuevo", "especie": "243574004", "estadio": "trofozoito", "tincion": "", "aumento": "100x" },
+      "deteccionTincion": "Patrón azul-violeta compatible con Giemsa"
+    },
+    {
+      "id": "LAM-0850", "titulo": "Ascaris huevo fértil", "muestra": "Muestra coprológica: HEC-910-A", "categoria": "duplicados",
+      "imagen": "/img/ascaris-huevo.jpg", "imagenGrande": "/img/ascaris-huevo.jpg", "imagenAlt": "Huevo fértil de Ascaris lumbricoides con cubierta mamelonada",
+      "aumentoMiniatura": "10x", "insignia": { "texto": "Morfometría", "tono": "info" },
+      "etiquetas": [ { "texto": "Posible escaneo repetido", "tono": "neutral" } ],
+      "archivoOriginal": "IMG_SCAN_20250213_0850_RAW.TIFF", "comparaCon": "LAM-0849",
+      "textoCrudo": "Ascaris huevo fert.",
+      "sospechaDuplicado": { "con": "LAM-0849", "similitud": 88.7, "segundos": 21 },
+      "sugerencia": "Confirmar si es un nuevo campo o una recaptura; la morfometría coincide con LAM-0849.",
+      "propuesta": { "relacion": "", "especie": "27950002", "estadio": "huevo", "tincion": "fresco", "aumento": "10x" },
+      "deteccionTincion": "Sin tinción detectada (examen en fresco)"
+    },
+    {
+      "id": "LAM-0855", "titulo": "Ooquiste Cryptosporidium", "muestra": "Muestra coprológica: HEC-912-C", "categoria": "snomed",
+      "imagen": "/img/cryptosporidium.jpg", "imagenGrande": "/img/cryptosporidium.jpg", "imagenAlt": "Ooquistes de Cryptosporidium teñidos con Ziehl-Neelsen modificado",
+      "aumentoMiniatura": "?", "insignia": { "texto": "Sin aumento", "tono": "error" },
+      "etiquetas": [ { "texto": "EXIF Magnification = NULL", "tono": "neutral" } ],
+      "archivoOriginal": "IMG_SCAN_20250213_0855_RAW.TIFF", "comparaCon": null,
+      "textoCrudo": "Ooquiste no esp.",
+      "sospechaDuplicado": null,
+      "sugerencia": "Asignar Cryptosporidium parvum y completar el aumento óptico, ausente en los metadatos EXIF.",
+      "propuesta": { "relacion": "nuevo", "especie": "243590003", "estadio": "ooquiste", "tincion": "ziehl", "aumento": "" },
+      "deteccionTincion": "Fucsina básica (ácido-alcohol resistente)"
+    },
+    {
+      "id": "LAM-0861", "titulo": "Quiste de Giardia", "muestra": "Muestra coprológica: HEC-915-A", "categoria": "duplicados",
+      "imagen": "/img/giardia-quiste.jpg", "imagenGrande": "/img/giardia-quiste.jpg", "imagenAlt": "Trofozoíto y quiste de Giardia en microscopía de campo claro",
+      "aumentoMiniatura": "40x", "insignia": { "texto": "Duplicado", "tono": "info" },
+      "etiquetas": [ { "texto": "Duplicado de #LAM-0860", "tono": "info" } ],
+      "archivoOriginal": "IMG_SCAN_20250214_0861_RAW.TIFF", "comparaCon": "LAM-0860",
+      "textoCrudo": "G. lamblia quiste",
+      "sospechaDuplicado": { "con": "LAM-0860", "similitud": 97.1, "segundos": 12 },
+      "sugerencia": "Clasificar como Escaneo repetido y normalizar \"G. lamblia\" a Giardia intestinalis.",
+      "propuesta": { "relacion": "repetido", "especie": "243574004", "estadio": "quiste", "tincion": "lugol", "aumento": "40x" },
+      "deteccionTincion": "Yodo Lugol por cromatometría de fondo"
+    },
+    {
+      "id": "LAM-0870", "titulo": "Tripomastigote en frotis", "muestra": "Sangre periférica: CHG-031-A", "categoria": "snomed",
+      "imagen": "/img/giardia-100x.jpg", "imagenGrande": "/img/giardia-100x.jpg", "imagenAlt": "Frotis sanguíneo teñido con Giemsa a 100x",
+      "aumentoMiniatura": "100x", "insignia": { "texto": "1 Alerta", "tono": "error" },
+      "etiquetas": [ { "texto": "Taxonomía no canónica", "tono": "neutral" } ],
+      "archivoOriginal": "IMG_SCAN_20250215_0870_RAW.TIFF", "comparaCon": null,
+      "textoCrudo": "T. cruzi tripo",
+      "sospechaDuplicado": null,
+      "sugerencia": "Normalizar a Trypanosoma cruzi estadio tripomastigote sanguíneo.",
+      "propuesta": { "relacion": "nuevo", "especie": "243602003", "estadio": "tripomastigote", "tincion": "giemsa", "aumento": "100x" },
+      "deteccionTincion": "Patrón azul-violeta compatible con Giemsa"
+    }
+  ],
+  "patron": { "lote": "HEC-900", "casos": 14, "error": "Entamoba histolyt" }
+}

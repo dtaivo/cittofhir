@@ -1,0 +1,24 @@
+{
+  "_nota": "DATOS SINTÉTICOS. Reglas de mapeo de ejemplo.",
+  "pestanas": [
+    { "id": "taxonomia", "nombre": "Taxonomía Parasitaria (SNOMED CT)", "total": 24 },
+    { "id": "metodos", "nombre": "Métodos y Tinciones (LOINC)", "total": 12 },
+    { "id": "estadios", "nombre": "Estadios Evolutivos", "total": 8 },
+    { "id": "sinonimia", "nombre": "Reglas de Sinonimia", "total": 15 }
+  ],
+  "reglas": [
+    { "id": "r1", "pestana": "taxonomia", "terminos": ["G. lamblia", "Giardia sp."], "ontologia": "SNOMED CT", "codigo": "243574004", "display": "Giardia intestinalis (organism)", "autoAplicar": true, "confianza": 99, "estado": "mapeado" },
+    { "id": "r2", "pestana": "taxonomia", "terminos": ["Entamoba histolyt", "E. histolytica"], "ontologia": "SNOMED CT", "codigo": "243644005", "display": "Entamoeba histolytica (organism)", "autoAplicar": true, "confianza": 96, "estado": "mapeado" },
+    { "id": "r3", "pestana": "metodos", "terminos": ["Tinción Lugol", "Lugol directo"], "ontologia": "LOINC", "codigo": "10701-1", "display": "Ova and Parasite preparation [Type] in Stool by Light microscopy", "autoAplicar": true, "confianza": 98, "estado": "mapeado" },
+    { "id": "r4", "pestana": "metodos", "terminos": ["Giemsa rápida", "Frotis Giemsa"], "ontologia": "LOINC", "codigo": "622-1", "display": "Microscopic observation [Identifier] in Specimen by Giemsa stain", "autoAplicar": true, "confianza": 95, "estado": "mapeado" },
+    { "id": "r5", "pestana": "taxonomia", "terminos": ["Ooquiste no esp."], "ontologia": null, "codigo": null, "display": null, "autoAplicar": false, "confianza": null, "estado": "pendiente" },
+    { "id": "r6", "pestana": "taxonomia", "terminos": ["T. cruzi", "Tripanosoma cruzi"], "ontologia": "SNOMED CT", "codigo": "243602003", "display": "Trypanosoma cruzi (organism)", "autoAplicar": false, "confianza": 72, "estado": "conflicto" },
+    { "id": "r7", "pestana": "estadios", "terminos": ["trofo", "forma vegetativa"], "ontologia": "SNOMED CT", "codigo": "trofozoito", "display": "Trofozoíto (forma vegetativa)", "autoAplicar": true, "confianza": 93, "estado": "mapeado" },
+    { "id": "r8", "pestana": "sinonimia", "terminos": ["Giardia duodenalis"], "ontologia": "SNOMED CT", "codigo": "243574004", "display": "Giardia intestinalis (organism)", "autoAplicar": true, "confianza": 97, "estado": "mapeado" }
+  ],
+  "opcionesPendiente": [
+    { "ontologia": "SNOMED CT", "codigo": "243590003", "display": "Cryptosporidium parvum (organism)" },
+    { "ontologia": "SNOMED CT", "codigo": "243574004", "display": "Giardia intestinalis (organism)" },
+    { "ontologia": "LOINC", "codigo": "10701-1", "display": "Ova and Parasite preparation [Type] in Stool by Light microscopy" }
+  ]
+}
