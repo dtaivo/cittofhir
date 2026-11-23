@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from "react-router-dom";
 import { Layout } from "./components/Layout";
+import Carga from "./pages/Carga";
 import FueraDeAlcance from "./pages/FueraDeAlcance";
 
 export default function App() {
@@ -7,7 +8,7 @@ export default function App() {
     <Layout>
       <Routes>
         <Route path="/" element={<Navigate to="/carga" replace />} />
-        <Route path="/carga" element={<FueraDeAlcance titulo="Carga y Diagnóstico" icono="biotech" />} />
+        <Route path="/carga" element={<Carga />} />
         <Route path="/limpieza" element={<FueraDeAlcance titulo="Limpieza Guiada" icono="rule" />} />
         <Route path="/mapeos" element={<FueraDeAlcance titulo="Mapeo LOINC/SNOMED" icono="translate" />} />
         <Route path="/confirmacion" element={<FueraDeAlcance titulo="Confirmación y Exportación" icono="verified" />} />
