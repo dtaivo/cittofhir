@@ -5,7 +5,8 @@ import { useAvisos } from "../components/Avisos";
 import { Cargando, ErrorCarga } from "../components/Estados";
 import { Icono } from "../components/Icono";
 import { bundleDeEjemplo, observacionDesdeCaso } from "../lib/fhir";
-import { aCsv, descargarArchivo } from "../lib/descargar";
+import { aCsv, descargarArchivo, descargarBlob } from "../lib/descargar";
+import { casoDesdeFila, generarExcelCurado } from "../lib/planilla";
 import { cx, fechaUtc, numero } from "../lib/formato";
 import { useDatos } from "../lib/useDatos";
 import { validarToken, validarUrlFhir } from "../lib/validacion";
@@ -19,13 +20,14 @@ async function sha256(texto: string) {
 
 export default function Confirmacion() {
   const { datos, error, recargar } = useDatos(async () => {
-    const [exp, cola, estados, terminologia] = await Promise.all([
+    const [exp, cola, estados, terminologia, curadas] = await Promise.all([
       api.obtenerExportacion(),
       api.obtenerCola(),
       api.obtenerEstadosCasos(),
       api.obtenerTerminologia(),
+      api.obtenerFilasCuradas(),
     ]);
-    return { exp, cola, estados, terminologia };
+    return { exp, cola, estados, terminologia, curadas };
   });
   const avisar = useAvisos();
   const [url, setUrl] = useState<string | null>(null);
@@ -40,15 +42,27 @@ export default function Confirmacion() {
   if (error) return <ErrorCarga mensaje={error} onReintentar={recargar} />;
   if (!datos) return <Cargando />;
 
-  const { exp, cola, estados, terminologia } = datos;
+  const { exp, cola, estados, terminologia, curadas } = datos;
   const urlActual = url ?? exp.servidorDestino.url;
   const tokenActual = token ?? exp.servidorDestino.token;
   const pendientes = cola.casos.filter((c) => (estados[c.id]?.estado ?? "pendiente") === "pendiente");
   const total = exp.certificacion.total;
   const porcentaje = Math.round((exp.certificacion.verificados / total) * 100);
+  const completo = exp.certificacion.verificados >= total;
   const eventos = verTodo ? exp.auditoria : exp.auditoria.slice(0, 6);
 
   function construirBundle() {
+    if (curadas) {
+      // Planilla real: filas conformes + casos resueltos, con seudónimo y fecha
+      const entradas = curadas.map(({ fila, decision }) =>
+        observacionDesdeCaso(casoDesdeFila(fila, terminologia, ""), decision, terminologia, {
+          idLamina: fila.idLamina,
+          idMuestra: fila.idMuestra,
+          fecha: fila.fecha,
+        }),
+      );
+      return bundleDeEjemplo(exp.bundleId.replace("urn:uuid:", ""), entradas.length, entradas, "Generado por ParaFHIR (prototipo): revisar antes de uso clínico");
+    }
     const entradas = cola.casos
       .filter((c) => estados[c.id]?.estado === "resuelto" && estados[c.id]?.decision)
       .map((c) => observacionDesdeCaso(c, estados[c.id].decision!, terminologia));
@@ -77,6 +91,9 @@ export default function Confirmacion() {
       descargarArchivo("cittofhir-bundle-2025-chg.json", texto, "application/fhir+json");
       const hash = await sha256(texto);
       avisar("exito", <>Bundle JSON descargado. SHA-256: <span className="font-code-mono break-all">{hash.slice(0, 16)}…</span></>);
+    } else if (id === "xlsx" && curadas) {
+      descargarBlob("Excel_Clinico_Curado.xlsx", await generarExcelCurado(curadas, terminologia));
+      avisar("exito", `Excel curado descargado: ${curadas.length} filas.`);
     } else if (id === "xlsx") {
       const filas = [
         ["id_muestra", "estado", "especie_snomed", "estadio", "tincion", "aumento", "nota"],
@@ -116,8 +133,9 @@ export default function Confirmacion() {
               Validación Completa y Exportación de Metadatos
             </h1>
             <p className="font-body-base text-body-base text-on-surface-variant max-w-2xl">
-              El proceso de curación terminológica, resolución de duplicados y estructuración de observaciones parasitológicas ha concluido con certificación de
-              integridad total.
+              {completo
+                ? "El proceso de curación terminológica, resolución de duplicados y estructuración de observaciones parasitológicas ha concluido con certificación de integridad total."
+                : `La curación está en curso: ${numero(total - exp.certificacion.verificados)} de ${numero(total)} registros aún requieren revisión antes de exportar el lote completo.`}
             </p>
           </div>
           <div className="flex items-center gap-space-sm self-start lg:self-center flex-wrap">
@@ -144,7 +162,7 @@ export default function Confirmacion() {
             <p className="font-body-sm text-body-sm flex items-start gap-space-xs">
               <Icono nombre="warning" className="text-[18px] shrink-0" />
               <span>
-                Quedan <strong>{pendientes.length} casos</strong> de la cola de ejemplo sin revisar ({pendientes.map((c) => c.id).join(", ")}). Puede exportar igual,
+                Quedan <strong>{pendientes.length} casos</strong> de la cola sin revisar ({pendientes.map((c) => c.id).join(", ")}). Puede exportar igual,
                 pero no entrarán al Bundle.
               </span>
             </p>
@@ -192,8 +210,17 @@ export default function Confirmacion() {
                 {numero(exp.certificacion.verificados)} de {numero(total)} Láminas y Registros Verificados
               </h2>
               <p className="font-body-sm text-body-sm text-surface-container-high max-w-xl">
-                Cumplimiento estricto del perfil <strong className="text-on-primary">Observation/Specimen FHIR {exp.packageSpec}</strong> y Guías CittoFHIR IG-CL. Taxonomía
-                SNOMED-CT sin discrepancias semánticas y LOINC mapeado al 100%.
+                {completo ? (
+                  <>
+                    Cumplimiento estricto del perfil <strong className="text-on-primary">Observation/Specimen FHIR {exp.packageSpec}</strong> y Guías CittoFHIR IG-CL.
+                    Taxonomía SNOMED-CT sin discrepancias semánticas y LOINC mapeado al 100%.
+                  </>
+                ) : (
+                  <>
+                    Solo los registros verificados entran al Bundle. Los <strong className="text-on-primary">{numero(total - exp.certificacion.verificados)} restantes</strong>{" "}
+                    quedan fuera hasta revisarlos en Limpieza Guiada.
+                  </>
+                )}
               </p>
             </div>
           </div>
@@ -384,7 +411,7 @@ export default function Confirmacion() {
   "resourceType": "Bundle",
   "id": "cittofhir-bundle-2025-chg",
   "type": "transaction",
-  "total": ${total},
+  "total": ${exp.certificacion.verificados},
   "entry": [
     { "resource": { "resourceType": "Specimen", "id": "LAM-001", "status": "available" } },
     { "resource": { "resourceType": "Observation", "code": { "coding": [{ "system": "http://loinc.org", "code": "10704-5" }] } } }
@@ -420,7 +447,7 @@ export default function Confirmacion() {
                 className="w-full px-space-lg py-space-md bg-primary hover:bg-primary-container text-on-primary font-body-semibold text-body-semibold rounded-lg shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-space-sm group disabled:opacity-70"
               >
                 <Icono nombre="send" className="text-secondary-container group-hover:rotate-12 transition-transform" />
-                <span>{resultado && !resultado.ok ? "Reintentar transmisión" : `Transmitir Paquete Bundle (${numero(total)} Recursos)`}</span>
+                <span>{resultado && !resultado.ok ? "Reintentar transmisión" : `Transmitir Paquete Bundle (${numero(exp.certificacion.verificados)} Recursos)`}</span>
               </button>
             </div>
           </form>
@@ -553,8 +580,14 @@ export default function Confirmacion() {
               <Icono nombre="task_alt" className="text-[26px]" />
             </div>
             <div className="flex flex-col">
-              <span className="font-body-semibold text-body-semibold text-primary">Lote Chagas &amp; Giardia 2025 Completado</span>
-              <span className="font-body-sm text-body-sm text-on-surface-variant">Los metadatos están sincronizados y el hash de integridad está registrado en el log.</span>
+              <span className="font-body-semibold text-body-semibold text-primary">
+                {exp.nombreLote} {completo ? "Completado" : "en curso"}
+              </span>
+              <span className="font-body-sm text-body-sm text-on-surface-variant">
+                {completo
+                  ? "Los metadatos están sincronizados y el hash de integridad está registrado en el log."
+                  : `Quedan ${numero(total - exp.certificacion.verificados)} registros por revisar.`}
+              </span>
             </div>
           </div>
           <div className="flex flex-wrap items-center gap-space-sm w-full md:w-auto">

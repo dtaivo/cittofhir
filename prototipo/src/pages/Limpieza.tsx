@@ -40,7 +40,13 @@ function TarjetaCola({ caso, activo, estado, onElegir }: { caso: Caso; activo: b
       >
         <div className="flex gap-space-md">
           <div className={cx("relative w-20 h-20 rounded-lg overflow-hidden shrink-0 shadow-inner", activo ? "bg-primary-container" : "bg-surface-container")}>
-            <img className="w-full h-full object-cover" alt="" src={caso.imagen} />
+            {caso.imagen ? (
+              <img className="w-full h-full object-cover" alt="" src={caso.imagen} />
+            ) : (
+              <div className="w-full h-full flex items-center justify-center text-on-surface-variant" aria-hidden="true">
+                <Icono nombre="table_rows" className="text-[28px]" />
+              </div>
+            )}
             <span className="absolute bottom-1 right-1 px-1 bg-primary/80 backdrop-blur text-on-primary font-code-mono text-[10px] rounded">
               {caso.aumentoMiniatura}
             </span>
@@ -130,7 +136,7 @@ function EditorCaso({
     if (!f.relacion) e.relacion = "Indique si es un escaneo repetido o un nuevo corte.";
     const esp = f.especie === "otro" ? "Busque el código en Mapeo LOINC/SNOMED antes de guardar." : requerido(f.especie, "la especie");
     if (esp) e.especie = esp;
-    const est = requerido(f.estadio, "el estadio");
+    const est = f.especie === "negativo" ? null : requerido(f.estadio, "el estadio");
     if (est) e.estadio = est;
     const tin = requerido(f.tincion, "el método de tinción");
     if (tin) e.tincion = tin;
@@ -147,8 +153,12 @@ function EditorCaso({
         ? `Difiere de la sugerencia clínica (${especieSugerida.nombreLocal ?? especieSugerida.display}).`
         : null,
     relacion:
-      form.relacion === "nuevo" && caso.sospechaDuplicado && caso.sospechaDuplicado.similitud >= 90
-        ? `La similitud de ${caso.sospechaDuplicado.similitud}% sugiere un escaneo repetido.`
+      form.relacion === "nuevo" && caso.sospechaDuplicado
+        ? caso.sospechaDuplicado.similitud && caso.sospechaDuplicado.similitud >= 90
+          ? `La similitud de ${caso.sospechaDuplicado.similitud}% sugiere un escaneo repetido.`
+          : caso.sospechaDuplicado.texto
+            ? "Confirme que no es la misma lámina registrada dos veces."
+            : null
         : null,
   };
 
@@ -243,12 +253,20 @@ function EditorCaso({
       {/* Visor + diagnóstico */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-space-md">
         <div className="md:col-span-7 bg-specimen-frame rounded-xl overflow-hidden relative flex flex-col shadow-inner aspect-[4/3]">
-          <img
-            className="w-full h-full object-cover transition-transform duration-200"
-            style={{ transform: `scale(${zoom})` }}
-            alt={caso.imagenAlt}
-            src={caso.imagenGrande}
-          />
+          {caso.imagenGrande ? (
+            <img
+              className="w-full h-full object-cover transition-transform duration-200"
+              style={{ transform: `scale(${zoom})` }}
+              alt={caso.imagenAlt}
+              src={caso.imagenGrande}
+            />
+          ) : (
+            <div className="w-full h-full flex flex-col items-center justify-center gap-space-xs text-outline-variant p-space-lg text-center">
+              <Icono nombre="hide_image" className="text-[40px]" />
+              <p className="font-body-sm text-body-sm">Sin imagen cargada</p>
+              <p className="font-code-mono text-code-mono">{caso.archivoOriginal}</p>
+            </div>
+          )}
           <div className="absolute top-space-sm left-space-sm bg-primary/80 backdrop-blur-md px-space-sm py-space-xs rounded text-on-primary flex items-center gap-space-sm font-code-mono text-[11px]">
             <span className="flex items-center gap-1">
               <span className="w-2 h-2 rounded-full bg-secondary-container" aria-hidden="true" />
@@ -285,11 +303,17 @@ function EditorCaso({
             </div>
             {caso.sospechaDuplicado && (
               <div className="p-space-sm bg-surface-container-lowest rounded-lg">
-                <span className="font-tag-xs text-tag-xs text-on-surface-variant block">Sospecha de Duplicado de Imagen:</span>
+                <span className="font-tag-xs text-tag-xs text-on-surface-variant block">
+                  {caso.sospechaDuplicado.texto ? "Identificador repetido:" : "Sospecha de Duplicado de Imagen:"}
+                </span>
                 <p className="font-body-sm text-body-sm text-on-surface mt-0.5">
-                  El campo visual comparte un {caso.sospechaDuplicado.similitud}% de similitud estructural con{" "}
-                  <span className="font-code-mono font-semibold text-secondary">#{caso.sospechaDuplicado.con}</span> procesado{" "}
-                  {caso.sospechaDuplicado.segundos} seg antes.
+                  {caso.sospechaDuplicado.texto ?? (
+                    <>
+                      El campo visual comparte un {caso.sospechaDuplicado.similitud}% de similitud estructural con{" "}
+                      <span className="font-code-mono font-semibold text-secondary">#{caso.sospechaDuplicado.con}</span> procesado{" "}
+                      {caso.sospechaDuplicado.segundos} seg antes.
+                    </>
+                  )}
                 </p>
               </div>
             )}
@@ -426,6 +450,7 @@ function EditorCaso({
             valor={form.especie}
             onCambio={(v) => cambiar("especie", v)}
             opciones={[
+              { valor: "negativo", texto: `${t.negativo.texto} (SNOMED: ${t.negativo.codigo})`, grupo: "Resultado negativo" },
               ...t.especies.map((e) => ({ valor: e.codigo, texto: `${e.nombreLocal ?? e.display} (SNOMED: ${e.codigo})`, grupo: e.grupo })),
               { valor: "otro", texto: "Buscar otro código en servidor terminológico..." },
             ]}
@@ -450,7 +475,7 @@ function EditorCaso({
             id="campo-estadio"
             etiqueta="Estadío Parasitario del Organismo"
             requerido
-            pista={estadioSel?.snomed ? `SNOMED: ${estadioSel.snomed}` : "Sin código SNOMED"}
+            pista={estadioSel ? (estadioSel.snomed ? `SNOMED: ${estadioSel.snomed}` : "Sin código SNOMED") : undefined}
             valor={form.estadio}
             onCambio={(v) => cambiar("estadio", v)}
             opciones={t.estadios.map((e) => ({ valor: e.codigo, texto: e.display }))}
@@ -547,7 +572,8 @@ function EditorCaso({
           </button>
         )}
         <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-space-sm">
-          <button
+          {patronCasos > 0 && (
+            <button
             type="button"
             disabled={patronAplicado}
             onClick={onAplicarPatron}
@@ -556,6 +582,7 @@ function EditorCaso({
             <Icono nombre={patronAplicado ? "check" : "auto_fix_high"} className="text-[18px]" />
             <span>{patronAplicado ? `Regla aplicada a ${patronCasos} casos` : `Aplicar regla a ${patronCasos} casos similares`}</span>
           </button>
+          )}
           <button
             type="submit"
             disabled={guardando}
@@ -670,7 +697,8 @@ export default function Limpieza({ children }: { children?: React.ReactNode }) {
 
   const { cola, terminologia } = datos;
   const terminadosSesion = Object.values(estados).filter((e) => e.estado !== "pendiente").length;
-  const resueltos = cola.resueltosPrevios + terminadosSesion + (patronAplicado ? cola.patron.casos : 0);
+  // En la demo la regla en bloque "resuelve" casos que no están en la cola; con planilla real ya se cuentan en estados.
+  const resueltos = cola.resueltosPrevios + terminadosSesion + (patronAplicado && !cola.real && cola.patron ? cola.patron.casos : 0);
   const pct = ((resueltos / cola.totalPendientes) * 100).toFixed(1);
   const activo = visibles.find((c) => c.id === activoId) ?? null;
   const pendientesVisibles = visibles.filter((c) => estados[c.id]?.estado === "pendiente");
@@ -704,7 +732,8 @@ export default function Limpieza({ children }: { children?: React.ReactNode }) {
   async function aplicarPatron() {
     const n = await api.aplicarPatron();
     setPatronAplicado(true);
-    avisar("exito", `Regla aplicada a ${n} casos del lote ${cola.patron.lote}.`);
+    if (cola.real) setEstados(await api.obtenerEstadosCasos());
+    avisar(n ? "exito" : "info", n ? `Corrección aplicada a ${n} casos.` : "Ningún caso tenía todos los datos para corregirse en bloque.");
   }
 
   const filtros: { id: Filtro; texto: string; total: number; punto?: string }[] = [
@@ -838,6 +867,7 @@ export default function Limpieza({ children }: { children?: React.ReactNode }) {
                 <TarjetaCola key={c.id} caso={c} activo={c.id === activoId} estado={estados[c.id] ?? { estado: "pendiente" }} onElegir={() => setActivoId(c.id)} />
               ))}
             </ul>
+{cola.patron && (
             <div className="mt-space-sm p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-xs">
               <div className="flex items-center gap-space-xs text-secondary">
                 <Icono nombre="auto_fix_high" className="text-[18px]" />
@@ -845,10 +875,11 @@ export default function Limpieza({ children }: { children?: React.ReactNode }) {
               </div>
               <p className="font-body-sm text-body-sm text-on-surface">
                 {patronAplicado
-                  ? `Las ${cola.patron.casos} láminas del lote '${cola.patron.lote}' fueron normalizadas.`
+                  ? `Las láminas con '${cola.patron.error}' fueron normalizadas.`
                   : `${cola.patron.casos} láminas del lote '${cola.patron.lote}' presentan el error de transcripción '${cola.patron.error}'. Podrás normalizarlas todas al validar este caso.`}
               </p>
             </div>
+            )}
           </section>
 
           {/* Editor */}
@@ -875,7 +906,7 @@ export default function Limpieza({ children }: { children?: React.ReactNode }) {
                 caso={activo}
                 terminologia={terminologia}
                 patronAplicado={patronAplicado}
-                patronCasos={cola.patron.casos}
+                patronCasos={cola.patron?.casos ?? 0}
                 onGuardado={guardar}
                 onDescartado={descartar}
                 onAplicarPatron={aplicarPatron}

@@ -32,7 +32,39 @@ export interface Hallazgo {
   casos: number;
 }
 
+/* ---------- Planilla cargada por el usuario (se procesa en el navegador) ---------- */
+
+export type Calidad = "exacto" | "sinonimo" | "parecido" | "desconocido" | "vacio";
+export type TipoProblema = "taxonomia" | "optica" | "duplicado" | "formato";
+
+export interface FilaLote {
+  /** Número de fila en la planilla (la fila 1 son los encabezados). */
+  fila: number;
+  idLamina: string;
+  idMuestra: string;
+  tipoMuestra: TipoMuestra | null;
+  fecha: string | null;
+  crudo: { especie: string; estadio: string; tincion: string; aumento: string; tipoMuestra: string; fecha: string };
+  propuesta: PropuestaCaso;
+  calidad: { especie: Calidad; estadio: Calidad; tincion: Calidad; aumento: Calidad };
+  problemas: { tipo: TipoProblema; texto: string }[];
+  duplicadoDe: string | null;
+  archivoImagen: string;
+  observaciones: string;
+}
+
+export interface Lote {
+  archivo: { nombre: string; tamanoBytes: number };
+  hoja: string;
+  columnas: { columna: string; destino: string }[];
+  columnasIgnoradas: string[];
+  filas: FilaLote[];
+  cargadoEn: string;
+}
+
 export interface DatosCarga {
+  /** null = datos de demostración; si no, resumen del lote cargado. */
+  lote?: { nombre: string; tamanoBytes: number; hoja: string; columnasIgnoradas: string[]; cargadoEn: string } | null;
   estudio: Estudio;
   usuario: { nombre: string; rol: string };
   servidor: { nombre: string; estado: string };
@@ -68,7 +100,8 @@ export interface Caso {
   archivoOriginal: string;
   comparaCon: string | null;
   textoCrudo: string;
-  sospechaDuplicado: { con: string; similitud: number; segundos: number } | null;
+  /** Sospecha de duplicado: por similitud de imagen (demo) o por ID repetido en la planilla (texto). */
+  sospechaDuplicado: { con: string; similitud?: number; segundos?: number; texto?: string } | null;
   sugerencia: string;
   propuesta: PropuestaCaso;
   deteccionTincion: string;
@@ -84,11 +117,13 @@ export interface EstadoCaso {
 }
 
 export interface ColaLimpieza {
+  /** true = la cola viene de una planilla cargada por el usuario (no de la demo). */
+  real?: boolean;
   totalPendientes: number;
   resueltosPrevios: number;
   filtros: { todos: number; snomed: number; duplicados: number };
   casos: Caso[];
-  patron: { lote: string; casos: number; error: string };
+  patron: { lote: string; casos: number; error: string } | null;
 }
 
 export interface OpcionTerminologia {
@@ -127,6 +162,8 @@ export interface Terminologia {
   aumentos: OpcionTerminologia[];
   especificos: ConceptoEspecifico[];
   examenes: { tipoMuestra: TipoMuestra; codigo: string; display: string }[];
+  /** Código SNOMED para "no se observan parásitos". */
+  negativo: { codigo: string; display: string; texto: string };
 }
 
 export type Ontologia = "SNOMED CT" | "LOINC";
@@ -160,6 +197,8 @@ export interface EventoAuditoria {
 }
 
 export interface DatosExportacion {
+  /** Nombre que se muestra al cierre de la pantalla (estudio de demo o archivo cargado). */
+  nombreLote: string;
   bundleId: string;
   packageSpec: string;
   certificacion: { verificados: number; total: number };
@@ -183,7 +222,12 @@ export interface ResultadoTransmision {
  */
 export interface FuenteDatos {
   obtenerCarga(): Promise<DatosCarga>;
-  registrarArchivo(nombre: string, tamanoBytes: number): Promise<void>;
+  /** Guarda en memoria el lote ya leído y analizado en el navegador. */
+  cargarLote(lote: Lote): Promise<void>;
+  /** Vuelve a los datos de demostración. */
+  descartarLote(): Promise<void>;
+  /** Filas listas para el Bundle: conformes + casos resueltos (solo con lote real). */
+  obtenerFilasCuradas(): Promise<{ fila: FilaLote; decision: DecisionCaso }[] | null>;
   obtenerCola(): Promise<ColaLimpieza>;
   obtenerEstadosCasos(): Promise<Record<string, EstadoCaso>>;
   obtenerTerminologia(): Promise<Terminologia>;

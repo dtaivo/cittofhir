@@ -40,7 +40,7 @@ Otros comandos útiles:
 
 | Ruta | Pantalla | Qué puedes probar |
 |---|---|---|
-| `/carga` | 1. Carga y Diagnóstico | Arrastrar un archivo o usar el teclado; ver errores si el archivo no es .xlsx/.xls/.csv, está vacío o supera 20 MB; filtrar hallazgos; ver el esquema; descargar el reporte CSV |
+| `/carga` | 1. Carga y Diagnóstico | Descargar la plantilla .xlsx, completarla y cargarla. Se calcula el diagnóstico real. Si la planilla trae datos personales, columnas faltantes o un formato no válido, aparece un error. También puedes filtrar hallazgos, ver el esquema y descargar el reporte |
 | `/limpieza` | 2. Limpieza Guiada | Elegir casos de la cola, completar el formulario y guardar. Si falta un campo, aparece un resumen de errores. Además: alertas que no bloquean el guardado, zoom de la imagen y vista FHIR en vivo |
 | `/mapeos` | Configuración de Mapeos SNOMED/LOINC (ventana) | Buscar, filtrar, activar o desactivar el auto-mapeo, asignar el código pendiente y crear, editar o eliminar reglas. El código se valida con su dígito verificador |
 | `/confirmacion` | 3. Confirmación y Exportación | Transmitir (simulado) con validación de URL y token. Para ver el estado de error, escribe una URL que contenga `error`. También: descargar el Bundle JSON y revisar la auditoría de la sesión |
@@ -53,8 +53,10 @@ Otros comandos útiles:
 
 ### Datos
 - Todos los números, casos, láminas, nombres (por ejemplo "Dra. V. Morales") y eventos de auditoría son **sintéticos**. Están en `src/data/*.json`.
-- **El archivo que subes no se lee.** Solo se revisan su nombre, tipo y tamaño. El diagnóstico (1,420 registros, 148 alertas, etc.) siempre es el mismo.
-- Los cambios (casos resueltos, reglas nuevas) se guardan **solo en memoria**. Al recargar la página, todo vuelve al estado inicial.
+- Mientras no cargues una planilla, la app muestra **datos de demostración**: 1,420 registros, la Dra. V. Morales y la cola de ejemplo. Un aviso en la pantalla de Carga indica si estás viendo la demo o tu planilla.
+- **Tu planilla sí se lee de verdad**, pero **solo dentro del navegador** (ver "Planillas de muestras" más abajo).
+- Los cambios (casos resueltos, reglas nuevas) se guardan **solo en memoria**. Al recargar la página, se borran, incluida la planilla.
+- El nombre del operador en la auditoría es siempre "Dra. V. Morales". Cuando exista el login (Cloudflare Access), será el correo de la persona que inició sesión.
 - Los **códigos SNOMED CT y LOINC son reales** (ver la sección "Códigos clínicos" más abajo). Lo inventado son los *casos* a los que se aplican.
 - Las imágenes de microscopía fueron generadas por el diseño en Stitch. No son muestras reales.
 
@@ -68,11 +70,55 @@ Otros comandos útiles:
 - **No hay conexión con un servidor FHIR.** El botón "Transmitir" espera un momento y muestra un resultado simulado.
 - **La app no consulta servidores de terminología mientras se usa.** La lista de códigos está guardada en `src/data/terminologia.json` y se verifica aparte con `npm run verificar-codigos`.
 - "Importar diccionario" solo valida el tipo de archivo. No agrega reglas.
-- Descargas: el **Bundle JSON es real** (se arma con los casos que resolviste). El "Excel curado" se entrega como **.csv**. El paquete **Parquet no existe**.
+- Descargas: el **Bundle JSON** y el **Excel curado (.xlsx)** se generan de verdad a partir de tu planilla (con la demo, el Excel sale como .csv). El paquete **Parquet no existe**.
 - El enlace "Docs HL7/LOINC" abre la documentación pública de FHIR R4.
 - "Comparar con #LAM-…" muestra la misma imagen reflejada. No compara imágenes de verdad.
 
 ---
+
+## Planillas de muestras
+
+### La plantilla
+
+En la pantalla de Carga, el enlace **"Descargar plantilla .xlsx"** entrega una planilla con dos hojas: **Muestras** (con 4 filas de ejemplo que debes borrar) e **Instrucciones**.
+
+| Columna | ¿Obligatoria? | Qué escribir |
+|---|---|---|
+| `id_lamina` | Sí | Código único de la lámina. Ej.: LAM-0001 |
+| `id_muestra` | Sí | **Código seudonimizado** de la muestra o paciente. Nunca un nombre ni un RUT |
+| `tipo_muestra` | Sí | `heces`, `heces-concentrado` o `sangre` |
+| `fecha_toma` | No | AAAA-MM-DD (también acepta DD-MM-AAAA) |
+| `especie_observada` | Sí | Nombre científico o **Negativo** |
+| `estadio` | No* | trofozoíto, quiste, ooquiste, huevo, larva, tripomastigote |
+| `tincion` | No* | Lugol, Fresco, Giemsa, Kinyoun, Tricrómica, Hematoxilina |
+| `aumento` | No* | 10x, 40x, 100x |
+| `archivo_imagen` | No | Nombre del archivo de imagen |
+| `observaciones` | No | Texto libre **sin datos personales** |
+
+\* No es obligatoria para cargar la planilla, pero si falta, la fila queda **por revisar** en Limpieza Guiada.
+
+La app también reconoce nombres de columna parecidos (por ejemplo `especie` en vez de `especie_observada`). Se aceptan archivos **.xlsx** y **.csv** (separados por coma o punto y coma, en UTF-8). El formato **.xls** antiguo no se puede leer: hay que guardarlo como .xlsx.
+
+### Qué hace la app con tu planilla
+
+1. **La lee dentro del navegador.** El archivo **no se envía a ningún servidor**. Vive solo en la memoria de esa pestaña y desaparece al recargar o cerrar la página.
+2. **Rechaza la planilla completa** si encuentra:
+   - columnas con datos que identifican a una persona (nombre, apellido, RUT/RUN, dirección, teléfono, correo, fecha de nacimiento, ficha clínica);
+   - algún **RUT o correo electrónico** escrito en cualquier celda.
+3. **Reconoce los textos libres:**
+
+   | Lo que dice la planilla | Resultado |
+   |---|---|
+   | Nombre exacto del catálogo ("Giardia duodenalis") | ✅ Conforme |
+   | Sinónimo o abreviatura ("G. lamblia", "T. cruzi") | ⚠️ Se propone el código, pero hay que confirmarlo |
+   | Error de escritura ("Entamoba histolyt") | ⚠️ Se propone el código más parecido, pero hay que confirmarlo |
+   | Texto desconocido ("Ooquiste no esp.") | ❌ Hay que asignarlo a mano |
+
+4. **Detecta** láminas repetidas (mismo `id_lamina`), tipos de muestra no válidos, fechas imposibles o futuras y datos obligatorios faltantes.
+5. Las filas **sin problemas** van directo al Bundle. Las filas **con problemas** forman la cola de **Limpieza Guiada**.
+6. Si el mismo error se repite (por ejemplo, 14 veces "Entamoba histolyt"), puedes **corregirlas todas de una vez**.
+
+En el Bundle FHIR, `id_muestra` va como `subject.identifier` (seudónimo), `id_lamina` como `specimen.identifier` y `fecha_toma` como `effectiveDateTime`.
 
 ## Códigos clínicos (SNOMED CT y LOINC)
 
@@ -151,3 +197,7 @@ prototipo/
 
 1. Crear `src/api/fuenteServidor.ts` que cumpla la interfaz `FuenteDatos` de `src/api/tipos.ts` (por ejemplo, llamando al servidor Express del proyecto principal).
 2. En `src/api/index.ts`, cambiar `fuenteLocal` por `fuenteServidor`.
+
+## Planilla de prueba
+
+`ejemplos/planilla_de_prueba.xlsx` tiene 12 filas **inventadas** con errores a propósito: sinónimos, errores de escritura, una lámina repetida, un tipo de muestra no válido, una fecha imposible y un `id_muestra` faltante. Sirve para ver cómo responde cada pantalla.

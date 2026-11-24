@@ -5,11 +5,11 @@ import { useAvisos } from "../components/Avisos";
 import { Cargando, ErrorCarga } from "../components/Estados";
 import { Icono } from "../components/Icono";
 import { Modal } from "../components/Modal";
-import { aCsv, descargarArchivo } from "../lib/descargar";
+import { aCsv, descargarArchivo, descargarBlob } from "../lib/descargar";
 import { cx, numero, porcentaje, tamano } from "../lib/formato";
 import { useDatos } from "../lib/useDatos";
+import { ErrorPlanilla, analizarTabla, generarPlantilla, leerArchivo } from "../lib/planilla";
 import { EXTENSIONES_PERMITIDAS, validarArchivo } from "../lib/validacion";
-import { useCuracion } from "../state/Curacion";
 
 type Severidad = "todas" | Hallazgo["severidad"];
 const FILTROS: { valor: Severidad; texto: string }[] = [
@@ -40,7 +40,6 @@ const ESTILO_HALLAZGO: Record<Hallazgo["severidad"], { icono: string; insignia: 
 
 export default function Carga() {
   const { datos, error, recargar } = useDatos(api.obtenerCarga);
-  const { archivo, setArchivo } = useCuracion();
   const avisar = useAvisos();
   const navegar = useNavigate();
   const entrada = useRef<HTMLInputElement>(null);
@@ -62,11 +61,17 @@ export default function Carga() {
     alertas: porcentaje(dx.alertas, dx.total),
     duplicados: porcentaje(dx.duplicados, dx.total),
   };
-  const archivoVisible = archivo ?? {
+  const lote = datos.lote ?? null;
+  const archivoVisible = {
     nombre: datos.archivoEjemplo.nombre,
     tamanoBytes: datos.archivoEjemplo.tamanoBytes,
-    cargadoEn: null,
-    alerta: null,
+    cargadoEn: lote?.cargadoEn ?? null,
+    alerta: [
+      lote?.nombre.toLowerCase().endsWith(".csv") ? "Los CSV deben guardarse en UTF-8 para que las tildes se lean bien." : "",
+      lote?.columnasIgnoradas.length ? `Columnas no usadas: ${lote.columnasIgnoradas.join(", ")}.` : "",
+    ]
+      .filter(Boolean)
+      .join(" ") || null,
   };
   const hallazgosVisibles = hallazgos.filter((h) => severidad === "todas" || h.severidad === severidad);
 
@@ -79,15 +84,33 @@ export default function Carga() {
     }
     setErrorArchivo(null);
     setProcesando(true);
-    await api.registrarArchivo(f.name, f.size);
-    setArchivo({ nombre: f.name, tamanoBytes: f.size, cargadoEn: new Date(), alerta: r.alerta });
-    setProcesando(false);
-    avisar(
-      "exito",
-      <>
-        Archivo recibido: <strong>{f.name}</strong>. Diagnóstico actualizado.
-      </>,
-    );
+    try {
+      // Todo ocurre en este navegador: el archivo no se envía a ningún servidor.
+      const [tabla, terminologia, mapeos] = await Promise.all([leerArchivo(f), api.obtenerTerminologia(), api.obtenerMapeos()]);
+      const nuevo = analizarTabla(tabla, { nombre: f.name, tamanoBytes: f.size }, terminologia, mapeos.reglas);
+      await api.cargarLote(nuevo);
+      recargar();
+      const conProblemas = nuevo.filas.filter((x) => x.problemas.length).length;
+      avisar(
+        "exito",
+        <>
+          <strong>{f.name}</strong>: {nuevo.filas.length} filas leídas, {conProblemas} requieren revisión.
+        </>,
+      );
+    } catch (e) {
+      const mensaje = e instanceof ErrorPlanilla ? e.message : "No se pudo leer el archivo. Revise que sea una planilla válida.";
+      setErrorArchivo(`${f.name}: ${mensaje}`);
+      avisar("error", mensaje);
+    } finally {
+      setProcesando(false);
+    }
+  }
+
+  async function quitarPlanilla() {
+    await api.descartarLote();
+    setErrorArchivo(null);
+    recargar();
+    avisar("info", "Planilla retirada de la memoria. Volvió a los datos de demostración.");
   }
 
   function soltar(e: DragEvent) {
@@ -105,10 +128,10 @@ export default function Carga() {
     }
   }
 
-  function descargarPlantilla(e: React.MouseEvent) {
+  async function descargarPlantilla(e: React.MouseEvent) {
     e.stopPropagation();
-    descargarArchivo("plantilla_parafhir.csv", aCsv([esquema.map((c) => c.columna)]), "text/csv;charset=utf-8");
-    avisar("info", "En el prototipo la plantilla se entrega como .csv (abre en Excel).");
+    descargarBlob("plantilla_parafhir.xlsx", await generarPlantilla());
+    avisar("exito", "Plantilla descargada. Revise la hoja «Instrucciones».");
   }
 
   function descargarReporte() {
@@ -116,8 +139,9 @@ export default function Carga() {
       ["Hallazgo", "Prioridad", "Casos", "Impacta", "Detalle"],
       ...hallazgos.map((h) => [h.titulo, h.prioridad, h.casos, h.impacta, h.detalle]),
     ];
-    descargarArchivo("Reporte_Inconsistencias_ParaFHIR_Lote_2025.csv", aCsv(filas), "text/csv;charset=utf-8");
-    avisar("info", "Generando Reporte_Inconsistencias_ParaFHIR_Lote_2025.csv…");
+    const nombre = `Reporte_Inconsistencias_${(lote?.nombre ?? "demo").replace(/\.[^.]+$/, "")}.csv`;
+    descargarArchivo(nombre, aCsv(filas), "text/csv;charset=utf-8");
+    avisar("info", `Generando ${nombre}…`);
   }
 
   const kpis = [
@@ -157,6 +181,30 @@ export default function Carga() {
           </div>
         </div>
 
+        {/* ¿Demo o planilla real? */}
+        {lote ? (
+          <div role="status" className="p-space-md rounded-xl bg-[#ECFDF5] border border-[#A7F3D0] text-clinical-success-ink flex flex-col sm:flex-row sm:items-center justify-between gap-space-sm">
+            <p className="font-body-sm text-body-sm flex items-start gap-space-xs">
+              <Icono nombre="lock" className="text-[18px] shrink-0" />
+              <span>
+                Trabajando con <strong>{lote.nombre}</strong>. La planilla se lee <strong>solo en este navegador</strong>: no se envía a ningún servidor y se borra al
+                cerrar o recargar la página.
+              </span>
+            </p>
+            <button type="button" onClick={quitarPlanilla} className="font-label-sm text-label-sm underline whitespace-nowrap self-start sm:self-auto">
+              Quitar planilla
+            </button>
+          </div>
+        ) : (
+          <div role="status" className="p-space-md rounded-xl bg-surface-container-low text-on-surface-variant flex items-start gap-space-xs">
+            <Icono nombre="info" className="text-[18px] shrink-0 text-secondary" />
+            <p className="font-body-sm text-body-sm">
+              Está viendo <strong className="text-on-surface">datos de demostración</strong>. Descargue la plantilla, complétela y cárguela para trabajar con sus
+              datos. La planilla se procesa solo en este navegador.
+            </p>
+          </div>
+        )}
+
         {/* Zona de carga + archivo activo */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-stretch">
           <div
@@ -195,7 +243,7 @@ export default function Carga() {
                 <span className="font-tag-xs text-tag-xs uppercase tracking-wider font-semibold">Carga de Lotes de Laboratorio</span>
               </div>
               <span className="font-tag-xs text-tag-xs text-on-surface-variant bg-surface-container px-space-sm py-0.5 rounded-md whitespace-nowrap">
-                .XLSX • .XLS • .CSV
+                .XLSX • .CSV
               </span>
             </div>
             <div className="py-space-xl flex flex-col items-center text-center gap-space-sm">
@@ -302,7 +350,7 @@ export default function Carga() {
                     </span>
                   ))}
                   <span className="px-space-xs py-0.5 bg-surface-container-high text-on-surface-variant font-code-mono text-[11px] rounded">
-                    +{datos.archivoEjemplo.columnas - 5} campos
+                    {datos.archivoEjemplo.columnas > 5 ? `+${datos.archivoEjemplo.columnas - 5} campos` : `${esquema.length} campos`}
                   </span>
                 </div>
               </div>
@@ -527,6 +575,7 @@ export default function Carga() {
               </dl>
             </section>
 
+{!lote && (
             <section aria-labelledby="titulo-testigo" className="bg-surface-container-lowest rounded-xl shadow-sm p-space-md flex flex-col gap-space-sm">
               <div className="flex items-center justify-between">
                 <h2 id="titulo-testigo" className="font-tag-xs text-tag-xs uppercase tracking-wider text-on-surface-variant font-semibold">
@@ -554,6 +603,7 @@ export default function Carga() {
                 </span>
               </div>
             </section>
+            )}
           </div>
         </div>
 

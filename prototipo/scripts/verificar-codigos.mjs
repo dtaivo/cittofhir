@@ -27,6 +27,7 @@ t.estadios.forEach((e) => agregar(SNOMED, e.snomed, e.snomedDisplay, `estadio ${
 t.especificos.forEach((e) => agregar(SNOMED, e.codigo, e.display, `especie+estadio ${e.especie}/${e.estadio}`));
 t.tinciones.forEach((e) => agregar(SNOMED, e.snomed, e.snomedDisplay, `tinción ${e.codigo}`));
 t.examenes.forEach((e) => agregar(LOINC, e.codigo, e.display, `examen ${e.tipoMuestra}`));
+agregar(SNOMED, t.negativo.codigo, t.negativo.display, "resultado negativo");
 m.reglas
   .filter((r) => r.codigo && r.ontologia)
   .forEach((r) => agregar(r.ontologia === "LOINC" ? LOINC : SNOMED, r.codigo, r.display, `regla ${r.id}`));

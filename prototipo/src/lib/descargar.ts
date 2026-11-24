@@ -12,3 +12,12 @@ export function aCsv(filas: (string | number)[][]) {
   const celda = (v: string | number) => `"${String(v).replace(/"/g, '""')}"`;
   return "﻿" + filas.map((f) => f.map(celda).join(",")).join("\r\n");
 }
+
+export function descargarBlob(nombre: string, blob: Blob) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = nombre;
+  a.click();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
