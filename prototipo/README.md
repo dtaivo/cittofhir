@@ -105,6 +105,18 @@ La app lee la **planilla de seguimiento de láminas digitalizadas (WSI)** del la
 
 \* No es obligatoria para cargar la planilla, pero si falta, la fila queda **por revisar** en Limpieza Guiada.
 
+### Libro con varias pestañas
+
+La planilla del equipo puede tener **dos pestañas**: una con las láminas (las 30 columnas) y otra con el catálogo de parásitos (`Tax`, `Clasificacion`, …, `Especie`, …, `Host`, igual que `Repositorio.xlsx`). No importa el orden ni el nombre de las pestañas:
+
+- La app **revisa todas las pestañas** y reconoce sola cuál tiene las láminas (porque tiene `Código`, `Tax` y `Tipo muestra`) y cuál el catálogo (porque tiene `Tax`, `Especie` y `Clasificacion`).
+- Los encabezados pueden estar **más abajo de la fila 1**, por ejemplo si hay un título arriba. Se buscan en las primeras 15 filas.
+- Si viene el catálogo, la app lo usa para interpretar los códigos `Tax`. Si un taxón del archivo tiene otro nombre o no existe en el catálogo de la app, busca su código SNOMED por nombre o sinónimo, y lo avisa.
+- Los **hipervínculos** se guardan con su dirección (URL), no con el texto visible. Las fechas y fórmulas de Excel se leen con su valor.
+- En la pantalla de Carga aparece qué pestaña se usó para cada cosa.
+
+La plantilla descargable ya incluye la pestaña **Tax** con el catálogo y el código SNOMED de cada especie.
+
 Los nombres de columna se reconocen **sin importar tildes ni mayúsculas**. Los valores Sí/No aceptan también "si", "x", "1", "aprobada", "no", "0", "rechazada". Formatos aceptados: **.xlsx** y **.csv** (UTF-8). El **.xls** antiguo hay que guardarlo como .xlsx.
 
 ### Qué hace la app con la planilla
@@ -200,7 +212,7 @@ prototipo/
 
 ## Planilla de prueba
 
-`ejemplos/planilla_de_prueba.xlsx` tiene 13 láminas **inventadas**, con las 30 columnas del formato y errores a propósito:
+`ejemplos/planilla_de_prueba.xlsx` tiene **dos pestañas**, como la del equipo: «Digitalización», con 13 láminas **inventadas** y las 30 columnas del formato, y «Tax», con el catálogo. Las láminas traen errores a propósito:
 - un Tax que no existe y otro sin código SNOMED;
 - una fila sin Tax y un código de lámina repetido;
 - evaluaciones que no coinciden y un reescaneo sin link;

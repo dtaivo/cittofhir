@@ -341,6 +341,16 @@ export default function Carga() {
                   {archivoVisible.alerta}
                 </p>
               )}
+              {lote?.avisos.length ? (
+                <ul aria-label="Detalles de la lectura" className="px-space-md py-space-sm rounded-lg bg-surface-container-low text-on-surface-variant font-tag-xs text-tag-xs flex flex-col gap-1">
+                  {lote.avisos.map((a) => (
+                    <li key={a} className="flex items-start gap-space-xs">
+                      <Icono nombre="info" className="text-[14px] text-secondary shrink-0" />
+                      {a}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
               <div className="flex flex-col gap-space-xs">
                 <span className="font-tag-xs text-tag-xs text-on-surface-variant font-medium">Esquema mapeado preliminarmente:</span>
                 <div className="flex flex-wrap gap-1">

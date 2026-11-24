@@ -63,11 +63,13 @@ export interface Lote {
   columnasIgnoradas: string[];
   filas: FilaLote[];
   cargadoEn: string;
+  /** Mensajes informativos de la lectura (pestañas usadas, diferencias de catálogo…). */
+  avisos: string[];
 }
 
 export interface DatosCarga {
   /** null = datos de demostración; si no, resumen del lote cargado. */
-  lote?: { nombre: string; tamanoBytes: number; hoja: string; columnasIgnoradas: string[]; cargadoEn: string } | null;
+  lote?: { nombre: string; tamanoBytes: number; hoja: string; columnasIgnoradas: string[]; cargadoEn: string; avisos: string[] } | null;
   estudio: Estudio;
   usuario: { nombre: string; rol: string };
   servidor: { nombre: string; estado: string };

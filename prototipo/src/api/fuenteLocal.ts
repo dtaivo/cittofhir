@@ -151,7 +151,7 @@ export const fuenteLocal: FuenteDatos = {
     if (!lote) return esperar({ ...carga, lote: null });
     return esperar({
       ...carga,
-      lote: { nombre: lote.archivo.nombre, tamanoBytes: lote.archivo.tamanoBytes, hoja: lote.hoja, columnasIgnoradas: lote.columnasIgnoradas, cargadoEn: lote.cargadoEn },
+      lote: { nombre: lote.archivo.nombre, tamanoBytes: lote.archivo.tamanoBytes, hoja: lote.hoja, columnasIgnoradas: lote.columnasIgnoradas, cargadoEn: lote.cargadoEn, avisos: lote.avisos },
       archivoEjemplo: { nombre: lote.archivo.nombre, tamanoBytes: lote.archivo.tamanoBytes, columnas: lote.columnas.length },
       esquema: lote.columnas,
       diagnostico: diagnosticoReal(lote),

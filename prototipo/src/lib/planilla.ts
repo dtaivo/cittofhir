@@ -62,6 +62,12 @@ export interface Tabla {
   hoja: string;
   encabezados: string[];
   filas: string[][];
+  /** Número real de cada fila en Excel (para que los mensajes indiquen la fila correcta). */
+  numeros?: number[];
+  /** Hoja de catálogo de parásitos encontrada en el mismo libro (opcional). */
+  catalogo?: Tabla;
+  /** Mensajes informativos de la lectura (no son errores). */
+  avisos?: string[];
 }
 
 /* ------------------------------------------------------------------ */
@@ -72,9 +78,12 @@ function celdaATexto(v: unknown): string {
   if (v == null) return "";
   if (v instanceof Date) return v.toISOString().slice(0, 10);
   if (typeof v === "object") {
-    const o = v as { text?: string; result?: unknown; richText?: { text: string }[] };
+    // Texto enriquecido, hipervínculos ({ text, hyperlink }), fórmulas ({ result }) y errores (#N/A)
+    const o = v as { text?: unknown; result?: unknown; richText?: { text: string }[]; hyperlink?: string; error?: string };
+    // En un hipervínculo interesa la dirección, no el texto visible ("Ver lámina")
+    if (o.hyperlink && !o.hyperlink.startsWith("#")) return o.hyperlink.replace(/^mailto:/i, "");
     if (o.richText) return o.richText.map((r) => r.text).join("");
-    if (o.text != null) return String(o.text);
+    if (o.text != null) return celdaATexto(o.text);
     if (o.result != null) return celdaATexto(o.result);
     return "";
   }
@@ -106,6 +115,47 @@ function leerCsv(texto: string): string[][] {
   return filas.filter((f) => f.some((x) => x.trim()));
 }
 
+/** Encabezados que identifican cada tipo de hoja. */
+const CLAVES_MUESTRAS = COLUMNAS.filter((c) => c.requerida).map((c) => [c.encabezado, c.clave, ...c.alias].map(normalizar));
+const CLAVES_CATALOGO = ["tax", "especie", "clasificacion"];
+
+function tipoDeEncabezado(encabezados: string[]): "muestras" | "catalogo" | null {
+  const n = new Set(encabezados.map(normalizar));
+  if (CLAVES_MUESTRAS.every((alternativas) => alternativas.some((a) => n.has(a)))) return "muestras";
+  if (CLAVES_CATALOGO.every((c) => n.has(c))) return "catalogo";
+  return null;
+}
+
+type Hoja = { name: string; rowCount: number; getRow(n: number): { values: unknown; cellCount: number; getCell(i: number): { value: unknown } } ; columnCount: number };
+
+/** Lee una hoja buscando la fila de encabezados en las primeras 15 filas (puede haber títulos arriba). */
+function hojaATabla(hoja: Hoja): { tabla: Tabla; tipo: "muestras" | "catalogo" | null } {
+  const ancho = Math.max(hoja.columnCount, 1);
+  const leerFila = (n: number) => Array.from({ length: ancho }, (_, i) => celdaATexto(hoja.getRow(n).getCell(i + 1).value).trim());
+  let filaEnc = 1;
+  let tipo: "muestras" | "catalogo" | null = null;
+  for (let n = 1; n <= Math.min(15, hoja.rowCount); n++) {
+    const t = tipoDeEncabezado(leerFila(n));
+    if (t) {
+      filaEnc = n;
+      tipo = t;
+      break;
+    }
+  }
+  const encabezados = leerFila(filaEnc);
+  while (encabezados.length && !encabezados[encabezados.length - 1]) encabezados.pop();
+  const filas: string[][] = [];
+  const numeros: number[] = [];
+  for (let n = filaEnc + 1; n <= hoja.rowCount; n++) {
+    const valores = leerFila(n).slice(0, encabezados.length);
+    if (valores.some(Boolean)) {
+      filas.push(valores);
+      numeros.push(n);
+    }
+  }
+  return { tabla: { hoja: hoja.name, encabezados, filas, numeros }, tipo };
+}
+
 export async function leerArchivo(archivo: File): Promise<Tabla> {
   const nombre = archivo.name.toLowerCase();
   if (nombre.endsWith(".xls")) throw new ErrorPlanilla("El formato .xls (Excel antiguo) no se puede leer. Ábralo en Excel y guárdelo como .xlsx.");
@@ -121,17 +171,23 @@ export async function leerArchivo(archivo: File): Promise<Tabla> {
   } catch {
     throw new ErrorPlanilla("No se pudo abrir el archivo. ¿Está dañado o protegido con contraseña?");
   }
-  const hoja = libro.getWorksheet("Muestras") ?? libro.worksheets[0];
-  if (!hoja) throw new ErrorPlanilla("El archivo no tiene hojas.");
-  const encabezados: string[] = [];
-  hoja.getRow(1).eachCell({ includeEmpty: true }, (c, i) => (encabezados[i - 1] = celdaATexto(c.value).trim()));
-  const filas: string[][] = [];
-  hoja.eachRow({ includeEmpty: false }, (fila, n) => {
-    if (n === 1) return;
-    const valores = encabezados.map((_, i) => celdaATexto(fila.getCell(i + 1).value).trim());
-    if (valores.some(Boolean)) filas.push(valores);
-  });
-  return { hoja: hoja.name, encabezados, filas };
+  if (!libro.worksheets.length) throw new ErrorPlanilla("El archivo no tiene hojas.");
+
+  // Revisar todas las pestañas: una debe tener las láminas; otra puede tener el catálogo de parásitos.
+  const hojas = libro.worksheets.map((h) => hojaATabla(h as unknown as Hoja));
+  const muestras = hojas.find((h) => h.tipo === "muestras");
+  const catalogo = hojas.find((h) => h.tipo === "catalogo");
+  if (!muestras) {
+    const nombres = libro.worksheets.map((h) => `«${h.name}»`).join(", ");
+    throw new ErrorPlanilla(
+      `Ninguna pestaña tiene las columnas obligatorias (Código, Tax y Tipo muestra). Pestañas encontradas: ${nombres}. Descargue la plantilla para ver el formato.`,
+    );
+  }
+  const avisos = [`Láminas leídas desde la pestaña «${muestras.tabla.hoja}».`];
+  if (catalogo) avisos.push(`Catálogo leído desde la pestaña «${catalogo.tabla.hoja}» (${catalogo.tabla.filas.length} taxones).`);
+  const otras = hojas.filter((h) => h !== muestras && h !== catalogo && h.tabla.filas.length).map((h) => `«${h.tabla.hoja}»`);
+  if (otras.length) avisos.push(`Pestañas no usadas: ${otras.join(", ")}.`);
+  return { ...muestras.tabla, catalogo: catalogo?.tabla, avisos };
 }
 
 /* ------------------------------------------------------------------ */
@@ -202,19 +258,20 @@ export function analizarTabla(
   for (const [i, fila] of tabla.filas.entries()) {
     const celda = fila.find((v) => pareceIdentificador(v));
     if (celda) {
-      throw new ErrorPlanilla(`La fila ${i + 2} contiene lo que parece un RUT o correo ("${celda.slice(0, 3)}…"). Retire los datos personales antes de cargar.`);
+      throw new ErrorPlanilla(`La fila ${tabla.numeros?.[i] ?? i + 2} contiene lo que parece un RUT o correo ("${celda.slice(0, 3)}…"). Retire los datos personales antes de cargar.`);
     }
   }
 
   const valor = (fila: string[], c: Clave) => (indice.has(c) ? (fila[indice.get(c)!] ?? "").trim() : "");
-  const porTax = new Map(t.taxones.map((x) => [normalizar(x.tax), x]));
   const especiePorNombre = crearReconocedorEspecies(t, reglas);
+  const avisos = [...(tabla.avisos ?? [])];
+  const porTax = tabla.catalogo ? catalogoDeLaPlanilla(tabla.catalogo, t, especiePorNombre, avisos) : new Map(t.taxones.map((x) => [normalizar(x.tax), x]));
   const estadio = crearReconocedorEstadios(t);
   const primeraVez = new Map<string, number>();
   const hoy = new Date().toISOString().slice(0, 10);
 
   const filas: FilaLote[] = tabla.filas.map((fila, i) => {
-    const n = i + 2;
+    const n = tabla.numeros?.[i] ?? i + 2;
     const problemas: { tipo: TipoProblema; texto: string }[] = [];
     const digitalizacion: Record<string, string> = {};
     for (const c of COLUMNAS) if (c.uso !== "especimen") digitalizacion[c.clave] = valor(fila, c.clave);
@@ -312,7 +369,52 @@ export function analizarTabla(
     columnasIgnoradas: tabla.encabezados.filter((h, i) => h && !usadas.has(i)),
     filas,
     cargadoEn: new Date().toISOString(),
+    avisos,
   };
+}
+
+/**
+ * Usa la pestaña de catálogo que viene en el mismo libro.
+ * El código SNOMED se toma del catálogo de la app si el Tax y el nombre coinciden;
+ * si no, se busca por el nombre de la especie (o sus sinónimos) entre las especies con código.
+ */
+function catalogoDeLaPlanilla(
+  cat: Tabla,
+  t: Terminologia,
+  especiePorNombre: ReturnType<typeof crearReconocedorEspecies>,
+  avisos: string[],
+) {
+  const col = (nombre: string) => cat.encabezados.findIndex((h) => normalizar(h) === nombre);
+  const [cTax, cEsp, cSin] = [col("tax"), col("especie"), col("synonyms")];
+  const app = new Map(t.taxones.map((x) => [normalizar(x.tax), x]));
+  const mapa = new Map<string, { tax: string; nombre: string; codigo: string | null; grupoTaxonomico: string | null }>();
+  let distintos = 0;
+  for (const fila of cat.filas) {
+    const tax = (fila[cTax] ?? "").trim();
+    const nombre = (fila[cEsp] ?? "").trim();
+    if (!tax) continue;
+    const enApp = app.get(normalizar(tax));
+    let codigo: string | null = null;
+    if (enApp && normalizar(enApp.nombre) === normalizar(nombre)) codigo = enApp.codigo;
+    else {
+      distintos++;
+      const sinonimos = cSin >= 0 ? (fila[cSin] ?? "").split(";").map((s) => s.trim()).filter(Boolean) : [];
+      for (const candidato of [nombre, ...sinonimos]) {
+        const r = especiePorNombre(candidato);
+        if (r.calidad === "exacto" || r.calidad === "sinonimo") {
+          codigo = r.codigo;
+          break;
+        }
+      }
+    }
+    mapa.set(normalizar(tax), { tax, nombre: nombre || tax, codigo, grupoTaxonomico: enApp?.grupoTaxonomico ?? null });
+  }
+  if (distintos) {
+    avisos.push(
+      `${distintos} taxones del catálogo de la planilla no coinciden con el catálogo de la app; su código SNOMED se buscó por nombre. Para actualizarlo, reemplace data/Repositorio.xlsx y ejecute npm run catalogo.`,
+    );
+  }
+  return mapa;
 }
 
 /* ------------------------------------------------------------------ */
@@ -399,6 +501,25 @@ export async function generarPlantilla(): Promise<Blob> {
     const colTipo = COLUMNAS.findIndex((x) => x.clave === "tipo_muestra") + 1;
     hoja.getCell(r, colTipo).dataValidation = { type: "list", allowBlank: false, formulae: ['"Heces,Heces concentrado,Sangre,Aspirado,LBA,Otro"'] };
   }
+  // Pestaña de catálogo (igual que en la planilla del equipo): sirve para buscar el código Tax de cada especie
+  const { default: catalogo } = await import("../data/catalogo.json");
+  const tax = libro.addWorksheet("Tax", { views: [{ state: "frozen", ySplit: 1 }] });
+  tax.columns = [
+    { header: "Tax", width: 10 },
+    { header: "Clasificacion", width: 30 },
+    { header: "Filo", width: 16 },
+    { header: "Clase", width: 16 },
+    { header: "Especie", width: 34 },
+    { header: "Taxonomic_Rank", width: 14 },
+    { header: "LOINC_codes_recomendados", width: 24 },
+    { header: "Synonyms", width: 30 },
+    { header: "Image_Life_Stages", width: 30 },
+    { header: "SNOMED_CT", width: 14 },
+  ];
+  tax.getRow(1).font = { bold: true };
+  for (const e of catalogo.especies) {
+    tax.addRow([e.tax, e.clasificacion, e.filo ?? "", e.clase ?? "", e.nombre, e.rango, e.loinc.join(", "), e.sinonimos.join("; "), e.estadios.join(", "), e.snomed?.codigo ?? "(sin código)"]);
+  }
   const ayuda = libro.addWorksheet("Instrucciones");
   ayuda.columns = [
     { header: "Columna", width: 36 },
@@ -410,7 +531,8 @@ export async function generarPlantilla(): Promise<Blob> {
   COLUMNAS.forEach((c) => ayuda.addRow([c.encabezado, c.requerida ? "Sí" : "No", c.ayuda, c.destino]));
   ayuda.addRow([]);
   ayuda.addRow(["IMPORTANTE", "", "No incluya nombres de pacientes, RUT, fechas de nacimiento, teléfonos ni correos. La app rechaza esos datos."]);
-  ayuda.addRow(["", "", "La especie se indica con el código Tax del catálogo Repositorio.xlsx (ej. tax-017 = Giardia duodenalis)."]);
+  ayuda.addRow(["", "", "La especie se indica con el código Tax de la pestaña «Tax» (ej. tax-017 = Giardia duodenalis)."]);
+  ayuda.addRow(["", "", "Puede mantener las láminas y el catálogo en el mismo archivo: la app reconoce cada pestaña sola."]);
   ayuda.addRow(["", "", "Una fila por lámina. Si una lámina aparece dos veces con el mismo Código, la app lo detectará."]);
   const buffer = await libro.xlsx.writeBuffer();
   return new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
