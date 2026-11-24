@@ -55,6 +55,8 @@ ws.eachRow((fila, n) => {
     tax: celda(fila, "Tax"),
     nombre: celda(fila, "Especie"),
     clasificacion: celda(fila, "Clasificacion"),
+    filo: celda(fila, "Filo"),
+    clase: celda(fila, "Clase"),
     rango: celda(fila, "Taxonomic_Rank"),
     sinonimos: separar(celda(fila, "Synonyms"), /;/),
     loinc: separar(celda(fila, "LOINC_codes_recomendados"), /[,;]/),

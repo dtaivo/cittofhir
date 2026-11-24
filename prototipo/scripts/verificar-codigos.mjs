@@ -24,6 +24,7 @@ const agregar = (sistema, codigo, display, origen) => codigo && codigos.push({ s
 
 t.especies.forEach((e) => agregar(SNOMED, e.codigo, e.display, `especie ${e.nombreLocal}`));
 t.estadios.forEach((e) => agregar(SNOMED, e.snomed, e.snomedDisplay, `estadio ${e.codigo}`));
+t.estadios.forEach((e) => Object.entries(e.porGrupo ?? {}).forEach(([g, c]) => agregar(SNOMED, c.codigo, c.display, `estadio ${e.codigo} (${g})`)));
 t.especificos.forEach((e) => agregar(SNOMED, e.codigo, e.display, `especie+estadio ${e.especie}/${e.estadio}`));
 t.tinciones.forEach((e) => agregar(SNOMED, e.snomed, e.snomedDisplay, `tinción ${e.codigo}`));
 t.examenes.forEach((e) => agregar(LOINC, e.codigo, e.display, `examen ${e.tipoMuestra}`));

@@ -147,8 +147,8 @@ export default function Carga() {
   const kpis = [
     { titulo: "Total Registros", valor: dx.total, desc: "Láminas citológicas y parasitológicas", color: "text-primary", barra: "bg-primary", ancho: "100", chip: null },
     { titulo: "Conformes FHIR R4", valor: dx.conformes, desc: "Listas para serialización Observation", color: "text-secondary", barra: "bg-secondary", ancho: pct.conformes, chip: "conforme" },
-    { titulo: "Alertas de Nomenclatura", valor: dx.alertas, desc: "Taxonomía o metadatos ópticos rotos", color: "text-error", barra: "bg-error", ancho: pct.alertas, chip: "error" },
-    { titulo: "Posibles Duplicados", valor: dx.duplicados, desc: "ID_LAM repetidos en microscopio", color: "text-tertiary", barra: "bg-tertiary-container", ancho: pct.duplicados, chip: "duplicado" },
+    { titulo: "Alertas de Nomenclatura", valor: dx.alertas, desc: "Especie, estadio, formato o flujo por revisar", color: "text-error", barra: "bg-error", ancho: pct.alertas, chip: "error" },
+    { titulo: "Posibles Duplicados", valor: dx.duplicados, desc: "Códigos de lámina repetidos", color: "text-tertiary", barra: "bg-tertiary-container", ancho: pct.duplicados, chip: "duplicado" },
   ] as const;
 
   return (

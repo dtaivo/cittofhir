@@ -138,8 +138,6 @@ function EditorCaso({
     if (esp) e.especie = esp;
     const est = f.especie === "negativo" ? null : requerido(f.estadio, "el estadio");
     if (est) e.estadio = est;
-    const tin = requerido(f.tincion, "el método de tinción");
-    if (tin) e.tincion = tin;
     const au = requerido(f.aumento, "el aumento óptico");
     if (au) e.aumento = au;
     if (f.nota.length > MAX_NOTA) e.nota = `La nota supera los ${MAX_NOTA} caracteres.`;
@@ -492,8 +490,7 @@ function EditorCaso({
           />
           <CampoSelect
             id="campo-tincion"
-            etiqueta="Método de Tinción / Preparación"
-            requerido
+            etiqueta="Método de Tinción / Preparación (opcional)"
             pista={tincionSel?.snomed ? `SNOMED: ${tincionSel.snomed}` : "Observation.method"}
             valor={form.tincion}
             onCambio={(v) => cambiar("tincion", v)}
@@ -511,7 +508,7 @@ function EditorCaso({
             onCambio={(v) => cambiar("aumento", v)}
             opciones={t.aumentos.map((e) => ({ valor: e.codigo, texto: e.display }))}
             error={errores.aumento}
-            alerta={!form.aumento && !intentado ? "Aumento ausente en los metadatos EXIF." : null}
+            alerta={!form.aumento && !intentado ? "Aumento sin indicar." : null}
             ayuda={
               aumento && (
                 <span className="font-tag-xs text-tag-xs text-secondary flex items-center gap-1">

@@ -69,19 +69,141 @@
     },
     {
       "codigo": "tripomastigote",
-      "display": "Tripomastigote sanguíneo",
+      "display": "Tripomastigote",
       "snomed": "103550002",
       "snomedDisplay": "Kingdom Protozoa trypomastigote"
     },
     {
+      "codigo": "amastigote",
+      "display": "Amastigote",
+      "snomed": "103547000",
+      "snomedDisplay": "Kingdom Protozoa amastigote"
+    },
+    {
+      "codigo": "promastigote",
+      "display": "Promastigote",
+      "snomed": "103548005",
+      "snomedDisplay": "Kingdom Protozoa promastigote"
+    },
+    {
+      "codigo": "esquizonte",
+      "display": "Esquizonte",
+      "snomed": "284701003",
+      "snomedDisplay": "Kingdom Protozoa schizont"
+    },
+    {
+      "codigo": "gametocito",
+      "display": "Gametocito",
+      "snomed": "103536007",
+      "snomedDisplay": "Kingdom Protozoa gametocyte"
+    },
+    {
+      "codigo": "taquizoito",
+      "display": "Taquizoíto",
+      "snomed": "260230007",
+      "snomedDisplay": "Kingdom Protozoa tachyzoite"
+    },
+    {
+      "codigo": "espora",
+      "display": "Espora",
+      "snomed": "69139006",
+      "snomedDisplay": "Kingdom Protozoa spore"
+    },
+    {
+      "codigo": "anillo",
+      "display": "Anillo (trofozoíto joven intraeritrocitario)",
+      "snomed": null,
+      "snomedDisplay": null,
+      "revisar": true
+    },
+    {
+      "codigo": "microfilaria",
+      "display": "Microfilaria",
+      "snomed": "2105009",
+      "snomedDisplay": "Superfamily Filarioidea microfilaria"
+    },
+    {
       "codigo": "huevo",
-      "display": "Huevo (nematodo)",
-      "snomed": "284723004",
-      "snomedDisplay": "Nematode egg"
+      "display": "Huevo",
+      "snomed": null,
+      "snomedDisplay": null,
+      "porGrupo": {
+        "Nematoda": {
+          "codigo": "284723004",
+          "display": "Nematode egg"
+        },
+        "Cestoda": {
+          "codigo": "284724005",
+          "display": "Class Cestoda egg"
+        },
+        "Trematoda": {
+          "codigo": "284726007",
+          "display": "Class Trematoda egg"
+        }
+      }
     },
     {
       "codigo": "larva",
-      "display": "Larva (Rhabditoide / Filariforme)",
+      "display": "Larva",
+      "snomed": null,
+      "snomedDisplay": null,
+      "porGrupo": {
+        "Nematoda": {
+          "codigo": "284722009",
+          "display": "Nematode larva"
+        }
+      }
+    },
+    {
+      "codigo": "adulto",
+      "display": "Adulto",
+      "snomed": null,
+      "snomedDisplay": null,
+      "porGrupo": {
+        "Nematoda": {
+          "codigo": "609043009",
+          "display": "Adult nematode"
+        }
+      }
+    },
+    {
+      "codigo": "proglotide",
+      "display": "Proglótide",
+      "snomed": null,
+      "snomedDisplay": null,
+      "revisar": true
+    },
+    {
+      "codigo": "escolex",
+      "display": "Escólex / protoescólex",
+      "snomed": null,
+      "snomedDisplay": null,
+      "revisar": true
+    },
+    {
+      "codigo": "quiste-tisular",
+      "display": "Quiste tisular / hidatídico / cisticerco",
+      "snomed": null,
+      "snomedDisplay": null,
+      "revisar": true
+    },
+    {
+      "codigo": "forma-vacuolar",
+      "display": "Forma vacuolar / granular",
+      "snomed": null,
+      "snomedDisplay": null,
+      "revisar": true
+    },
+    {
+      "codigo": "ninfa",
+      "display": "Ninfa",
+      "snomed": null,
+      "snomedDisplay": null,
+      "revisar": true
+    },
+    {
+      "codigo": "pupa",
+      "display": "Pupa",
       "snomed": null,
       "snomedDisplay": null,
       "revisar": true
@@ -216,23 +338,48 @@
       "tipoMuestra": "sangre",
       "codigo": "17784-0",
       "display": "Parasite identified in Blood by Light microscopy"
+    },
+    {
+      "tipoMuestra": "aspirado",
+      "codigo": "106048-2",
+      "display": "Ova and parasites identified in Aspirate by Light microscopy"
+    },
+    {
+      "tipoMuestra": "lba",
+      "codigo": "106047-4",
+      "display": "Ova and parasites identified in Bronchoalveolar lavage by Light microscopy"
+    },
+    {
+      "tipoMuestra": "otro",
+      "codigo": "673-4",
+      "display": "Ova and parasites identified in Specimen by Light microscopy"
     }
   ],
   "aumentos": [
     {
       "codigo": "10x",
       "display": "10x - Panorámico / Rastreo",
-      "calibracion": "0.88 µm/pixel"
+      "calibracion": "≈0.92 µm/pixel"
+    },
+    {
+      "codigo": "20x",
+      "display": "20x - Campo seco",
+      "calibracion": "≈0.46 µm/pixel"
     },
     {
       "codigo": "40x",
       "display": "40x - Campo seco de alta magnificación",
-      "calibracion": "0.22 µm/pixel"
+      "calibracion": "≈0.23 µm/pixel"
+    },
+    {
+      "codigo": "60x",
+      "display": "60x - Alta magnificación",
+      "calibracion": "≈0.15 µm/pixel"
     },
     {
       "codigo": "100x",
-      "display": "100x - Inmersión en aceite de cedro",
-      "calibracion": "0.09 µm/pixel"
+      "display": "100x - Inmersión en aceite",
+      "calibracion": "≈0.09 µm/pixel"
     }
   ],
   "negativo": {

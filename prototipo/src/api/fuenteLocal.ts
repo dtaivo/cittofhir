@@ -10,7 +10,7 @@ import terminologiaJson from "../data/terminologia.json";
 import catalogoJson from "../data/catalogo.json";
 import mapeosJson from "../data/mapeos.json";
 import exportacionJson from "../data/exportacion.json";
-import { casoDesdeFila, idCaso, patronMasFrecuente } from "../lib/planilla";
+import { casoDesdeFila, idCaso, patronMasFrecuente, siNo } from "../lib/planilla";
 import type {
   ColaLimpieza,
   FilaLote,
@@ -41,6 +41,12 @@ const terminologiaBase = terminologiaJson as unknown as Terminologia;
  * + especies extra de terminologia.json que no estén en el catálogo.
  * Las especies del catálogo sin código SNOMED no se ofrecen (quedan "por revisar").
  */
+function grupoTaxonomico(filo?: string, clase?: string) {
+  if (filo === "Nematoda") return "Nematoda";
+  if (clase === "Cestoda" || clase === "Trematoda") return clase;
+  return null;
+}
+
 const especiesCatalogo = catalogoJson.especies
   .filter((e) => e.snomed)
   .map((e) => ({
@@ -50,10 +56,17 @@ const especiesCatalogo = catalogoJson.especies
     grupo: e.clasificacion,
     via: (e.snomed as { via?: string }).via,
     sinonimos: e.sinonimos,
+    grupoTaxonomico: grupoTaxonomico(e.filo, e.clase),
   }));
 const codigosCatalogo = new Set(especiesCatalogo.map((e) => e.codigo));
 const terminologia: Terminologia = {
   ...terminologiaBase,
+  taxones: catalogoJson.especies.map((e) => ({
+    tax: e.tax,
+    nombre: e.nombre,
+    codigo: e.snomed?.codigo ?? null,
+    grupoTaxonomico: grupoTaxonomico(e.filo, e.clase),
+  })),
   especies: [
     ...especiesCatalogo,
     ...terminologiaBase.especies.filter((e) => !codigosCatalogo.has(e.codigo)).map((e) => ({ ...e, grupo: "Otros" })),
@@ -89,24 +102,29 @@ function hallazgosReales(l: Lote): Hallazgo[] {
   const contar = (tipo: string) => l.filas.filter((f) => tiene(f, tipo)).length;
   const lista: Hallazgo[] = [
     {
-      id: "taxonomia", icono: "spellcheck", titulo: "Especie no reconocida exactamente", prioridad: "Alta prioridad", severidad: "alta",
-      descripcion: `Nombres que no coinciden con el catálogo SNOMED CT. Ejemplos: ${ejemplos("taxonomia", (f) => f.crudo.especie) || "celdas vacías"}.`,
-      impacta: "Observation.valueCodeableConcept", detalle: "Campos: especie_observada", casos: contar("taxonomia"),
+      id: "taxonomia", icono: "spellcheck", titulo: "Especie (Tax) sin código válido", prioridad: "Alta prioridad", severidad: "alta",
+      descripcion: `Códigos Tax que no existen en el catálogo o que aún no tienen código SNOMED CT. Ejemplos: ${ejemplos("taxonomia", (f) => f.tax) || "celdas vacías"}.`,
+      impacta: "Observation.valueCodeableConcept", detalle: "Campos: Tax", casos: contar("taxonomia"),
     },
     {
-      id: "optica", icono: "zoom_in", titulo: "Estadio, tinción o aumento incompletos", prioridad: "Media", severidad: "media",
-      descripcion: "Faltan o no se reconocen el estadio evolutivo, el método de tinción o el aumento del objetivo.",
-      impacta: "Observation.method / component", detalle: "Campos: estadio, tincion, aumento", casos: contar("optica"),
+      id: "optica", icono: "zoom_in", titulo: "Estado evolutivo o aumento incompletos", prioridad: "Media", severidad: "media",
+      descripcion: "Faltan o no se reconocen el estado evolutivo o el aumento del objetivo.",
+      impacta: "Observation.component / Media", detalle: "Campos: Estado evolutivo, Aumento", casos: contar("optica"),
     },
     {
-      id: "duplicados", icono: "content_copy", titulo: "Identificador de lámina repetido", prioridad: "Duplicados", severidad: "duplicado",
-      descripcion: `Láminas con el mismo id_lamina en más de una fila. Ejemplos: ${ejemplos("duplicado", (f) => f.idLamina)}.`,
+      id: "duplicados", icono: "content_copy", titulo: "Código de lámina repetido", prioridad: "Duplicados", severidad: "duplicado",
+      descripcion: `Láminas con el mismo Código en más de una fila. Ejemplos: ${ejemplos("duplicado", (f) => f.idLamina)}.`,
       impacta: "Specimen.identifier.value", detalle: "Sugerencia: Agrupación en Serie", casos: contar("duplicado"),
     },
     {
       id: "formato", icono: "rule", titulo: "Datos obligatorios o formato inválido", prioridad: "Alta prioridad", severidad: "alta",
-      descripcion: "Filas sin id_lamina, id_muestra o tipo_muestra, o con fechas no válidas.",
-      impacta: "Specimen", detalle: "Campos: id_lamina, id_muestra, tipo_muestra, fecha_toma", casos: contar("formato"),
+      descripcion: "Filas sin Código o Tipo muestra, con fechas no válidas o con tamaños y dimensiones que no son números.",
+      impacta: "Specimen / Media", detalle: "Campos: Código, Tipo muestra, Fecha digitalización, Width, Height", casos: contar("formato"),
+    },
+    {
+      id: "flujo", icono: "fact_check", titulo: "Control de calidad de la digitalización", prioridad: "Media", severidad: "media",
+      descripcion: `Inconsistencias en el flujo del repositorio. Ejemplos: ${ejemplos("flujo", (f) => f.problemas.find((p) => p.tipo === "flujo")!.texto) || "—"}.`,
+      impacta: "Flujo del repositorio", detalle: "Campos: Evaluaciones, Reescaneo, Aprobadas, Ingresadas, RPMV Público", casos: contar("flujo"),
     },
   ];
   return lista.filter((h) => h.casos > 0);
@@ -114,7 +132,9 @@ function hallazgosReales(l: Lote): Hallazgo[] {
 
 function decisionCompleta(f: FilaLote) {
   const p = f.propuesta;
-  return !!(p.relacion && p.especie && (p.especie === "negativo" || p.estadio) && p.tincion && p.aumento);
+  // Solo se corrige en bloque si el único problema de la fila es el estadio mal escrito.
+  const soloEstadio = f.problemas.every((x) => x.tipo === "optica" && x.texto.startsWith("Estado evolutivo"));
+  return soloEstadio && !!(p.relacion && p.especie && (p.especie === "negativo" || p.estadio) && p.aumento);
 }
 
 function registrarEvento(evento: Omit<EventoAuditoria, "fecha" | "operador">) {
@@ -170,7 +190,7 @@ export const fuenteLocal: FuenteDatos = {
     if (!lote) return esperar(null, 50);
     const salida = lote.filas
       .map((f) => {
-        if (!f.problemas.length) return { fila: f, decision: { ...f.propuesta, nota: f.observaciones } };
+        if (!f.problemas.length) return { fila: f, decision: { ...f.propuesta, nota: "" } };
         const e = estados[idCaso(f)];
         return e?.estado === "resuelto" && e.decision ? { fila: f, decision: e.decision } : null;
       })
@@ -211,7 +231,7 @@ export const fuenteLocal: FuenteDatos = {
     for (const f of filasPatron) {
       const id = idCaso(f);
       if (estados[id]?.estado === "pendiente" && decisionCompleta(f)) {
-        estados[id] = { estado: "resuelto", decision: { ...f.propuesta, nota: f.observaciones } };
+        estados[id] = { estado: "resuelto", decision: { ...f.propuesta, nota: "" } };
         n++;
       }
     }
@@ -256,7 +276,8 @@ export const fuenteLocal: FuenteDatos = {
     ];
     const especies = [...new Set(curadas.filter((c) => c && c !== "negativo"))];
     const nombres = especies.slice(0, 3).map((c) => terminologia.especies.find((e) => e.codigo === c)?.nombreLocal ?? c);
-    const muestras = new Set(l.filas.map((f) => f.idMuestra).filter(Boolean)).size;
+    const instituciones = new Set(l.filas.map((f) => f.institucion).filter(Boolean)).size;
+    const cuenta = (clave: string) => l.filas.filter((f) => siNo(f.digitalizacion[clave])).length;
     const eventosSesion = exportacion.auditoria.filter((e) => e.fecha >= inicioSesion);
     return esperar({
       ...exportacion,
@@ -272,8 +293,8 @@ export const fuenteLocal: FuenteDatos = {
         { icono: "spellcheck", texto: "Casos pendientes de revisión", valor: String(pendientes), unidad: pendientes === 1 ? "pendiente" : "pendientes" },
       ],
       kpis: [
-        { titulo: "Muestras seudonimizadas", icono: "group", valor: muestras.toLocaleString("en-US"), descripcion: "Códigos id_muestra distintos", pie: "Sin nombres ni RUT (verificado al cargar)", pieIcono: "check" },
-        { titulo: "Láminas en la planilla", icono: "biotech", valor: l.filas.length.toLocaleString("en-US"), descripcion: `${l.archivo.nombre}`, pie: "Leída solo en este navegador", pieIcono: "link" },
+        { titulo: "Instituciones", icono: "group", valor: instituciones.toLocaleString("en-US"), descripcion: "Instituciones que aportan láminas", pie: "Sin datos de pacientes (verificado al cargar)", pieIcono: "check" },
+        { titulo: "Láminas en la planilla", icono: "biotech", valor: l.filas.length.toLocaleString("en-US"), descripcion: `${cuenta("digitalizada")} digitalizadas · ${cuenta("aprobada")} aprobadas · ${cuenta("ingresada")} ingresadas`, pie: "Leída solo en este navegador", pieIcono: "link" },
         { titulo: "Taxonomía parasitaria", icono: "bug_report", valor: String(especies.length), descripcion: "Especies codificadas (SNOMED CT)", pie: nombres.join(", ") || "—", pieIcono: null, pieMono: true },
         { titulo: "Codificación LOINC", icono: "terminal", valor: "100%", descripcion: "Exámenes según tipo de muestra", pie: "10704-5 · 10701-1 · 17784-0", pieIcono: "fact_check" },
       ],

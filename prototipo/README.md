@@ -76,49 +76,49 @@ Otros comandos útiles:
 
 ---
 
-## Planillas de muestras
+## Planillas de digitalización
 
-### La plantilla
+### El formato
 
-En la pantalla de Carga, el enlace **"Descargar plantilla .xlsx"** entrega una planilla con dos hojas: **Muestras** (con 4 filas de ejemplo que debes borrar) e **Instrucciones**.
+La app lee la **planilla de seguimiento de láminas digitalizadas (WSI)** del laboratorio: una fila por lámina y 30 columnas. En la pantalla de Carga, **"Descargar plantilla .xlsx"** entrega la planilla vacía con 3 filas de ejemplo (para borrar) y una hoja **Instrucciones**.
 
-| Columna | ¿Obligatoria? | Qué escribir |
+| Columna | ¿Obligatoria? | Qué hace la app con ella |
 |---|---|---|
-| `id_lamina` | Sí | Código único de la lámina. Ej.: LAM-0001 |
-| `id_muestra` | Sí | **Código seudonimizado** de la muestra o paciente. Nunca un nombre ni un RUT |
-| `tipo_muestra` | Sí | `heces`, `heces-concentrado` o `sangre` |
-| `fecha_toma` | No | AAAA-MM-DD (también acepta DD-MM-AAAA) |
-| `especie_observada` | Sí | Nombre científico o **Negativo** |
-| `estadio` | No* | trofozoíto, quiste, ooquiste, huevo, larva, tripomastigote |
-| `tincion` | No* | Lugol, Fresco, Giemsa, Kinyoun, Tricrómica, Hematoxilina |
-| `aumento` | No* | 10x, 40x, 100x |
-| `archivo_imagen` | No | Nombre del archivo de imagen |
-| `observaciones` | No | Texto libre **sin datos personales** |
+| **Código** | Sí | Identificador de la lámina (`Specimen` y `Media.identifier`). Detecta códigos repetidos |
+| **Tax** | Sí | Código del catálogo `Repositorio.xlsx` (ej. `tax-017` = *Giardia duodenalis*) → código **SNOMED CT** de la especie |
+| Nombre WSI | No | Título de la imagen (`Media.content.title`). Si falta el Tax, intenta deducir la especie desde este nombre |
+| Institución | No | `Observation.performer` |
+| **Tipo muestra** | Sí | Elige el examen **LOINC**: heces 10704-5 · heces concentrado 10701-1 · sangre / gota gruesa 17784-0 · aspirado 106048-2 · LBA 106047-4 · otro (biopsia, piel, vector…) 673-4 |
+| Estado evolutivo | No* | Estadio con código SNOMED (trofozoíto, quiste, ooquiste, amastigote, microfilaria, esquizonte…). Para **huevo, larva y adulto** usa el código del grupo: nematodo, cestodo o trematodo |
+| Digitalizada | No | `Media.status` (Sí → completed, No → preparation) |
+| Evaluación Alan / Evaluación Armin | No | Control de calidad: avisa si **no coinciden**. **No** van a FHIR |
+| Solicitud Reescaneo / Link resscaneo | No | Avisa si se pidió reescaneo y **no hay link** |
+| Link NDP.serve | No | `Media.content.url` |
+| Aprobadas / Ingresadas / Respaldadas / Ingreso RPMV Público | No | Avisa si una lámina está **ingresada sin estar aprobada**, o **en RPMV público sin estar ingresada** |
+| Equipo | No | `Media.device` |
+| Encargado digitalización | No | Solo queda en el Excel curado. **No** va a FHIR (minimización de datos personales del equipo) |
+| Fecha digitalización | No | `Media.createdDateTime`. Avisa si es inválida o futura |
+| Tamaño (GB) | No | `Media.content.size` (en bytes) |
+| Width / Height (pixeles), n° Z | No | `Media.width`, `Media.height`, `Media.frames`. Avisa si no son números |
+| Aumento | No* | 10x, 20x, 40x, 60x, 100x |
+| Tamaño en disco, Resolución, Espaciado, Rango de enfoque, Tiempo de digitalización, Formato | No | Notas del recurso `Media` |
 
 \* No es obligatoria para cargar la planilla, pero si falta, la fila queda **por revisar** en Limpieza Guiada.
 
-La app también reconoce nombres de columna parecidos (por ejemplo `especie` en vez de `especie_observada`). Se aceptan archivos **.xlsx** y **.csv** (separados por coma o punto y coma, en UTF-8). El formato **.xls** antiguo no se puede leer: hay que guardarlo como .xlsx.
+Los nombres de columna se reconocen **sin importar tildes ni mayúsculas**. Los valores Sí/No aceptan también "si", "x", "1", "aprobada", "no", "0", "rechazada". Formatos aceptados: **.xlsx** y **.csv** (UTF-8). El **.xls** antiguo hay que guardarlo como .xlsx.
 
-### Qué hace la app con tu planilla
+### Qué hace la app con la planilla
 
-1. **La lee dentro del navegador.** El archivo **no se envía a ningún servidor**. Vive solo en la memoria de esa pestaña y desaparece al recargar o cerrar la página.
-2. **Rechaza la planilla completa** si encuentra:
-   - columnas con datos que identifican a una persona (nombre, apellido, RUT/RUN, dirección, teléfono, correo, fecha de nacimiento, ficha clínica);
-   - algún **RUT o correo electrónico** escrito en cualquier celda.
-3. **Reconoce los textos libres:**
-
-   | Lo que dice la planilla | Resultado |
-   |---|---|
-   | Nombre exacto del catálogo ("Giardia duodenalis") | ✅ Conforme |
-   | Sinónimo o abreviatura ("G. lamblia", "T. cruzi") | ⚠️ Se propone el código, pero hay que confirmarlo |
-   | Error de escritura ("Entamoba histolyt") | ⚠️ Se propone el código más parecido, pero hay que confirmarlo |
-   | Texto desconocido ("Ooquiste no esp.") | ❌ Hay que asignarlo a mano |
-
-4. **Detecta** láminas repetidas (mismo `id_lamina`), tipos de muestra no válidos, fechas imposibles o futuras y datos obligatorios faltantes.
-5. Las filas **sin problemas** van directo al Bundle. Las filas **con problemas** forman la cola de **Limpieza Guiada**.
-6. Si el mismo error se repite (por ejemplo, 14 veces "Entamoba histolyt"), puedes **corregirlas todas de una vez**.
-
-En el Bundle FHIR, `id_muestra` va como `subject.identifier` (seudónimo), `id_lamina` como `specimen.identifier` y `fecha_toma` como `effectiveDateTime`.
+1. **La lee dentro del navegador.** El archivo **no se envía a ningún servidor** y se borra al recargar o cerrar la página.
+2. **Rechaza la planilla completa** si encuentra columnas de datos de pacientes (nombre, paciente, RUT, dirección, teléfono, correo, fecha de nacimiento, ficha clínica) o **un RUT o correo en cualquier celda**.
+3. **Clasifica cada fila** en una de estas categorías de hallazgo:
+   - **Especie:** Tax inexistente, sin código SNOMED o vacío.
+   - **Estadio / aumento:** faltan o no se reconocen.
+   - **Duplicado:** el mismo Código aparece en más de una fila.
+   - **Formato:** faltan datos obligatorios, hay fechas inválidas o números mal escritos.
+   - **Control de calidad del flujo:** evaluaciones distintas, reescaneo sin link, ingresada sin aprobación, etc.
+4. Las filas **sin problemas** van directo al Bundle. Las demás forman la cola de **Limpieza Guiada**.
+5. **En el Bundle FHIR**, cada lámina genera un recurso **Media** (la imagen y su digitalización) y un recurso **Observation** (el hallazgo), que apunta al Media.
 
 ## Códigos clínicos (SNOMED CT y LOINC)
 
@@ -200,4 +200,11 @@ prototipo/
 
 ## Planilla de prueba
 
-`ejemplos/planilla_de_prueba.xlsx` tiene 12 filas **inventadas** con errores a propósito: sinónimos, errores de escritura, una lámina repetida, un tipo de muestra no válido, una fecha imposible y un `id_muestra` faltante. Sirve para ver cómo responde cada pantalla.
+`ejemplos/planilla_de_prueba.xlsx` tiene 13 láminas **inventadas**, con las 30 columnas del formato y errores a propósito:
+- un Tax que no existe y otro sin código SNOMED;
+- una fila sin Tax y un código de lámina repetido;
+- evaluaciones que no coinciden y un reescaneo sin link;
+- una lámina ingresada sin aprobación;
+- una fecha imposible, un ancho que no es número y una fila sin Código.
+
+Sirve para ver cómo responde cada pantalla.

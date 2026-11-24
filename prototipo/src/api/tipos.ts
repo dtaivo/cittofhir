@@ -35,13 +35,16 @@ export interface Hallazgo {
 /* ---------- Planilla cargada por el usuario (se procesa en el navegador) ---------- */
 
 export type Calidad = "exacto" | "sinonimo" | "parecido" | "desconocido" | "vacio";
-export type TipoProblema = "taxonomia" | "optica" | "duplicado" | "formato";
+export type TipoProblema = "taxonomia" | "optica" | "duplicado" | "formato" | "flujo";
 
 export interface FilaLote {
   /** Número de fila en la planilla (la fila 1 son los encabezados). */
   fila: number;
+  /** Columna "Código" de la planilla. */
   idLamina: string;
-  idMuestra: string;
+  tax: string;
+  nombreWsi: string;
+  institucion: string;
   tipoMuestra: TipoMuestra | null;
   fecha: string | null;
   crudo: { especie: string; estadio: string; tincion: string; aumento: string; tipoMuestra: string; fecha: string };
@@ -49,8 +52,8 @@ export interface FilaLote {
   calidad: { especie: Calidad; estadio: Calidad; tincion: Calidad; aumento: Calidad };
   problemas: { tipo: TipoProblema; texto: string }[];
   duplicadoDe: string | null;
-  archivoImagen: string;
-  observaciones: string;
+  /** Resto de columnas de digitalización, tal como vienen (clave → valor). */
+  digitalizacion: Record<string, string>;
 }
 
 export interface Lote {
@@ -142,6 +145,10 @@ export interface OpcionTerminologia {
   /** Si el código SNOMED se encontró a través de un sinónimo del catálogo. */
   via?: string;
   sinonimos?: string[];
+  /** Nematoda / Cestoda / Trematoda (para elegir el código de huevo, larva o adulto). */
+  grupoTaxonomico?: string | null;
+  /** Código SNOMED del estadio según el grupo taxonómico de la especie. */
+  porGrupo?: Record<string, { codigo: string; display: string }>;
   calibracion?: string;
 }
 
@@ -153,7 +160,7 @@ export interface ConceptoEspecifico {
   display: string;
 }
 
-export type TipoMuestra = "heces" | "heces-concentrado" | "sangre";
+export type TipoMuestra = "heces" | "heces-concentrado" | "sangre" | "aspirado" | "lba" | "otro";
 
 export interface Terminologia {
   especies: OpcionTerminologia[];
@@ -161,6 +168,8 @@ export interface Terminologia {
   tinciones: OpcionTerminologia[];
   aumentos: OpcionTerminologia[];
   especificos: ConceptoEspecifico[];
+  /** Todo el catálogo Repositorio.xlsx, incluso los taxones sin código SNOMED. */
+  taxones: { tax: string; nombre: string; codigo: string | null; grupoTaxonomico: string | null }[];
   examenes: { tipoMuestra: TipoMuestra; codigo: string; display: string }[];
   /** Código SNOMED para "no se observan parásitos". */
   negativo: { codigo: string; display: string; texto: string };

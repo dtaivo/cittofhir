@@ -4,7 +4,7 @@ import { api, type ResultadoTransmision } from "../api";
 import { useAvisos } from "../components/Avisos";
 import { Cargando, ErrorCarga } from "../components/Estados";
 import { Icono } from "../components/Icono";
-import { bundleDeEjemplo, observacionDesdeCaso } from "../lib/fhir";
+import { bundleDeEjemplo, mediaDesdeFila, observacionDesdeCaso } from "../lib/fhir";
 import { aCsv, descargarArchivo, descargarBlob } from "../lib/descargar";
 import { casoDesdeFila, generarExcelCurado } from "../lib/planilla";
 import { cx, fechaUtc, numero } from "../lib/formato";
@@ -54,13 +54,16 @@ export default function Confirmacion() {
   function construirBundle() {
     if (curadas) {
       // Planilla real: filas conformes + casos resueltos, con seudónimo y fecha
-      const entradas = curadas.map(({ fila, decision }) =>
-        observacionDesdeCaso(casoDesdeFila(fila, terminologia, ""), decision, terminologia, {
+      // Por cada lámina: un Media (la imagen y su digitalización) + una Observation (el hallazgo) que apunta al Media
+      const entradas = curadas.flatMap(({ fila, decision }) => {
+        const urlMedia = `urn:uuid:${crypto.randomUUID()}`;
+        const obs = observacionDesdeCaso(casoDesdeFila(fila, terminologia, ""), decision, terminologia, {
           idLamina: fila.idLamina,
-          idMuestra: fila.idMuestra,
-          fecha: fila.fecha,
-        }),
-      );
+          institucion: fila.institucion,
+          media: urlMedia,
+        });
+        return [{ fullUrl: urlMedia, resource: mediaDesdeFila(fila) }, obs];
+      });
       return bundleDeEjemplo(exp.bundleId.replace("urn:uuid:", ""), entradas.length, entradas, "Generado por ParaFHIR (prototipo): revisar antes de uso clínico");
     }
     const entradas = cola.casos

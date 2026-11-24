@@ -103,12 +103,27 @@ function crearPorPalabras(opciones: OpcionTerminologia[], patrones: [RegExp, str
 
 export const crearReconocedorEstadios = (t: Terminologia) =>
   crearPorPalabras(t.estadios, [
-    [/\b(trofozoito|trofo|trophozoite|vegetativ)/, "trofozoito"],
-    [/\b(ooquiste|oocyst)/, "ooquiste"],
-    [/\b(quiste|quistes|cyst)\b/, "quiste"],
-    [/\b(tripomastigote|trypomastigote|tripo)\b/, "tripomastigote"],
-    [/\b(huevo|huevos|egg|ova)\b/, "huevo"],
-    [/\b(larva|larvas|rabditiforme|filariforme)\b/, "larva"],
+    [/\b(trofozoito|trofozoitos|trofo|trophozoite|vegetativ)/, "trofozoito"],
+    [/\b(ooquiste|ooquistes|oocyst)/, "ooquiste"],
+    [/\b(quiste tisular|quiste hidatidico|cisticerco|hidatide)\b/, "quiste-tisular"],
+    [/^(quiste|quistes|cyst|quistica)$|\b(quiste|quistes|cyst)\b(?! tisular| hidatidico)/, "quiste"],
+    [/\b(tripomastigote|tripomastigotes|trypomastigote|tripo)\b/, "tripomastigote"],
+    [/\b(amastigote|amastigotes)\b/, "amastigote"],
+    [/\b(promastigote|promastigotes)\b/, "promastigote"],
+    [/\b(esquizonte|esquizontes|schizont)\b/, "esquizonte"],
+    [/\b(gametocito|gametocitos|gametocyte)\b/, "gametocito"],
+    [/\b(taquizoito|taquizoitos|tachyzoite)\b/, "taquizoito"],
+    [/\b(espora|esporas|spore)\b/, "espora"],
+    [/\b(anillo|anillos|ring)\b/, "anillo"],
+    [/\b(microfilaria|microfilarias)\b/, "microfilaria"],
+    [/\b(huevo|huevos|egg|eggs|ova)\b/, "huevo"],
+    [/\b(larva|larvas|rabditiforme|filariforme|l3)\b/, "larva"],
+    [/\b(adulto|adultos|adulta|adult|hembra|macho)\b/, "adulto"],
+    [/\b(proglotide|proglotides|proglottid)\b/, "proglotide"],
+    [/\b(escolex|protoescolex|scolex)\b/, "escolex"],
+    [/\b(vacuolar|granular)\b/, "forma-vacuolar"],
+    [/\b(ninfa|ninfas|nymph)\b/, "ninfa"],
+    [/\b(pupa|pupas)\b/, "pupa"],
   ]);
 
 export const crearReconocedorTinciones = (t: Terminologia) =>
@@ -130,9 +145,13 @@ export function reconocerAumento(texto: string, t: Terminologia): Reconocido {
 
 export function reconocerTipoMuestra(texto: string): TipoMuestra | null {
   const n = normalizar(texto);
+  if (!n) return null;
   if (/concentr/.test(n)) return "heces-concentrado";
-  if (/(heces|deposicion|stool|copro|fecal)/.test(n)) return "heces";
-  if (/(sangre|blood|frotis sangu|gota gruesa)/.test(n)) return "sangre";
+  if (/(heces|deposicion|stool|copro|fecal|feca)/.test(n)) return "heces";
+  if (/(sangre|blood|sangui|gota gruesa|extendido)/.test(n)) return "sangre";
+  if (/(lavado broncoalveolar|^lba$|\bbal\b)/.test(n)) return "lba";
+  if (/(aspirado|aspirate|puncion)/.test(n)) return "aspirado";
+  if (/^(otro|otra|biopsia|tejido|piel|raspado|ejemplar|vector|espécimen|especimen|orina|lcr|esputo|cultivo)/.test(n)) return "otro";
   return null;
 }
 

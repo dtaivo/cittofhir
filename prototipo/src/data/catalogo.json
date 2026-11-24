@@ -27,6 +27,8 @@
       "tax": "tax-001",
       "nombre": "Entamoeba coli",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Amoebozoa",
+      "clase": "Archamoebae",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -48,6 +50,8 @@
       "tax": "tax-002",
       "nombre": "Entamoeba hartmanni",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Amoebozoa",
+      "clase": "Archamoebae",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -69,6 +73,8 @@
       "tax": "tax-003",
       "nombre": "Entamoeba polecki",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Amoebozoa",
+      "clase": "Archamoebae",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -90,6 +96,8 @@
       "tax": "tax-004",
       "nombre": "Entamoeba histolytica",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Amoebozoa",
+      "clase": "Archamoebae",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -111,6 +119,8 @@
       "tax": "tax-005",
       "nombre": "Entamoeba dispar",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Amoebozoa",
+      "clase": "Archamoebae",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -132,6 +142,8 @@
       "tax": "tax-006",
       "nombre": "Entamoeba moshkovskii",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Amoebozoa",
+      "clase": "Archamoebae",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -150,6 +162,8 @@
       "tax": "tax-007",
       "nombre": "Entamoeba bangladeshi",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Amoebozoa",
+      "clase": "Archamoebae",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -171,6 +185,8 @@
       "tax": "tax-008",
       "nombre": "Entamoeba histolytica/dispar/moshkovskii/bangladeshi",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Amoebozoa",
+      "clase": "Archamoebae",
       "rango": "complex",
       "sinonimos": [],
       "loinc": [
@@ -189,6 +205,8 @@
       "tax": "tax-009",
       "nombre": "Endolimax nana",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Amoebozoa",
+      "clase": "Archamoebae",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -210,6 +228,8 @@
       "tax": "tax-010",
       "nombre": "Iodamoeba buetschlii",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Amoebozoa",
+      "clase": "Archamoebae",
       "rango": "species",
       "sinonimos": [
         "Iodamoeba bütschlii"
@@ -234,6 +254,8 @@
       "tax": "tax-011",
       "nombre": "Cryptosporidium spp.",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Apicomplexa",
+      "clase": "Conoidasida",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -255,6 +277,8 @@
       "tax": "tax-012",
       "nombre": "Cryptosporidium hominis",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Apicomplexa",
+      "clase": "Conoidasida",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -275,6 +299,8 @@
       "tax": "tax-013",
       "nombre": "Cryptosporidium parvum",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Apicomplexa",
+      "clase": "Conoidasida",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -295,6 +321,8 @@
       "tax": "tax-014",
       "nombre": "Cyclospora cayetanensis",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Apicomplexa",
+      "clase": "Conoidasida",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -315,6 +343,8 @@
       "tax": "tax-015",
       "nombre": "Sarcocystis spp.",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Apicomplexa",
+      "clase": "Conoidasida",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [],
@@ -334,6 +364,8 @@
       "tax": "tax-016",
       "nombre": "Cystoisospora belli",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Apicomplexa",
+      "clase": "Conoidasida",
       "rango": "species",
       "sinonimos": [
         "Isospora belli"
@@ -356,6 +388,8 @@
       "tax": "tax-017",
       "nombre": "Giardia duodenalis",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Metamonada",
+      "clase": "Trepomonadea",
       "rango": "species",
       "sinonimos": [
         "Giardia lamblia",
@@ -380,6 +414,8 @@
       "tax": "tax-018",
       "nombre": "Chilomastix mesnili",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Metamonada",
+      "clase": "Retortamonadea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -401,6 +437,8 @@
       "tax": "tax-019",
       "nombre": "Enteromonas hominis",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Metamonada",
+      "clase": "Retortamonadea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -422,6 +460,8 @@
       "tax": "tax-020",
       "nombre": "Retortamonas intestinalis",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Metamonada",
+      "clase": "Retortamonadea",
       "rango": "species",
       "sinonimos": [
         "Embadomonas intestinalis"
@@ -445,6 +485,8 @@
       "tax": "tax-021",
       "nombre": "Pentatrichomonas hominis",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Metamonada",
+      "clase": "Parabasalia",
       "rango": "species",
       "sinonimos": [
         "Trichomonas hominis"
@@ -466,6 +508,8 @@
       "tax": "tax-022",
       "nombre": "Blastocystis spp.",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Stramenopiles",
+      "clase": "Bigyra",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -489,6 +533,8 @@
       "tax": "tax-023",
       "nombre": "Blastocystis hominis",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Stramenopiles",
+      "clase": "Bigyra",
       "rango": "species",
       "sinonimos": [
         "Blastocystis spp.",
@@ -514,6 +560,8 @@
       "tax": "tax-024",
       "nombre": "Balantioides coli",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Ciliophora",
+      "clase": "Litostomatea",
       "rango": "species",
       "sinonimos": [
         "Balantidium coli",
@@ -539,6 +587,8 @@
       "tax": "tax-025",
       "nombre": "Microsporidia",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Microsporidia",
+      "clase": "",
       "rango": "phylum",
       "sinonimos": [],
       "loinc": [
@@ -558,6 +608,8 @@
       "tax": "tax-026",
       "nombre": "Encephalitozoon intestinalis",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Microsporidia",
+      "clase": "Microsporea",
       "rango": "species",
       "sinonimos": [
         "Septata intestinalis"
@@ -580,6 +632,8 @@
       "tax": "tax-027",
       "nombre": "Enterocytozoon bieneusi",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Microsporidia",
+      "clase": "Microsporea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -599,6 +653,8 @@
       "tax": "tax-028",
       "nombre": "Dientamoeba fragilis",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Metamonada",
+      "clase": "Parabasalia",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -619,6 +675,8 @@
       "tax": "tax-029",
       "nombre": "Entamoeba gingivalis",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Amoebozoa",
+      "clase": "Archamoebae",
       "rango": "species",
       "sinonimos": [],
       "loinc": [],
@@ -636,6 +694,8 @@
       "tax": "tax-030",
       "nombre": "Adenocephalus/Dibothriocephalus complex",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Cestoda",
       "rango": "complex",
       "sinonimos": [],
       "loinc": [
@@ -657,6 +717,8 @@
       "tax": "tax-031",
       "nombre": "Adenocephalus pacificus",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Cestoda",
       "rango": "species",
       "sinonimos": [
         "Diphyllobothrium pacificum"
@@ -683,6 +745,8 @@
       "tax": "tax-032",
       "nombre": "Dibothriocephalus latus",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Cestoda",
       "rango": "species",
       "sinonimos": [
         "Diphyllobothrium latum"
@@ -709,6 +773,8 @@
       "tax": "tax-033",
       "nombre": "Dibothriocephalus dendriticus",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Cestoda",
       "rango": "species",
       "sinonimos": [
         "Diphyllobothrium dendriticum"
@@ -735,6 +801,8 @@
       "tax": "tax-034",
       "nombre": "Dipylidium caninum",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Cestoda",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -758,6 +826,8 @@
       "tax": "tax-035",
       "nombre": "Hymenolepis spp.",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Cestoda",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -783,6 +853,8 @@
       "tax": "tax-036",
       "nombre": "Hymenolepis diminuta",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Cestoda",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -806,6 +878,8 @@
       "tax": "tax-037",
       "nombre": "Hymenolepis nana",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Cestoda",
       "rango": "species",
       "sinonimos": [
         "Rodentolepis nana"
@@ -832,6 +906,8 @@
       "tax": "tax-038",
       "nombre": "Taenia spp.",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Cestoda",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -857,6 +933,8 @@
       "tax": "tax-039",
       "nombre": "Taenia solium",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Cestoda",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -882,6 +960,8 @@
       "tax": "tax-040",
       "nombre": "Taenia saginata",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Cestoda",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -906,6 +986,8 @@
       "tax": "tax-041",
       "nombre": "Taenia asiatica",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Cestoda",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -926,6 +1008,8 @@
       "tax": "tax-042",
       "nombre": "Ascaris lumbricoides",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -949,6 +1033,8 @@
       "tax": "tax-043",
       "nombre": "Ancylostomatidae",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "family",
       "sinonimos": [],
       "loinc": [
@@ -973,6 +1059,8 @@
       "tax": "tax-044",
       "nombre": "Necator americanus",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -997,6 +1085,8 @@
       "tax": "tax-045",
       "nombre": "Ancylostoma duodenale",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1021,6 +1111,8 @@
       "tax": "tax-046",
       "nombre": "Enterobius vermicularis",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1042,6 +1134,8 @@
       "tax": "tax-047",
       "nombre": "Enterobius spp.",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -1064,6 +1158,8 @@
       "tax": "tax-048",
       "nombre": "Anisakidae",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "family",
       "sinonimos": [],
       "loinc": [
@@ -1086,6 +1182,8 @@
       "tax": "tax-049",
       "nombre": "Anisakis simplex",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1108,6 +1206,8 @@
       "tax": "tax-050",
       "nombre": "Pseudoterranova spp.",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [],
@@ -1126,6 +1226,8 @@
       "tax": "tax-051",
       "nombre": "Contracaecum spp.",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [],
@@ -1144,6 +1246,8 @@
       "tax": "tax-052",
       "nombre": "Strongyloides stercoralis",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1167,6 +1271,8 @@
       "tax": "tax-053",
       "nombre": "Trichuris trichiura",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1190,6 +1296,8 @@
       "tax": "tax-054",
       "nombre": "Paracapillaria spp.",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [
         "Capillaria"
@@ -1216,6 +1324,8 @@
       "tax": "tax-055",
       "nombre": "Trichostrongylus spp",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -1241,6 +1351,8 @@
       "tax": "tax-056",
       "nombre": "Fasciolopsis buski",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Trematoda",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1264,6 +1376,8 @@
       "tax": "tax-057",
       "nombre": "Echinostoma spp.",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Trematoda",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -1288,6 +1402,8 @@
       "tax": "tax-058",
       "nombre": "Heterophyes heterophyes",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Trematoda",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1311,6 +1427,8 @@
       "tax": "tax-059",
       "nombre": "Metagonimus yokogawai",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Trematoda",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1334,6 +1452,8 @@
       "tax": "tax-060",
       "nombre": "Macracanthorhynchus spp.",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Acanthocephala",
+      "clase": "Archiacanthocephala",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -1358,6 +1478,8 @@
       "tax": "tax-061",
       "nombre": "Moniliformis moniliformis",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Acanthocephala",
+      "clase": "Archiacanthocephala",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1380,6 +1502,8 @@
       "tax": "tax-062",
       "nombre": "Fasciola spp.",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Trematoda",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -1404,6 +1528,8 @@
       "tax": "tax-063",
       "nombre": "Fasciola gigantica",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Trematoda",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1427,6 +1553,8 @@
       "tax": "tax-064",
       "nombre": "Fasciola hepatica",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Trematoda",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1450,6 +1578,8 @@
       "tax": "tax-065",
       "nombre": "Clonorchis sinensis",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Trematoda",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1473,6 +1603,8 @@
       "tax": "tax-066",
       "nombre": "Dicrocoelium dendriticum",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Trematoda",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1496,6 +1628,8 @@
       "tax": "tax-067",
       "nombre": "Opisthorchis viverrini",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Platyhelminthes",
+      "clase": "Trematoda",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1519,6 +1653,8 @@
       "tax": "tax-068",
       "nombre": "Plasmodium spp.",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Apicomplexa",
+      "clase": "Aconoidasida",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -1545,6 +1681,8 @@
       "tax": "tax-069",
       "nombre": "Plasmodium falciparum",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Apicomplexa",
+      "clase": "Aconoidasida",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1570,6 +1708,8 @@
       "tax": "tax-070",
       "nombre": "Plasmodium knowlesi",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Apicomplexa",
+      "clase": "Aconoidasida",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1595,6 +1735,8 @@
       "tax": "tax-071",
       "nombre": "Plasmodium malariae",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Apicomplexa",
+      "clase": "Aconoidasida",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1620,6 +1762,8 @@
       "tax": "tax-072",
       "nombre": "Plasmodium ovale",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Apicomplexa",
+      "clase": "Aconoidasida",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1645,6 +1789,8 @@
       "tax": "tax-073",
       "nombre": "Plasmodium vivax",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Apicomplexa",
+      "clase": "Aconoidasida",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1670,6 +1816,8 @@
       "tax": "tax-074",
       "nombre": "Babesia spp.",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Apicomplexa",
+      "clase": "Aconoidasida",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -1691,6 +1839,8 @@
       "tax": "tax-075",
       "nombre": "Babesia divergens",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Apicomplexa",
+      "clase": "Aconoidasida",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1712,6 +1862,8 @@
       "tax": "tax-076",
       "nombre": "Babesia microti",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Apicomplexa",
+      "clase": "Aconoidasida",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1734,6 +1886,8 @@
       "tax": "tax-077",
       "nombre": "Trypanosoma spp.",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Euglenozoa",
+      "clase": "Kinetoplastea",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -1755,6 +1909,8 @@
       "tax": "tax-078",
       "nombre": "Trypanosoma cruzi",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Euglenozoa",
+      "clase": "Kinetoplastea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1776,6 +1932,8 @@
       "tax": "tax-079",
       "nombre": "Trypanosoma brucei",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Euglenozoa",
+      "clase": "Kinetoplastea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1796,6 +1954,8 @@
       "tax": "tax-080",
       "nombre": "Trypanosoma brucei gambiense",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Euglenozoa",
+      "clase": "Kinetoplastea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1816,6 +1976,8 @@
       "tax": "tax-081",
       "nombre": "Trypanosoma brucei rhodesiense",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Euglenozoa",
+      "clase": "Kinetoplastea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1836,6 +1998,8 @@
       "tax": "tax-082",
       "nombre": "Acanthamoeba spp.",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Amoebozoa",
+      "clase": "Discosea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1857,6 +2021,8 @@
       "tax": "tax-083",
       "nombre": "Acanthamoeba castellanii",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Amoebozoa",
+      "clase": "Discosea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1877,6 +2043,8 @@
       "tax": "tax-084",
       "nombre": "Balamuthia mandrillaris",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Amoebozoa",
+      "clase": "Discosea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1897,6 +2065,8 @@
       "tax": "tax-085",
       "nombre": "Naegleria fowleri",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Percolozoa",
+      "clase": "Heterolobosea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1918,6 +2088,8 @@
       "tax": "tax-086",
       "nombre": "Sappinia pedata",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Amoebozoa",
+      "clase": "Discosea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1938,6 +2110,8 @@
       "tax": "tax-087",
       "nombre": "Toxoplasma spp.",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Apicomplexa",
+      "clase": "Conoidasida",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -1959,6 +2133,8 @@
       "tax": "tax-088",
       "nombre": "Toxoplasma gondii",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Apicomplexa",
+      "clase": "Conoidasida",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -1979,6 +2155,8 @@
       "tax": "tax-089",
       "nombre": "Leishmania spp.",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Euglenozoa",
+      "clase": "Kinetoplastea",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -2001,6 +2179,8 @@
       "tax": "tax-090",
       "nombre": "Leishmania donovani",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Euglenozoa",
+      "clase": "Kinetoplastea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2019,6 +2199,8 @@
       "tax": "tax-091",
       "nombre": "Leishmania infantum",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Euglenozoa",
+      "clase": "Kinetoplastea",
       "rango": "species",
       "sinonimos": [
         "L. chagasi"
@@ -2042,6 +2224,8 @@
       "tax": "tax-092",
       "nombre": "Leishmania braziliensis",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Euglenozoa",
+      "clase": "Kinetoplastea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2063,6 +2247,8 @@
       "tax": "tax-093",
       "nombre": "Leishmania major",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Euglenozoa",
+      "clase": "Kinetoplastea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2084,6 +2270,8 @@
       "tax": "tax-094",
       "nombre": "Leishmania mexicana",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Euglenozoa",
+      "clase": "Kinetoplastea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2105,6 +2293,8 @@
       "tax": "tax-095",
       "nombre": "Leishmania tropica",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Euglenozoa",
+      "clase": "Kinetoplastea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2126,6 +2316,8 @@
       "tax": "tax-096",
       "nombre": "Echinococcus spp.",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Platyhelminthes",
+      "clase": "Cestoda",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -2152,6 +2344,8 @@
       "tax": "tax-097",
       "nombre": "Echinococcus granulosus",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Platyhelminthes",
+      "clase": "Cestoda",
       "rango": "species",
       "sinonimos": [
         "Complejo E. granulosus sensu lato"
@@ -2178,6 +2372,8 @@
       "tax": "tax-098",
       "nombre": "Echinococcus multilocularis",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Platyhelminthes",
+      "clase": "Cestoda",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2201,6 +2397,8 @@
       "tax": "tax-099",
       "nombre": "Spirometra",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Platyhelminthes",
+      "clase": "Cestoda",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -2223,6 +2421,8 @@
       "tax": "tax-100",
       "nombre": "Angiostrongylus spp.",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -2247,6 +2447,8 @@
       "tax": "tax-101",
       "nombre": "Angiostrongylus cantonensis",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2269,6 +2471,8 @@
       "tax": "tax-102",
       "nombre": "Angiostrongylus costaricensis",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2293,6 +2497,8 @@
       "tax": "tax-103",
       "nombre": "Toxocara spp.",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -2318,6 +2524,8 @@
       "tax": "tax-104",
       "nombre": "Toxocara canis",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2341,6 +2549,8 @@
       "tax": "tax-105",
       "nombre": "Toxocara cati",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2364,6 +2574,8 @@
       "tax": "tax-106",
       "nombre": "Trichinella spp.",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -2387,6 +2599,8 @@
       "tax": "tax-107",
       "nombre": "Trichinella spiralis",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2409,6 +2623,8 @@
       "tax": "tax-108",
       "nombre": "Gnathostoma spinigerum",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2431,6 +2647,8 @@
       "tax": "tax-109",
       "nombre": "Baylisascaris procyonis",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2454,6 +2672,8 @@
       "tax": "tax-110",
       "nombre": "Dirofilaria repens",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2476,6 +2696,8 @@
       "tax": "tax-111",
       "nombre": "Dracunculus medinensis",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2499,6 +2721,8 @@
       "tax": "tax-112",
       "nombre": "Filariae",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "superfamily",
       "sinonimos": [],
       "loinc": [
@@ -2516,6 +2740,8 @@
       "tax": "tax-113",
       "nombre": "Wuchereria bancrofti",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2538,6 +2764,8 @@
       "tax": "tax-114",
       "nombre": "Brugia sp.",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2561,6 +2789,8 @@
       "tax": "tax-115",
       "nombre": "Brugia malayi",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2583,6 +2813,8 @@
       "tax": "tax-116",
       "nombre": "Brugia timori",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2605,6 +2837,8 @@
       "tax": "tax-117",
       "nombre": "Loa loa",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2627,6 +2861,8 @@
       "tax": "tax-118",
       "nombre": "Mansonella spp.",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2649,6 +2885,8 @@
       "tax": "tax-119",
       "nombre": "Mansonella ozzardi",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2670,6 +2908,8 @@
       "tax": "tax-120",
       "nombre": "Mansonella perstans",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2691,6 +2931,8 @@
       "tax": "tax-121",
       "nombre": "Mansonella streptocerca",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2712,6 +2954,8 @@
       "tax": "tax-122",
       "nombre": "Onchocerca volvulus",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2734,6 +2978,8 @@
       "tax": "tax-123",
       "nombre": "Trichomonas vaginalis",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Metamonada",
+      "clase": "Parabasalia",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2754,6 +3000,8 @@
       "tax": "tax-124",
       "nombre": "Dioctophyme renale",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2776,6 +3024,8 @@
       "tax": "tax-125",
       "nombre": "Schistosoma spp.",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Platyhelminthes",
+      "clase": "Trematoda",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -2800,6 +3050,8 @@
       "tax": "tax-126",
       "nombre": "Schistosoma haematobium",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Platyhelminthes",
+      "clase": "Trematoda",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2823,6 +3075,8 @@
       "tax": "tax-127",
       "nombre": "Schistosoma japonicum",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Platyhelminthes",
+      "clase": "Trematoda",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2846,6 +3100,8 @@
       "tax": "tax-128",
       "nombre": "Schistosoma mansoni",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Platyhelminthes",
+      "clase": "Trematoda",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2869,6 +3125,8 @@
       "tax": "tax-129",
       "nombre": "Schistosoma mekongi",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Platyhelminthes",
+      "clase": "Trematoda",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2892,6 +3150,8 @@
       "tax": "tax-130",
       "nombre": "Paragonimus spp.",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Platyhelminthes",
+      "clase": "Trematoda",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -2916,6 +3176,8 @@
       "tax": "tax-131",
       "nombre": "Paragonimus westermani",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Platyhelminthes",
+      "clase": "Trematoda",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2936,6 +3198,8 @@
       "tax": "tax-132",
       "nombre": "Histoplasma capsulatum",
       "clasificacion": "Parasitos tisulares y sanguíneos",
+      "filo": "Ascomycota",
+      "clase": "Eurotiomycetes",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2953,6 +3217,8 @@
       "tax": "tax-133",
       "nombre": "Thelazia callipaeda",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Nematoda",
+      "clase": "Chromadorea",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -2975,6 +3241,8 @@
       "tax": "tax-134",
       "nombre": "Philophthalmus spp.",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Platyhelminthes",
+      "clase": "Trematoda",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -2998,6 +3266,8 @@
       "tax": "tax-135",
       "nombre": "Demodex spp.",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Arachnida",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -3020,6 +3290,8 @@
       "tax": "tax-136",
       "nombre": "Sarcoptes scabiei",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Arachnida",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -3041,6 +3313,8 @@
       "tax": "tax-137",
       "nombre": "Cochliomyia hominivorax",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Insecta",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -3060,6 +3334,8 @@
       "tax": "tax-138",
       "nombre": "Cordylobia anthropophaga",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Insecta",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -3079,6 +3355,8 @@
       "tax": "tax-139",
       "nombre": "Dermatobia hominis",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Insecta",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -3098,6 +3376,8 @@
       "tax": "tax-140",
       "nombre": "Ctenocephalides spp.",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Insecta",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -3121,6 +3401,8 @@
       "tax": "tax-141",
       "nombre": "Pulex irritans",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Insecta",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -3143,6 +3425,8 @@
       "tax": "tax-142",
       "nombre": "Cimex lectularius",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Insecta",
       "rango": "species",
       "sinonimos": [
         "Cimex lectularis"
@@ -3166,6 +3450,8 @@
       "tax": "tax-143",
       "nombre": "Pediculus humanus",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Insecta",
       "rango": "species",
       "sinonimos": [
         "Pediculus humanus"
@@ -3189,6 +3475,8 @@
       "tax": "tax-144",
       "nombre": "Pediculus humanus capitis",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Insecta",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -3210,6 +3498,8 @@
       "tax": "tax-145",
       "nombre": "Pediculus humanus humanus",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Insecta",
       "rango": "species",
       "sinonimos": [
         "Pediculus humanus corporis"
@@ -3233,6 +3523,8 @@
       "tax": "tax-146",
       "nombre": "Pthirus pubis",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Insecta",
       "rango": "species",
       "sinonimos": [
         "Phthirus pubis"
@@ -3256,6 +3548,8 @@
       "tax": "tax-147",
       "nombre": "Tunga penetrans",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Insecta",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -3278,6 +3572,8 @@
       "tax": "tax-148",
       "nombre": "Musca doméstica",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Insecta",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -3301,6 +3597,8 @@
       "tax": "tax-149",
       "nombre": "Dermatophagoides spp",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Arachnida",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -3324,6 +3622,8 @@
       "tax": "tax-150",
       "nombre": "Ornithodoros spp.",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Arachnida",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -3347,6 +3647,8 @@
       "tax": "tax-151",
       "nombre": "Dermacentor spp.",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Arachnida",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -3370,6 +3672,8 @@
       "tax": "tax-152",
       "nombre": "Amblyomma spp.",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Arachnida",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -3393,6 +3697,8 @@
       "tax": "tax-153",
       "nombre": "Ixodes spp.",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Arachnida",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -3416,6 +3722,8 @@
       "tax": "tax-154",
       "nombre": "Rhipicephalus spp.",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Arachnida",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -3439,6 +3747,8 @@
       "tax": "tax-155",
       "nombre": "Aedes spp.",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Insecta",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -3462,6 +3772,8 @@
       "tax": "tax-156",
       "nombre": "Anopheles spp.",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Insecta",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -3485,6 +3797,8 @@
       "tax": "tax-157",
       "nombre": "Culex spp.",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Insecta",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
@@ -3508,6 +3822,8 @@
       "tax": "tax-158",
       "nombre": "Triatoma infestans",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Insecta",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -3529,6 +3845,8 @@
       "tax": "tax-159",
       "nombre": "Mepraia gajardoi",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Insecta",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -3547,6 +3865,8 @@
       "tax": "tax-160",
       "nombre": "Mepraia parapatrica",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Insecta",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -3565,6 +3885,8 @@
       "tax": "tax-161",
       "nombre": "Mepraia spinolai",
       "clasificacion": "Parásitos de piel y vectores biológicos",
+      "filo": "Arthropoda",
+      "clase": "Insecta",
       "rango": "species",
       "sinonimos": [],
       "loinc": [
@@ -3583,6 +3905,8 @@
       "tax": "tax-162",
       "nombre": "Entamoeba spp.",
       "clasificacion": "Parasitos intestinales",
+      "filo": "Amoebozoa",
+      "clase": "Archamoebae",
       "rango": "genus",
       "sinonimos": [],
       "loinc": [
