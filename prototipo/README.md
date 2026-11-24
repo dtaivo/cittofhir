@@ -30,6 +30,7 @@ Otros comandos útiles:
 | Comando | Qué hace |
 |---|---|
 | `npm run typecheck` | Revisa que el código no tenga errores de tipos (como un control de calidad) |
+| `npm run catalogo` | Lee `data/Repositorio.xlsx` y busca el código SNOMED de cada especie (genera `src/data/catalogo.json`) |
 | `npm run verificar-codigos` | Comprueba en un servidor de terminología que cada código SNOMED CT y LOINC exista y tenga el nombre oficial correcto |
 | `npm run build` | Genera la versión final optimizada en la carpeta `dist/` |
 
@@ -83,6 +84,17 @@ Los códigos del diseño de Stitch **no eran reales**: los SNOMED no existían y
 | Organismo (SNOMED), lo más específico posible | `Observation.valueCodeableConcept` | *Giardia duodenalis* **78181009**; si es quiste: **608948005** "Giardia lamblia cyst" |
 | Estadio (SNOMED genérico) | `Observation.component` | Trofozoíto: **103551003** |
 | Tinción (SNOMED) | `Observation.method` | Giemsa: **104208006** |
+
+### Catálogo de especies (desde `Repositorio.xlsx` de la tutora)
+
+La lista de especies de la app sale del catálogo `data/Repositorio.xlsx` (162 parásitos y vectores). El comando `npm run catalogo` lo lee y busca el **código SNOMED CT real** de cada especie, que guarda en `src/data/catalogo.json`:
+
+- **152 de 162** tienen código. Para los géneros ("Taenia spp.") se usa el concepto de género ("Taenia", "Genus Fasciola").
+- Algunos se encontraron **por sinónimo** del catálogo (por ejemplo *Hymenolepis nana* → "Rodentolepis nana"). En la pantalla aparecen con una alerta ámbar.
+- **10 quedan sin código** porque SNOMED no tiene un nombre exacto: *E. moshkovskii*, el complejo *histolytica/dispar/moshkovskii/bangladeshi*, el complejo *Adenocephalus/Dibothriocephalus*, *Taenia asiatica*, *Leishmania donovani*, Filariae, *Paragonimus westermani* y las 3 *Mepraia*. Estas no se ofrecen en la lista hasta que se les asigne un código a mano.
+- Los **18 códigos LOINC** recomendados en el catálogo existen todos.
+
+Si cambias el Excel, vuelve a ejecutar `npm run catalogo` (tarda unos minutos).
 
 **Por revisar por una profesional clínica** (aparecen con alerta ámbar en la pantalla):
 - *Lugol directo* y *examen en fresco*: SNOMED no tiene un concepto exacto. Se usaron "wet mount with simple stain" (104195008) y "wet and dry mount, for ova and parasites" (104223001).

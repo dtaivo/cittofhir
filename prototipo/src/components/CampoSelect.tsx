@@ -2,6 +2,19 @@ import type { ReactNode } from "react";
 import { Icono } from "./Icono";
 import { cx } from "../lib/formato";
 
+type Opcion = { valor: string; texto: string; grupo?: string };
+
+/** Agrupa las opciones por "grupo" manteniendo el orden original. */
+function agrupar(opciones: Opcion[]): [string, Opcion[]][] {
+  const mapa = new Map<string, Opcion[]>();
+  for (const o of opciones) {
+    const g = o.grupo ?? "";
+    if (!mapa.has(g)) mapa.set(g, []);
+    mapa.get(g)!.push(o);
+  }
+  return [...mapa.entries()];
+}
+
 /**
  * Lista desplegable con etiqueta, ayuda y estados de error / alerta.
  * La etiqueta queda unida al campo (htmlFor) y los mensajes se leen con aria-describedby.
@@ -26,7 +39,7 @@ export function CampoSelect({
   pistaError?: boolean;
   valor: string;
   onCambio: (v: string) => void;
-  opciones: { valor: string; texto: string }[];
+  opciones: { valor: string; texto: string; grupo?: string }[];
   ayuda?: ReactNode;
   error?: string | null;
   alerta?: string | null;
@@ -65,11 +78,23 @@ export function CampoSelect({
           )}
         >
           <option value="">{marcadorVacio}</option>
-          {opciones.map((o) => (
-            <option key={o.valor} value={o.valor}>
-              {o.texto}
-            </option>
-          ))}
+          {agrupar(opciones).map(([grupo, lista]) =>
+            grupo ? (
+              <optgroup key={grupo} label={grupo}>
+                {lista.map((o) => (
+                  <option key={o.valor} value={o.valor}>
+                    {o.texto}
+                  </option>
+                ))}
+              </optgroup>
+            ) : (
+              lista.map((o) => (
+                <option key={o.valor} value={o.valor}>
+                  {o.texto}
+                </option>
+              ))
+            ),
+          )}
         </select>
         <Icono nombre="expand_more" className="text-[18px] text-on-surface-variant absolute right-space-md top-1/2 -translate-y-1/2 pointer-events-none" />
       </div>

@@ -7,6 +7,7 @@
 import estudioJson from "../data/estudio.json";
 import casosJson from "../data/casos.json";
 import terminologiaJson from "../data/terminologia.json";
+import catalogoJson from "../data/catalogo.json";
 import mapeosJson from "../data/mapeos.json";
 import exportacionJson from "../data/exportacion.json";
 import type {
@@ -29,7 +30,31 @@ const esperar = <T,>(valor: T, ms = DEMORA_MS) =>
 // Copias en memoria (se reinician al recargar la página)
 const carga = estudioJson as unknown as DatosCarga;
 const cola = casosJson as unknown as ColaLimpieza;
-const terminologia = terminologiaJson as unknown as Terminologia;
+const terminologiaBase = terminologiaJson as unknown as Terminologia;
+
+/**
+ * Lista de especies = catálogo de la tutora (data/Repositorio.xlsx, con su código SNOMED)
+ * + especies extra de terminologia.json que no estén en el catálogo.
+ * Las especies del catálogo sin código SNOMED no se ofrecen (quedan "por revisar").
+ */
+const especiesCatalogo = catalogoJson.especies
+  .filter((e) => e.snomed)
+  .map((e) => ({
+    codigo: e.snomed!.codigo,
+    display: e.snomed!.display,
+    nombreLocal: e.nombre,
+    grupo: e.clasificacion,
+    via: (e.snomed as { via?: string }).via,
+    sinonimos: e.sinonimos,
+  }));
+const codigosCatalogo = new Set(especiesCatalogo.map((e) => e.codigo));
+const terminologia: Terminologia = {
+  ...terminologiaBase,
+  especies: [
+    ...especiesCatalogo,
+    ...terminologiaBase.especies.filter((e) => !codigosCatalogo.has(e.codigo)).map((e) => ({ ...e, grupo: "Otros" })),
+  ],
+};
 const mapeos = structuredClone(mapeosJson) as unknown as DatosMapeos;
 const exportacion = structuredClone(exportacionJson) as unknown as DatosExportacion;
 const estados: Record<string, EstadoCaso> = Object.fromEntries(

@@ -121,6 +121,7 @@ function EditorCaso({
   const especieSugerida = t.especies.find((e) => e.codigo === caso.propuesta.especie);
   const aumento = t.aumentos.find((a) => a.codigo === form.aumento);
   const estadioSel = t.estadios.find((e) => e.codigo === form.estadio);
+  const especieSel = t.especies.find((e) => e.codigo === form.especie);
   const tincionSel = t.tinciones.find((e) => e.codigo === form.tincion);
   const organismo = form.especie && form.especie !== "otro" ? conceptoOrganismo(t, form.especie, form.estadio) : null;
 
@@ -425,11 +426,11 @@ function EditorCaso({
             valor={form.especie}
             onCambio={(v) => cambiar("especie", v)}
             opciones={[
-              ...t.especies.map((e) => ({ valor: e.codigo, texto: `${e.nombreLocal ?? e.display} (SNOMED: ${e.codigo})` })),
+              ...t.especies.map((e) => ({ valor: e.codigo, texto: `${e.nombreLocal ?? e.display} (SNOMED: ${e.codigo})`, grupo: e.grupo })),
               { valor: "otro", texto: "Buscar otro código en servidor terminológico..." },
             ]}
             error={errores.especie}
-            alerta={alertas.especie}
+            alerta={alertas.especie ?? (especieSel?.via ? `Código encontrado por sinónimo: SNOMED la llama "${especieSel.display}".` : null)}
             ayuda={
               form.especie === "otro" ? (
                 <button type="button" onClick={onAbrirMapeos} className="font-tag-xs text-tag-xs text-secondary underline text-left">

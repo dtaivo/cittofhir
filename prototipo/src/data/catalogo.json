@@ -1,0 +1,3605 @@
+{
+  "_nota": "Generado por `npm run catalogo` desde data/Repositorio.xlsx. No editar a mano: corregir el Excel y volver a generar.",
+  "_generado": "2026-11-24",
+  "loinc": {
+    "10347-3": "Babesia microti identified in Blood by Light microscopy",
+    "106047-4": "Ova and parasites identified in Bronchoalveolar lavage by Light microscopy",
+    "106048-2": "Ova and parasites identified in Aspirate by Light microscopy",
+    "10704-5": "Ova and parasites identified in Stool by Light microscopy",
+    "17784-0": "Parasite identified in Blood by Light microscopy",
+    "32206-5": "Plasmodium sp identified in Blood by Light microscopy",
+    "32766-8": "Trichomonas vaginalis [Presence] in Specimen by Wet preparation",
+    "32819-5": "Microsporidia identified in Stool by Trichrome stain",
+    "41451-6": "Plasmodium stage [Identifier] in Blood by Light microscopy",
+    "51587-4": "Plasmodium sp [Presence] in Blood by Light microscopy",
+    "637-9": "Plasmodium sp identified in Blood by Thick film",
+    "660-1": "Microscopic observation [Identifier] in Specimen by Dark field examination",
+    "6676-1": "Enterobius vermicularis [Presence] in Anal by Pinworm exam",
+    "673-4": "Ova and parasites identified in Specimen by Light microscopy",
+    "76699-8": "Filaria identified in Skin by Light microscopy",
+    "91845-8": "Trichomonas vaginalis [Presence] in Genital specimen by Light microscopy",
+    "91900-1": "Parasite [Presence] in Blood by Light microscopy",
+    "9787-3": "Sarcoptes scabiei identified in Skin by Light microscopy"
+  },
+  "loincInvalidos": [],
+  "especies": [
+    {
+      "tax": "tax-001",
+      "nombre": "Entamoeba coli",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "quiste",
+        "trofozoíto"
+      ],
+      "habitat": "Luz del intestino grueso (colon; principalmente ciego y colon)",
+      "enfermedad": "Comensal",
+      "snomed": {
+        "codigo": "79235009",
+        "display": "Entamoeba coli"
+      }
+    },
+    {
+      "tax": "tax-002",
+      "nombre": "Entamoeba hartmanni",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "quiste",
+        "trofozoíto"
+      ],
+      "habitat": "Luz del intestino grueso (colon; principalmente ciego y colon)",
+      "enfermedad": "Comensal",
+      "snomed": {
+        "codigo": "70632005",
+        "display": "Entamoeba hartmanni"
+      }
+    },
+    {
+      "tax": "tax-003",
+      "nombre": "Entamoeba polecki",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "quiste",
+        "trofozoíto"
+      ],
+      "habitat": "Luz del intestino grueso (colon; principalmente ciego y colon)",
+      "enfermedad": "Comensal",
+      "snomed": {
+        "codigo": "66223005",
+        "display": "Entamoeba polecki"
+      }
+    },
+    {
+      "tax": "tax-004",
+      "nombre": "Entamoeba histolytica",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "quiste",
+        "trofozoíto"
+      ],
+      "habitat": "Colon (luz y mucosa); pared intestinal; hígado en enfermedad invasiva; ocasionalmente pulmón y SNC",
+      "enfermedad": "Amebiasis",
+      "snomed": {
+        "codigo": "4716008",
+        "display": "Entamoeba histolytica"
+      }
+    },
+    {
+      "tax": "tax-005",
+      "nombre": "Entamoeba dispar",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "quiste",
+        "trofozoíto"
+      ],
+      "habitat": "Luz del intestino grueso (colon; principalmente ciego y colon)",
+      "enfermedad": "Comensal",
+      "snomed": {
+        "codigo": "415987008",
+        "display": "Entamoeba dispar"
+      }
+    },
+    {
+      "tax": "tax-006",
+      "nombre": "Entamoeba moshkovskii",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "quiste",
+        "trofozoíto"
+      ],
+      "habitat": "Luz del intestino grueso (colon; principalmente ciego y colon)",
+      "enfermedad": "Comensal",
+      "snomed": null
+    },
+    {
+      "tax": "tax-007",
+      "nombre": "Entamoeba bangladeshi",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "quiste",
+        "trofozoíto"
+      ],
+      "habitat": "Luz del intestino grueso (colon; principalmente ciego y colon)",
+      "enfermedad": "Comensal",
+      "snomed": {
+        "codigo": "60761000087104",
+        "display": "Entamoeba bangladeshi"
+      }
+    },
+    {
+      "tax": "tax-008",
+      "nombre": "Entamoeba histolytica/dispar/moshkovskii/bangladeshi",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "complex",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "quiste",
+        "trofozoíto"
+      ],
+      "habitat": "Colon (luz y mucosa); pared intestinal; hígado en enfermedad invasiva; ocasionalmente pulmón y SNC",
+      "enfermedad": "Colonización/infección intestinal",
+      "snomed": null
+    },
+    {
+      "tax": "tax-009",
+      "nombre": "Endolimax nana",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "quiste",
+        "trofozoíto"
+      ],
+      "habitat": "Luz del intestino grueso (colon; principalmente ciego y colon)",
+      "enfermedad": "Comensal",
+      "snomed": {
+        "codigo": "53272006",
+        "display": "Endolimax nana"
+      }
+    },
+    {
+      "tax": "tax-010",
+      "nombre": "Iodamoeba buetschlii",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [
+        "Iodamoeba bütschlii"
+      ],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "quiste",
+        "trofozoíto"
+      ],
+      "habitat": "Luz del intestino grueso (colon; principalmente ciego y colon)",
+      "enfermedad": "Comensal",
+      "snomed": {
+        "codigo": "53605000",
+        "display": "Iodamoeba bütschlii",
+        "via": "Iodamoeba bütschlii"
+      }
+    },
+    {
+      "tax": "tax-011",
+      "nombre": "Cryptosporidium spp.",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "ooquiste"
+      ],
+      "habitat": "Epitelio del intestino delgado (borde apical de enterocitos; localización intracelular extracitoplasmática); ocasionalmente vías biliares",
+      "enfermedad": "Criptosporidiosis",
+      "snomed": {
+        "codigo": "83821001",
+        "display": "Cryptosporidium",
+        "via": "Cryptosporidium"
+      }
+    },
+    {
+      "tax": "tax-012",
+      "nombre": "Cryptosporidium hominis",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "ooquiste"
+      ],
+      "habitat": "Epitelio del intestino delgado (borde apical de enterocitos; localización intracelular extracitoplasmática); ocasionalmente vías biliares",
+      "enfermedad": "Criptosporidiosis",
+      "snomed": {
+        "codigo": "417722006",
+        "display": "Cryptosporidium hominis"
+      }
+    },
+    {
+      "tax": "tax-013",
+      "nombre": "Cryptosporidium parvum",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "ooquiste"
+      ],
+      "habitat": "Epitelio del intestino delgado (borde apical de enterocitos; localización intracelular extracitoplasmática); ocasionalmente vías biliares",
+      "enfermedad": "Criptosporidiosis",
+      "snomed": {
+        "codigo": "51504002",
+        "display": "Cryptosporidium parvum"
+      }
+    },
+    {
+      "tax": "tax-014",
+      "nombre": "Cyclospora cayetanensis",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "ooquiste"
+      ],
+      "habitat": "Epitelio del intestino delgado (enterocitos)",
+      "enfermedad": "Ciclosporiasis",
+      "snomed": {
+        "codigo": "103561005",
+        "display": "Cyclospora cayetanensis"
+      }
+    },
+    {
+      "tax": "tax-015",
+      "nombre": "Sarcocystis spp.",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [],
+      "estadios": [
+        "esporoquiste",
+        "quiste tisular"
+      ],
+      "habitat": "Intestino delgado (infección intestinal); músculo estriado y otros tejidos (sarcocistos, según especie y hospedador)",
+      "enfermedad": "Sarcocistosis",
+      "snomed": {
+        "codigo": "34666003",
+        "display": "Sarcocystis",
+        "via": "Sarcocystis"
+      }
+    },
+    {
+      "tax": "tax-016",
+      "nombre": "Cystoisospora belli",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [
+        "Isospora belli"
+      ],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "ooquiste"
+      ],
+      "habitat": "Epitelio del intestino delgado (enterocitos)",
+      "enfermedad": "Cistoisosporiasis",
+      "snomed": {
+        "codigo": "12633005",
+        "display": "Cystoisospora belli"
+      }
+    },
+    {
+      "tax": "tax-017",
+      "nombre": "Giardia duodenalis",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [
+        "Giardia lamblia",
+        "Giardia intestinalis"
+      ],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "quiste",
+        "trofozoíto"
+      ],
+      "habitat": "Intestino delgado proximal (duodeno y yeyuno; superficie mucosa)",
+      "enfermedad": "Giardiasis",
+      "snomed": {
+        "codigo": "78181009",
+        "display": "Giardia duodenalis"
+      }
+    },
+    {
+      "tax": "tax-018",
+      "nombre": "Chilomastix mesnili",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "quiste",
+        "trofozoíto"
+      ],
+      "habitat": "Luz del intestino grueso (ciego y colon); algunos también en intestino delgado según especie",
+      "enfermedad": "Comensal",
+      "snomed": {
+        "codigo": "41340007",
+        "display": "Chilomastix mesnili"
+      }
+    },
+    {
+      "tax": "tax-019",
+      "nombre": "Enteromonas hominis",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "quiste",
+        "trofozoíto"
+      ],
+      "habitat": "Luz del intestino grueso (ciego y colon); algunos también en intestino delgado según especie",
+      "enfermedad": "Comensal",
+      "snomed": {
+        "codigo": "78006004",
+        "display": "Enteromonas hominis"
+      }
+    },
+    {
+      "tax": "tax-020",
+      "nombre": "Retortamonas intestinalis",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [
+        "Embadomonas intestinalis"
+      ],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "quiste",
+        "trofozoíto"
+      ],
+      "habitat": "Luz del intestino grueso (ciego y colon); algunos también en intestino delgado según especie",
+      "enfermedad": "Comensal",
+      "snomed": {
+        "codigo": "87569007",
+        "display": "Retortamonas intestinalis"
+      }
+    },
+    {
+      "tax": "tax-021",
+      "nombre": "Pentatrichomonas hominis",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [
+        "Trichomonas hominis"
+      ],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "trofozoíto"
+      ],
+      "habitat": "Luz del intestino grueso (ciego y colon); algunos también en intestino delgado según especie",
+      "enfermedad": "Comensal",
+      "snomed": {
+        "codigo": "89011000",
+        "display": "Pentatrichomonas hominis"
+      }
+    },
+    {
+      "tax": "tax-022",
+      "nombre": "Blastocystis spp.",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "forma vacuolar",
+        "granular",
+        "quística"
+      ],
+      "habitat": "Luz del intestino grueso (ciego y colon); algunos también en intestino delgado según especie",
+      "enfermedad": "Blastocistosis",
+      "snomed": {
+        "codigo": "7104002",
+        "display": "Blastocystis",
+        "via": "Blastocystis"
+      }
+    },
+    {
+      "tax": "tax-023",
+      "nombre": "Blastocystis hominis",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [
+        "Blastocystis spp.",
+        "Blastocystis sp."
+      ],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "forma vacuolar",
+        "granular",
+        "quística"
+      ],
+      "habitat": "Luz del intestino grueso (ciego y colon); algunos también en intestino delgado según especie",
+      "enfermedad": "Blastocistosis / colonización intestinal",
+      "snomed": {
+        "codigo": "28923009",
+        "display": "Blastocystis hominis"
+      }
+    },
+    {
+      "tax": "tax-024",
+      "nombre": "Balantioides coli",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [
+        "Balantidium coli",
+        "Neobalantidium coli"
+      ],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "quiste",
+        "trofozoíto"
+      ],
+      "habitat": "Luz del intestino grueso (ciego y colon); algunos también en intestino delgado según especie",
+      "enfermedad": "Balantidiasis",
+      "snomed": {
+        "codigo": "68532001",
+        "display": "Balantidium coli",
+        "via": "Balantidium coli"
+      }
+    },
+    {
+      "tax": "tax-025",
+      "nombre": "Microsporidia",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "phylum",
+      "sinonimos": [],
+      "loinc": [
+        "32819-5"
+      ],
+      "estadios": [
+        "espora"
+      ],
+      "habitat": "Enterocitos del intestino delgado; posible diseminación a vías biliares, riñón, ojos y otros órganos según especie e inmunidad",
+      "enfermedad": "Microsporidiosis",
+      "snomed": {
+        "codigo": "418382009",
+        "display": "Microsporidia"
+      }
+    },
+    {
+      "tax": "tax-026",
+      "nombre": "Encephalitozoon intestinalis",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [
+        "Septata intestinalis"
+      ],
+      "loinc": [
+        "32819-5"
+      ],
+      "estadios": [
+        "espora"
+      ],
+      "habitat": "Enterocitos del intestino delgado; posible diseminación a vías biliares, riñón, ojos y otros órganos según especie e inmunidad",
+      "enfermedad": "Microsporidiosis",
+      "snomed": {
+        "codigo": "103563008",
+        "display": "Septata intestinalis",
+        "via": "Septata intestinalis"
+      }
+    },
+    {
+      "tax": "tax-027",
+      "nombre": "Enterocytozoon bieneusi",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "32819-5"
+      ],
+      "estadios": [
+        "espora"
+      ],
+      "habitat": "Enterocitos del intestino delgado; posible diseminación a vías biliares, riñón, ojos y otros órganos según especie e inmunidad",
+      "enfermedad": "Microsporidiosis",
+      "snomed": {
+        "codigo": "11221006",
+        "display": "Enterocytozoon bieneusi"
+      }
+    },
+    {
+      "tax": "tax-028",
+      "nombre": "Dientamoeba fragilis",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "trofozoíto"
+      ],
+      "habitat": "Luz del intestino grueso (ciego y colon); algunos también en intestino delgado según especie",
+      "enfermedad": "Dientamoebiasis",
+      "snomed": {
+        "codigo": "41542000",
+        "display": "Dientamoeba fragilis"
+      }
+    },
+    {
+      "tax": "tax-029",
+      "nombre": "Entamoeba gingivalis",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [],
+      "estadios": [
+        "trofozoíto"
+      ],
+      "habitat": "Cavidad oral (surco gingival, placa dental y bolsas periodontales)",
+      "enfermedad": "",
+      "snomed": {
+        "codigo": "44457009",
+        "display": "Entamoeba gingivalis"
+      }
+    },
+    {
+      "tax": "tax-030",
+      "nombre": "Adenocephalus/Dibothriocephalus complex",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "complex",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "proglótide",
+        "escólex"
+      ],
+      "habitat": "Intestino delgado (luz; adultos)",
+      "enfermedad": "Dibotriocefalosis / difilobotriasis",
+      "snomed": null
+    },
+    {
+      "tax": "tax-031",
+      "nombre": "Adenocephalus pacificus",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [
+        "Diphyllobothrium pacificum"
+      ],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "proglótide",
+        "escólex"
+      ],
+      "habitat": "Intestino delgado (luz; adultos)",
+      "enfermedad": "Dibotriocefalosis / difilobotriasis",
+      "snomed": {
+        "codigo": "86438003",
+        "display": "Adenocephalus pacificus"
+      }
+    },
+    {
+      "tax": "tax-032",
+      "nombre": "Dibothriocephalus latus",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [
+        "Diphyllobothrium latum"
+      ],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "proglótide",
+        "escólex"
+      ],
+      "habitat": "Intestino delgado (luz; adultos)",
+      "enfermedad": "Dibotriocefalosis / difilobotriasis",
+      "snomed": {
+        "codigo": "40406002",
+        "display": "Dibothriocephalus latus"
+      }
+    },
+    {
+      "tax": "tax-033",
+      "nombre": "Dibothriocephalus dendriticus",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [
+        "Diphyllobothrium dendriticum"
+      ],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "proglótide",
+        "escólex"
+      ],
+      "habitat": "Intestino delgado (luz; adultos)",
+      "enfermedad": "Dibotriocefalosis / difilobotriasis",
+      "snomed": {
+        "codigo": "41597005",
+        "display": "Dibothriocephalus dendriticus"
+      }
+    },
+    {
+      "tax": "tax-034",
+      "nombre": "Dipylidium caninum",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "paquetes de huevos",
+        "proglótide"
+      ],
+      "habitat": "Intestino delgado (luz; adultos)",
+      "enfermedad": "Dipilidiasis",
+      "snomed": {
+        "codigo": "72883000",
+        "display": "Dipylidium caninum"
+      }
+    },
+    {
+      "tax": "tax-035",
+      "nombre": "Hymenolepis spp.",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "proglótide",
+        "escólex"
+      ],
+      "habitat": "Intestino delgado (luz; adultos)",
+      "enfermedad": "Himenolepiasis",
+      "snomed": {
+        "codigo": "76403008",
+        "display": "Hymenolepis",
+        "via": "Hymenolepis"
+      }
+    },
+    {
+      "tax": "tax-036",
+      "nombre": "Hymenolepis diminuta",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Intestino delgado (luz; adultos)",
+      "enfermedad": "Himenolepiasis",
+      "snomed": {
+        "codigo": "23895005",
+        "display": "Hymenolepis diminuta"
+      }
+    },
+    {
+      "tax": "tax-037",
+      "nombre": "Hymenolepis nana",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [
+        "Rodentolepis nana"
+      ],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Intestino delgado (luz; adultos)",
+      "enfermedad": "Himenolepiasis",
+      "snomed": {
+        "codigo": "74311004",
+        "display": "Rodentolepis nana",
+        "via": "Rodentolepis nana"
+      }
+    },
+    {
+      "tax": "tax-038",
+      "nombre": "Taenia spp.",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "proglótide",
+        "escólex"
+      ],
+      "habitat": "Intestino delgado (luz; adultos)",
+      "enfermedad": "Teniasis",
+      "snomed": {
+        "codigo": "28625000",
+        "display": "Taenia",
+        "via": "Taenia"
+      }
+    },
+    {
+      "tax": "tax-039",
+      "nombre": "Taenia solium",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "proglótide",
+        "escólex",
+        "cisticerco"
+      ],
+      "habitat": "Intestino delgado (adulto); SNC, músculo, tejido subcutáneo y ojo (cisticercos en infección larvaria)",
+      "enfermedad": "Teniasis; cisticercosis",
+      "snomed": {
+        "codigo": "17966003",
+        "display": "Taenia solium"
+      }
+    },
+    {
+      "tax": "tax-040",
+      "nombre": "Taenia saginata",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "proglótide",
+        "escólex"
+      ],
+      "habitat": "Intestino delgado (luz; adultos)",
+      "enfermedad": "Teniasis",
+      "snomed": {
+        "codigo": "61085008",
+        "display": "Taenia saginata"
+      }
+    },
+    {
+      "tax": "tax-041",
+      "nombre": "Taenia asiatica",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "proglótide"
+      ],
+      "habitat": "Intestino delgado (luz; adultos)",
+      "enfermedad": "Teniasis",
+      "snomed": null
+    },
+    {
+      "tax": "tax-042",
+      "nombre": "Ascaris lumbricoides",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo fértil/infértil",
+        "adulto"
+      ],
+      "habitat": "Intestino delgado (adultos); hígado y pulmones durante migración larvaria",
+      "enfermedad": "Ascariasis",
+      "snomed": {
+        "codigo": "19061001",
+        "display": "Ascaris lumbricoides"
+      }
+    },
+    {
+      "tax": "tax-043",
+      "nombre": "Ancylostomatidae",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "family",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Intestino delgado (duodeno y yeyuno; adultos adheridos a mucosa)",
+      "enfermedad": "Anquilostomiasis",
+      "snomed": {
+        "codigo": "359762003",
+        "display": "Family Ancylostomatidae",
+        "via": "Family Ancylostomatidae"
+      }
+    },
+    {
+      "tax": "tax-044",
+      "nombre": "Necator americanus",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "larva",
+        "adulto"
+      ],
+      "habitat": "Intestino delgado (duodeno y yeyuno; adultos adheridos a mucosa)",
+      "enfermedad": "Uncinariasis",
+      "snomed": {
+        "codigo": "43905006",
+        "display": "Necator americanus"
+      }
+    },
+    {
+      "tax": "tax-045",
+      "nombre": "Ancylostoma duodenale",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "larva",
+        "adulto"
+      ],
+      "habitat": "Intestino delgado (duodeno y yeyuno; adultos adheridos a mucosa)",
+      "enfermedad": "Anquilostomiasis",
+      "snomed": {
+        "codigo": "81559006",
+        "display": "Ancylostoma duodenale"
+      }
+    },
+    {
+      "tax": "tax-046",
+      "nombre": "Enterobius vermicularis",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "6676-1",
+        "10704-5"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Intestino grueso (ciego, apéndice y colon); región perianal para oviposición",
+      "enfermedad": "Enterobiasis",
+      "snomed": {
+        "codigo": "55008000",
+        "display": "Enterobius vermicularis"
+      }
+    },
+    {
+      "tax": "tax-047",
+      "nombre": "Enterobius spp.",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "6676-1",
+        "10704-5"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Intestino grueso (ciego, apéndice y colon); región perianal para oviposición",
+      "enfermedad": "Enterobiasis",
+      "snomed": {
+        "codigo": "88569009",
+        "display": "Enterobius",
+        "via": "Enterobius"
+      }
+    },
+    {
+      "tax": "tax-048",
+      "nombre": "Anisakidae",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "family",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "larva l3"
+      ],
+      "habitat": "Pared gástrica e intestinal (larvas); ocasionalmente peritoneo y otros tejidos",
+      "enfermedad": "Anisakiasis",
+      "snomed": {
+        "codigo": "264406004",
+        "display": "Anisakidae"
+      }
+    },
+    {
+      "tax": "tax-049",
+      "nombre": "Anisakis simplex",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "larva l3"
+      ],
+      "habitat": "Pared gástrica e intestinal (larvas); ocasionalmente peritoneo y otros tejidos",
+      "enfermedad": "Anisakiasis",
+      "snomed": {
+        "codigo": "3706005",
+        "display": "Anisakis simplex"
+      }
+    },
+    {
+      "tax": "tax-050",
+      "nombre": "Pseudoterranova spp.",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [],
+      "estadios": [
+        "larva l3"
+      ],
+      "habitat": "Pared gástrica e intestinal (larvas); ocasionalmente peritoneo y otros tejidos",
+      "enfermedad": "Anisakiasis",
+      "snomed": {
+        "codigo": "46937003",
+        "display": "Pseudoterranova",
+        "via": "Pseudoterranova"
+      }
+    },
+    {
+      "tax": "tax-051",
+      "nombre": "Contracaecum spp.",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [],
+      "estadios": [
+        "larva l3"
+      ],
+      "habitat": "Pared gástrica e intestinal (larvas); ocasionalmente peritoneo y otros tejidos",
+      "enfermedad": "Anisakiasis",
+      "snomed": {
+        "codigo": "81169006",
+        "display": "Contracaecum",
+        "via": "Contracaecum"
+      }
+    },
+    {
+      "tax": "tax-052",
+      "nombre": "Strongyloides stercoralis",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "larva rabditiforme/filariforme",
+        "adulto"
+      ],
+      "habitat": "Mucosa del intestino delgado (hembras partenogenéticas); piel y pulmones durante migración; diseminación en hiperinfección",
+      "enfermedad": "Estrongiloidiasis",
+      "snomed": {
+        "codigo": "42625000",
+        "display": "Strongyloides stercoralis"
+      }
+    },
+    {
+      "tax": "tax-053",
+      "nombre": "Trichuris trichiura",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Intestino grueso (ciego y colon; adultos insertos en mucosa)",
+      "enfermedad": "Tricuriasis",
+      "snomed": {
+        "codigo": "5378007",
+        "display": "Trichuris trichiura"
+      }
+    },
+    {
+      "tax": "tax-054",
+      "nombre": "Paracapillaria spp.",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [
+        "Capillaria"
+      ],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Intestino delgado (mucosa o luz, según taxón)",
+      "enfermedad": "Paracapillaria",
+      "snomed": {
+        "codigo": "48158000",
+        "display": "Capillaria",
+        "via": "Capillaria"
+      }
+    },
+    {
+      "tax": "tax-055",
+      "nombre": "Trichostrongylus spp",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "larva",
+        "adulto"
+      ],
+      "habitat": "Intestino delgado (mucosa o luz, según taxón)",
+      "enfermedad": "Trichostrongyliasis",
+      "snomed": {
+        "codigo": "20065004",
+        "display": "Trichostrongylus",
+        "via": "Trichostrongylus"
+      }
+    },
+    {
+      "tax": "tax-056",
+      "nombre": "Fasciolopsis buski",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Intestino delgado (mucosa o luz, según taxón)",
+      "enfermedad": "Fasciolopsiasis",
+      "snomed": {
+        "codigo": "28383004",
+        "display": "Fasciolopsis buski"
+      }
+    },
+    {
+      "tax": "tax-057",
+      "nombre": "Echinostoma spp.",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Intestino delgado (mucosa o luz, según taxón)",
+      "enfermedad": "Echinostomiasis",
+      "snomed": {
+        "codigo": "65894008",
+        "display": "Echinostoma",
+        "via": "Echinostoma"
+      }
+    },
+    {
+      "tax": "tax-058",
+      "nombre": "Heterophyes heterophyes",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Intestino delgado (mucosa o luz, según taxón)",
+      "enfermedad": "Heterofiasis",
+      "snomed": {
+        "codigo": "15310008",
+        "display": "Heterophyes heterophyes"
+      }
+    },
+    {
+      "tax": "tax-059",
+      "nombre": "Metagonimus yokogawai",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Intestino delgado (mucosa o luz, según taxón)",
+      "enfermedad": "Metagonimiasis",
+      "snomed": {
+        "codigo": "77378006",
+        "display": "Metagonimus yokogawai"
+      }
+    },
+    {
+      "tax": "tax-060",
+      "nombre": "Macracanthorhynchus spp.",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Intestino delgado (mucosa o luz, según taxón)",
+      "enfermedad": "Acanthocephaliasis",
+      "snomed": {
+        "codigo": "34322009",
+        "display": "Genus Macracanthorhynchus",
+        "via": "Genus Macracanthorhynchus"
+      }
+    },
+    {
+      "tax": "tax-061",
+      "nombre": "Moniliformis moniliformis",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "adult"
+      ],
+      "habitat": "Intestino delgado (mucosa o luz, según taxón)",
+      "enfermedad": "Acanthocephaliasis",
+      "snomed": {
+        "codigo": "62642000",
+        "display": "Moniliformis moniliformis"
+      }
+    },
+    {
+      "tax": "tax-062",
+      "nombre": "Fasciola spp.",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Conductos biliares intrahepáticos de mayor calibre (adultos); parénquima hepático durante migración inmadura",
+      "enfermedad": "Fascioliasis",
+      "snomed": {
+        "codigo": "28291005",
+        "display": "Genus Fasciola",
+        "via": "Genus Fasciola"
+      }
+    },
+    {
+      "tax": "tax-063",
+      "nombre": "Fasciola gigantica",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Conductos biliares intrahepáticos de mayor calibre (adultos); parénquima hepático durante migración inmadura",
+      "enfermedad": "Fascioliasis",
+      "snomed": {
+        "codigo": "91231009",
+        "display": "Fasciola gigantica"
+      }
+    },
+    {
+      "tax": "tax-064",
+      "nombre": "Fasciola hepatica",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Conductos biliares intrahepáticos de mayor calibre (adultos); parénquima hepático durante migración inmadura",
+      "enfermedad": "Fascioliasis",
+      "snomed": {
+        "codigo": "112450003",
+        "display": "Fasciola hepatica"
+      }
+    },
+    {
+      "tax": "tax-065",
+      "nombre": "Clonorchis sinensis",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Conductos biliares intrahepáticos (adultos); ocasionalmente vesícula biliar y conductos pancreáticos",
+      "enfermedad": "Clonorquiasis",
+      "snomed": {
+        "codigo": "36559008",
+        "display": "Clonorchis sinensis"
+      }
+    },
+    {
+      "tax": "tax-066",
+      "nombre": "Dicrocoelium dendriticum",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Conductos biliares intrahepáticos (adultos); ocasionalmente vesícula biliar y conductos pancreáticos",
+      "enfermedad": "Dicrocoeliasis",
+      "snomed": {
+        "codigo": "74389006",
+        "display": "Dicrocoelium dendriticum"
+      }
+    },
+    {
+      "tax": "tax-067",
+      "nombre": "Opisthorchis viverrini",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Conductos biliares intrahepáticos (adultos); ocasionalmente vesícula biliar y conductos pancreáticos",
+      "enfermedad": "Opistorquiasis",
+      "snomed": {
+        "codigo": "71650008",
+        "display": "Opisthorchis viverrini"
+      }
+    },
+    {
+      "tax": "tax-068",
+      "nombre": "Plasmodium spp.",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "32206-5",
+        "51587-4",
+        "637-9",
+        "41451-6"
+      ],
+      "estadios": [
+        "anillo",
+        "trofozoíto",
+        "esquizonte",
+        "gametocito"
+      ],
+      "habitat": "Sangre (eritrocitos); hígado (hepatocitos durante fase preeritrocítica); hipnozoítos hepáticos en P. vivax y P. ovale",
+      "enfermedad": "Malaria",
+      "snomed": {
+        "codigo": "34706006",
+        "display": "Plasmodium",
+        "via": "Plasmodium"
+      }
+    },
+    {
+      "tax": "tax-069",
+      "nombre": "Plasmodium falciparum",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "32206-5",
+        "51587-4",
+        "637-9",
+        "41451-6"
+      ],
+      "estadios": [
+        "anillo",
+        "trofozoíto",
+        "esquizonte",
+        "gametocito"
+      ],
+      "habitat": "Sangre (eritrocitos); hígado (hepatocitos durante fase preeritrocítica); hipnozoítos hepáticos en P. vivax y P. ovale",
+      "enfermedad": "Malaria grave",
+      "snomed": {
+        "codigo": "30020004",
+        "display": "Plasmodium falciparum"
+      }
+    },
+    {
+      "tax": "tax-070",
+      "nombre": "Plasmodium knowlesi",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "32206-5",
+        "51587-4",
+        "637-9",
+        "41451-6"
+      ],
+      "estadios": [
+        "anillo",
+        "trofozoíto",
+        "esquizonte",
+        "gametocito"
+      ],
+      "habitat": "Sangre (eritrocitos); hígado (hepatocitos durante fase preeritrocítica); hipnozoítos hepáticos en P. vivax y P. ovale",
+      "enfermedad": "Malaria zoonótica",
+      "snomed": {
+        "codigo": "49918008",
+        "display": "Plasmodium knowlesi"
+      }
+    },
+    {
+      "tax": "tax-071",
+      "nombre": "Plasmodium malariae",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "32206-5",
+        "51587-4",
+        "637-9",
+        "41451-6"
+      ],
+      "estadios": [
+        "anillo",
+        "trofozoíto",
+        "esquizonte",
+        "gametocito"
+      ],
+      "habitat": "Sangre (eritrocitos); hígado (hepatocitos durante fase preeritrocítica); hipnozoítos hepáticos en P. vivax y P. ovale",
+      "enfermedad": "Malaria",
+      "snomed": {
+        "codigo": "56395006",
+        "display": "Plasmodium malariae"
+      }
+    },
+    {
+      "tax": "tax-072",
+      "nombre": "Plasmodium ovale",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "32206-5",
+        "51587-4",
+        "637-9",
+        "41451-6"
+      ],
+      "estadios": [
+        "anillo",
+        "trofozoíto",
+        "esquizonte",
+        "gametocito"
+      ],
+      "habitat": "Sangre (eritrocitos); hígado (hepatocitos durante fase preeritrocítica); hipnozoítos hepáticos en P. vivax y P. ovale",
+      "enfermedad": "Malaria",
+      "snomed": {
+        "codigo": "18508006",
+        "display": "Plasmodium ovale"
+      }
+    },
+    {
+      "tax": "tax-073",
+      "nombre": "Plasmodium vivax",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "32206-5",
+        "51587-4",
+        "637-9",
+        "41451-6"
+      ],
+      "estadios": [
+        "anillo",
+        "trofozoíto",
+        "esquizonte",
+        "gametocito"
+      ],
+      "habitat": "Sangre (eritrocitos); hígado (hepatocitos durante fase preeritrocítica); hipnozoítos hepáticos en P. vivax y P. ovale",
+      "enfermedad": "Malaria",
+      "snomed": {
+        "codigo": "74746009",
+        "display": "Plasmodium vivax"
+      }
+    },
+    {
+      "tax": "tax-074",
+      "nombre": "Babesia spp.",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "91900-1",
+        "17784-0"
+      ],
+      "estadios": [
+        "trofozoíto"
+      ],
+      "habitat": "Sangre (interior de eritrocitos)",
+      "enfermedad": "Babesiosis",
+      "snomed": {
+        "codigo": "35029001",
+        "display": "Babesia",
+        "via": "Babesia"
+      }
+    },
+    {
+      "tax": "tax-075",
+      "nombre": "Babesia divergens",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "91900-1",
+        "17784-0"
+      ],
+      "estadios": [
+        "formas intraeritrocitarias",
+        "tétradas"
+      ],
+      "habitat": "Sangre (interior de eritrocitos)",
+      "enfermedad": "Babesiosis",
+      "snomed": {
+        "codigo": "86432002",
+        "display": "Babesia divergens"
+      }
+    },
+    {
+      "tax": "tax-076",
+      "nombre": "Babesia microti",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10347-3",
+        "91900-1",
+        "17784-0"
+      ],
+      "estadios": [
+        "formas intraeritrocitarias",
+        "tétradas"
+      ],
+      "habitat": "Sangre (interior de eritrocitos)",
+      "enfermedad": "Babesiosis",
+      "snomed": {
+        "codigo": "76828008",
+        "display": "Babesia microti"
+      }
+    },
+    {
+      "tax": "tax-077",
+      "nombre": "Trypanosoma spp.",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "17784-0",
+        "91900-1"
+      ],
+      "estadios": [
+        "tripomastigote"
+      ],
+      "habitat": "Sangre y tejidos; distribución según especie",
+      "enfermedad": "Tripanosomiasis",
+      "snomed": {
+        "codigo": "40740003",
+        "display": "Genus Trypanosoma",
+        "via": "Genus Trypanosoma"
+      }
+    },
+    {
+      "tax": "tax-078",
+      "nombre": "Trypanosoma cruzi",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "17784-0",
+        "91900-1"
+      ],
+      "estadios": [
+        "tripomastigote",
+        "amastigote"
+      ],
+      "habitat": "Sangre (tripomastigotes); músculo cardíaco, músculo liso y otros tejidos nucleados (amastigotes intracelulares)",
+      "enfermedad": "Enfermedad de Chagas",
+      "snomed": {
+        "codigo": "88274000",
+        "display": "Trypanosoma cruzi"
+      }
+    },
+    {
+      "tax": "tax-079",
+      "nombre": "Trypanosoma brucei",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "17784-0",
+        "91900-1"
+      ],
+      "estadios": [
+        "tripomastigote"
+      ],
+      "habitat": "Sangre, linfa y líquido cefalorraquídeo/SNC en fase neurológica (extracelular)",
+      "enfermedad": "Tripanosomiasis africana",
+      "snomed": {
+        "codigo": "243659009",
+        "display": "Trypanosoma brucei"
+      }
+    },
+    {
+      "tax": "tax-080",
+      "nombre": "Trypanosoma brucei gambiense",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "17784-0",
+        "91900-1"
+      ],
+      "estadios": [
+        "tripomastigote"
+      ],
+      "habitat": "Sangre, linfa y líquido cefalorraquídeo/SNC en fase neurológica (extracelular)",
+      "enfermedad": "Tripanosomiasis africana occidental",
+      "snomed": {
+        "codigo": "20027006",
+        "display": "Trypanosoma brucei gambiense"
+      }
+    },
+    {
+      "tax": "tax-081",
+      "nombre": "Trypanosoma brucei rhodesiense",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "17784-0",
+        "91900-1"
+      ],
+      "estadios": [
+        "tripomastigote"
+      ],
+      "habitat": "Sangre, linfa y líquido cefalorraquídeo/SNC en fase neurológica (extracelular)",
+      "enfermedad": "Tripanosomiasis africana oriental",
+      "snomed": {
+        "codigo": "79513002",
+        "display": "Trypanosoma brucei rhodesiense"
+      }
+    },
+    {
+      "tax": "tax-082",
+      "nombre": "Acanthamoeba spp.",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "trofozoíto",
+        "quiste"
+      ],
+      "habitat": "Córnea (queratitis); piel y sistema nervioso central (encefalitis); otros tejidos en enfermedad diseminada",
+      "enfermedad": "Queratitis; encefalitis granulomatosa",
+      "snomed": {
+        "codigo": "50875003",
+        "display": "Acanthamoeba",
+        "via": "Acanthamoeba"
+      }
+    },
+    {
+      "tax": "tax-083",
+      "nombre": "Acanthamoeba castellanii",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "trofozoíto",
+        "quiste"
+      ],
+      "habitat": "Córnea (queratitis); piel y sistema nervioso central (encefalitis); otros tejidos en enfermedad diseminada",
+      "enfermedad": "Queratitis; encefalitis granulomatosa",
+      "snomed": {
+        "codigo": "91540007",
+        "display": "Acanthamoeba castellanii"
+      }
+    },
+    {
+      "tax": "tax-084",
+      "nombre": "Balamuthia mandrillaris",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "trofozoíto",
+        "quiste"
+      ],
+      "habitat": "Piel y sistema nervioso central (encéfalo); posible diseminación a otros órganos",
+      "enfermedad": "Encefalitis amebiana granulomatosa",
+      "snomed": {
+        "codigo": "115635005",
+        "display": "Balamuthia mandrillaris"
+      }
+    },
+    {
+      "tax": "tax-085",
+      "nombre": "Naegleria fowleri",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "trofozoíto",
+        "forma flagelada",
+        "quiste ambiental"
+      ],
+      "habitat": "Mucosa olfatoria y sistema nervioso central (encéfalo y meninges)",
+      "enfermedad": "Meningoencefalitis amebiana primaria",
+      "snomed": {
+        "codigo": "20942007",
+        "display": "Naegleria fowleri"
+      }
+    },
+    {
+      "tax": "tax-086",
+      "nombre": "Sappinia pedata",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "trofozoíto",
+        "quiste"
+      ],
+      "habitat": "Sistema nervioso central (encéfalo; infección humana excepcional)",
+      "enfermedad": "Encefalitis amebiana rara",
+      "snomed": {
+        "codigo": "785839000",
+        "display": "Sappinia pedata"
+      }
+    },
+    {
+      "tax": "tax-087",
+      "nombre": "Toxoplasma spp.",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "taquizoíto",
+        "quiste tisular"
+      ],
+      "habitat": "Células nucleadas de múltiples tejidos: músculo esquelético, miocardio, encéfalo, retina, ganglios y placenta",
+      "enfermedad": "Toxoplasmosis",
+      "snomed": {
+        "codigo": "61949005",
+        "display": "Toxoplasma",
+        "via": "Toxoplasma"
+      }
+    },
+    {
+      "tax": "tax-088",
+      "nombre": "Toxoplasma gondii",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "taquizoíto",
+        "quiste tisular"
+      ],
+      "habitat": "Células nucleadas de múltiples tejidos: músculo esquelético, miocardio, encéfalo, retina, ganglios y placenta",
+      "enfermedad": "Toxoplasmosis",
+      "snomed": {
+        "codigo": "4649006",
+        "display": "Toxoplasma gondii"
+      }
+    },
+    {
+      "tax": "tax-089",
+      "nombre": "Leishmania spp.",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "17784-0",
+        "91900-1"
+      ],
+      "estadios": [
+        "amastigote",
+        "promastigote"
+      ],
+      "habitat": "Macrófagos de piel, mucosas y sistema reticuloendotelial (bazo, hígado, médula ósea), según especie",
+      "enfermedad": "Leishmaniasis",
+      "snomed": {
+        "codigo": "79357004",
+        "display": "Leishmania",
+        "via": "Leishmania"
+      }
+    },
+    {
+      "tax": "tax-090",
+      "nombre": "Leishmania donovani",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "17784-0",
+        "91900-1"
+      ],
+      "estadios": [
+        "amastigote",
+        "promastigote"
+      ],
+      "habitat": "Macrófagos del bazo, hígado, médula ósea y ganglios linfáticos",
+      "enfermedad": "Leishmaniasis visceral",
+      "snomed": null
+    },
+    {
+      "tax": "tax-091",
+      "nombre": "Leishmania infantum",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [
+        "L. chagasi"
+      ],
+      "loinc": [
+        "17784-0",
+        "91900-1"
+      ],
+      "estadios": [
+        "amastigote",
+        "promastigote"
+      ],
+      "habitat": "Macrófagos del bazo, hígado, médula ósea y ganglios linfáticos",
+      "enfermedad": "Leishmaniasis visceral",
+      "snomed": {
+        "codigo": "243655003",
+        "display": "Leishmania infantum"
+      }
+    },
+    {
+      "tax": "tax-092",
+      "nombre": "Leishmania braziliensis",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "17784-0",
+        "91900-1"
+      ],
+      "estadios": [
+        "amastigote",
+        "promastigote"
+      ],
+      "habitat": "Macrófagos de piel y mucosas nasofaríngeas/orales (según evolución)",
+      "enfermedad": "Leishmaniasis cutánea/mucocutánea",
+      "snomed": {
+        "codigo": "83196002",
+        "display": "Leishmania braziliensis"
+      }
+    },
+    {
+      "tax": "tax-093",
+      "nombre": "Leishmania major",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "17784-0",
+        "91900-1"
+      ],
+      "estadios": [
+        "amastigote",
+        "promastigote"
+      ],
+      "habitat": "Macrófagos de piel y tejido subcutáneo; ocasionalmente mucosas según especie",
+      "enfermedad": "Leishmaniasis cutánea",
+      "snomed": {
+        "codigo": "51278002",
+        "display": "Leishmania major"
+      }
+    },
+    {
+      "tax": "tax-094",
+      "nombre": "Leishmania mexicana",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "17784-0",
+        "91900-1"
+      ],
+      "estadios": [
+        "amastigote",
+        "promastigote"
+      ],
+      "habitat": "Macrófagos de piel y tejido subcutáneo; ocasionalmente mucosas según especie",
+      "enfermedad": "Leishmaniasis cutánea",
+      "snomed": {
+        "codigo": "243654004",
+        "display": "Leishmania mexicana"
+      }
+    },
+    {
+      "tax": "tax-095",
+      "nombre": "Leishmania tropica",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "17784-0",
+        "91900-1"
+      ],
+      "estadios": [
+        "amastigote",
+        "promastigote"
+      ],
+      "habitat": "Macrófagos de piel y tejido subcutáneo; ocasionalmente mucosas según especie",
+      "enfermedad": "Leishmaniasis cutánea",
+      "snomed": {
+        "codigo": "243653005",
+        "display": "Leishmania tropica"
+      }
+    },
+    {
+      "tax": "tax-096",
+      "nombre": "Echinococcus spp.",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto",
+        "protoescolex",
+        "quiste"
+      ],
+      "habitat": "Hígado (quistes larvarios); pulmones y otros órganos, incluido SNC; intestino delgado de cánidos (adultos)",
+      "enfermedad": "Equinococosis",
+      "snomed": {
+        "codigo": "47622006",
+        "display": "Genus Echinococcus",
+        "via": "Genus Echinococcus"
+      }
+    },
+    {
+      "tax": "tax-097",
+      "nombre": "Echinococcus granulosus",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [
+        "Complejo E. granulosus sensu lato"
+      ],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "quiste hidatídico",
+        "protoescólex",
+        "ganchos"
+      ],
+      "habitat": "Hígado (quistes larvarios); pulmones y otros órganos, incluido SNC; intestino delgado de cánidos (adultos)",
+      "enfermedad": "Equinococosis quística",
+      "snomed": {
+        "codigo": "243672005",
+        "display": "Echinococcus granulosus"
+      }
+    },
+    {
+      "tax": "tax-098",
+      "nombre": "Echinococcus multilocularis",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "lesión alveolar",
+        "protoescólex raro"
+      ],
+      "habitat": "Hígado (lesión larvaria alveolar); posible extensión a pulmón y SNC; intestino de cánidos (adultos)",
+      "enfermedad": "Equinococosis alveolar",
+      "snomed": {
+        "codigo": "86648009",
+        "display": "Echinococcus multilocularis"
+      }
+    },
+    {
+      "tax": "tax-099",
+      "nombre": "Spirometra",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "plerocercoide/espargano"
+      ],
+      "habitat": "Tejido subcutáneo, músculo, ojo y ocasionalmente SNC (larvas plerocercoides)",
+      "enfermedad": "Esparganosis",
+      "snomed": {
+        "codigo": "112458005",
+        "display": "Spirometra"
+      }
+    },
+    {
+      "tax": "tax-100",
+      "nombre": "Angiostrongylus spp.",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "larva/adulto raro"
+      ],
+      "habitat": "SNC/meninges o pared intestinal y vasos mesentéricos, según especie (larvas)",
+      "enfermedad": "Angiostrongiliasis",
+      "snomed": {
+        "codigo": "7153002",
+        "display": "Angiostrongylus",
+        "via": "Angiostrongylus"
+      }
+    },
+    {
+      "tax": "tax-101",
+      "nombre": "Angiostrongylus cantonensis",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "larva/adulto raro"
+      ],
+      "habitat": "Meninges y sistema nervioso central (larvas; espacio subaracnoideo)",
+      "enfermedad": "Meningitis eosinofílica",
+      "snomed": {
+        "codigo": "48708001",
+        "display": "Angiostrongylus cantonensis"
+      }
+    },
+    {
+      "tax": "tax-102",
+      "nombre": "Angiostrongylus costaricensis",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "larva",
+        "adulto en tejido"
+      ],
+      "habitat": "Pared intestinal y arterias mesentéricas (larvas; región ileocecal)",
+      "enfermedad": "Angiostrongiliasis abdominal",
+      "snomed": {
+        "codigo": "72966005",
+        "display": "Angiostrongylus costaricensis"
+      }
+    },
+    {
+      "tax": "tax-103",
+      "nombre": "Toxocara spp.",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "larva",
+        "adulto"
+      ],
+      "habitat": "Hígado, pulmón, ojo, SNC y otros tejidos (larvas migratorias)",
+      "enfermedad": "Toxocariasis",
+      "snomed": {
+        "codigo": "39091000",
+        "display": "Toxocara",
+        "via": "Toxocara"
+      }
+    },
+    {
+      "tax": "tax-104",
+      "nombre": "Toxocara canis",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "larva",
+        "huevo ambiental"
+      ],
+      "habitat": "Hígado, pulmón, ojo, SNC y otros tejidos (larvas migratorias)",
+      "enfermedad": "Toxocariasis/larva migrans visceral u ocular",
+      "snomed": {
+        "codigo": "88857009",
+        "display": "Toxocara canis"
+      }
+    },
+    {
+      "tax": "tax-105",
+      "nombre": "Toxocara cati",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "larva",
+        "huevo ambiental"
+      ],
+      "habitat": "Hígado, pulmón, ojo, SNC y otros tejidos (larvas migratorias)",
+      "enfermedad": "Toxocariasis",
+      "snomed": {
+        "codigo": "36283001",
+        "display": "Toxocara cati"
+      }
+    },
+    {
+      "tax": "tax-106",
+      "nombre": "Trichinella spp.",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "larva"
+      ],
+      "habitat": "Intestino delgado (adultos); fibras de músculo esquelético estriado (larvas intracelulares)",
+      "enfermedad": "Triquinosis",
+      "snomed": {
+        "codigo": "37900004",
+        "display": "Trichinella",
+        "via": "Trichinella"
+      }
+    },
+    {
+      "tax": "tax-107",
+      "nombre": "Trichinella spiralis",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "larva enquistada"
+      ],
+      "habitat": "Intestino delgado (adultos); fibras de músculo esquelético estriado (larvas intracelulares)",
+      "enfermedad": "Triquinosis",
+      "snomed": {
+        "codigo": "16439004",
+        "display": "Trichinella spiralis"
+      }
+    },
+    {
+      "tax": "tax-108",
+      "nombre": "Gnathostoma spinigerum",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "larva"
+      ],
+      "habitat": "Piel y tejido subcutáneo (larvas migratorias); ocasionalmente ojo y SNC",
+      "enfermedad": "Gnatostomiasis",
+      "snomed": {
+        "codigo": "30429007",
+        "display": "Gnathostoma spinigerum"
+      }
+    },
+    {
+      "tax": "tax-109",
+      "nombre": "Baylisascaris procyonis",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "larva",
+        "huevo ambiental"
+      ],
+      "habitat": "SNC, retina y vísceras (larvas migratorias)",
+      "enfermedad": "Larva migrans neural/ocular",
+      "snomed": {
+        "codigo": "59496007",
+        "display": "Baylisascaris procyonis"
+      }
+    },
+    {
+      "tax": "tax-110",
+      "nombre": "Dirofilaria repens",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "larva/adult"
+      ],
+      "habitat": "Tejido subcutáneo y región ocular (adultos); nódulos pulmonares (infección humana accidental)",
+      "enfermedad": "Dirofilariasis",
+      "snomed": {
+        "codigo": "36495003",
+        "display": "Dirofilaria repens"
+      }
+    },
+    {
+      "tax": "tax-111",
+      "nombre": "Dracunculus medinensis",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "adulto hembra",
+        "larva"
+      ],
+      "habitat": "Tejido subcutáneo y piel, especialmente extremidades inferiores (hembra adulta)",
+      "enfermedad": "Dracunculiasis",
+      "snomed": {
+        "codigo": "3824001",
+        "display": "Dracunculus medinensis"
+      }
+    },
+    {
+      "tax": "tax-112",
+      "nombre": "Filariae",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "superfamily",
+      "sinonimos": [],
+      "loinc": [
+        "76699-8"
+      ],
+      "estadios": [
+        "microfilaria",
+        "adulto"
+      ],
+      "habitat": "Vasos linfáticos, tejido subcutáneo, cavidades serosas o sangre, según especie y estadio",
+      "enfermedad": "Filariasis",
+      "snomed": null
+    },
+    {
+      "tax": "tax-113",
+      "nombre": "Wuchereria bancrofti",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "76699-8",
+        "91900-1",
+        "17784-0"
+      ],
+      "estadios": [
+        "microfilaria",
+        "adulto"
+      ],
+      "habitat": "Vasos y ganglios linfáticos (adultos); sangre periférica (microfilarias)",
+      "enfermedad": "Filariasis linfática",
+      "snomed": {
+        "codigo": "84925004",
+        "display": "Wuchereria bancrofti"
+      }
+    },
+    {
+      "tax": "tax-114",
+      "nombre": "Brugia sp.",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "76699-8",
+        "91900-1",
+        "17784-0"
+      ],
+      "estadios": [
+        "microfilaria",
+        "adulto"
+      ],
+      "habitat": "Vasos y ganglios linfáticos (adultos); sangre periférica (microfilarias)",
+      "enfermedad": "Filariasis linfática",
+      "snomed": {
+        "codigo": "58998006",
+        "display": "Brugia",
+        "via": "Brugia"
+      }
+    },
+    {
+      "tax": "tax-115",
+      "nombre": "Brugia malayi",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "76699-8",
+        "91900-1",
+        "17784-0"
+      ],
+      "estadios": [
+        "microfilaria",
+        "adulto"
+      ],
+      "habitat": "Vasos y ganglios linfáticos (adultos); sangre periférica (microfilarias)",
+      "enfermedad": "Filariasis linfática",
+      "snomed": {
+        "codigo": "112443002",
+        "display": "Brugia malayi"
+      }
+    },
+    {
+      "tax": "tax-116",
+      "nombre": "Brugia timori",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "76699-8",
+        "91900-1",
+        "17784-0"
+      ],
+      "estadios": [
+        "microfilaria",
+        "adulto"
+      ],
+      "habitat": "Vasos y ganglios linfáticos (adultos); sangre periférica (microfilarias)",
+      "enfermedad": "Filariasis linfática",
+      "snomed": {
+        "codigo": "15475009",
+        "display": "Brugia timori"
+      }
+    },
+    {
+      "tax": "tax-117",
+      "nombre": "Loa loa",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "76699-8",
+        "91900-1",
+        "17784-0"
+      ],
+      "estadios": [
+        "microfilaria",
+        "adulto"
+      ],
+      "habitat": "Tejido subcutáneo y conjuntiva ocular (adultos); sangre periférica (microfilarias)",
+      "enfermedad": "Loiasis",
+      "snomed": {
+        "codigo": "47759003",
+        "display": "Loa loa"
+      }
+    },
+    {
+      "tax": "tax-118",
+      "nombre": "Mansonella spp.",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "76699-8",
+        "91900-1",
+        "17784-0"
+      ],
+      "estadios": [
+        "microfilaria"
+      ],
+      "habitat": "Sangre periférica, piel o cavidades serosas, según especie",
+      "enfermedad": "Mansonelosis",
+      "snomed": {
+        "codigo": "21881004",
+        "display": "Mansonella",
+        "via": "Mansonella"
+      }
+    },
+    {
+      "tax": "tax-119",
+      "nombre": "Mansonella ozzardi",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "76699-8",
+        "91900-1",
+        "17784-0"
+      ],
+      "estadios": [
+        "microfilaria"
+      ],
+      "habitat": "Sangre periférica (microfilarias); tejidos subcutáneos (adultos)",
+      "enfermedad": "Mansonelosis",
+      "snomed": {
+        "codigo": "69560009",
+        "display": "Mansonella ozzardi"
+      }
+    },
+    {
+      "tax": "tax-120",
+      "nombre": "Mansonella perstans",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "76699-8",
+        "91900-1",
+        "17784-0"
+      ],
+      "estadios": [
+        "microfilaria"
+      ],
+      "habitat": "Cavidades serosas (pleura, peritoneo y pericardio; adultos); sangre periférica (microfilarias)",
+      "enfermedad": "Mansonelosis",
+      "snomed": {
+        "codigo": "243669003",
+        "display": "Mansonella perstans"
+      }
+    },
+    {
+      "tax": "tax-121",
+      "nombre": "Mansonella streptocerca",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "76699-8",
+        "91900-1",
+        "17784-0"
+      ],
+      "estadios": [
+        "microfilaria"
+      ],
+      "habitat": "Dermis y tejido subcutáneo (adultos y microfilarias)",
+      "enfermedad": "Mansonelosis cutánea",
+      "snomed": {
+        "codigo": "243668006",
+        "display": "Mansonella streptocerca"
+      }
+    },
+    {
+      "tax": "tax-122",
+      "nombre": "Onchocerca volvulus",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "76699-8",
+        "91900-1",
+        "17784-0"
+      ],
+      "estadios": [
+        "microfilaria",
+        "adulto"
+      ],
+      "habitat": "Nódulos subcutáneos (adultos); dermis y ojo (microfilarias)",
+      "enfermedad": "Oncocercosis",
+      "snomed": {
+        "codigo": "52397001",
+        "display": "Onchocerca volvulus"
+      }
+    },
+    {
+      "tax": "tax-123",
+      "nombre": "Trichomonas vaginalis",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "32766-8",
+        "91845-8"
+      ],
+      "estadios": [
+        "trofozoíto"
+      ],
+      "habitat": "Tracto urogenital: vagina, cérvix y uretra; uretra y próstata en varones",
+      "enfermedad": "Tricomoniasis",
+      "snomed": {
+        "codigo": "22417000",
+        "display": "Trichomonas vaginalis"
+      }
+    },
+    {
+      "tax": "tax-124",
+      "nombre": "Dioctophyme renale",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "egg/adult"
+      ],
+      "habitat": "Riñón (pelvis renal; adultos); vías urinarias",
+      "enfermedad": "Dioctophymiasis",
+      "snomed": {
+        "codigo": "63893004",
+        "display": "Dioctophyme renale"
+      }
+    },
+    {
+      "tax": "tax-125",
+      "nombre": "Schistosoma spp.",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Plexos venosos mesentéricos o vesicales, según especie (adultos); pared intestinal o vesical (huevos)",
+      "enfermedad": "Esquistosomiasis",
+      "snomed": {
+        "codigo": "53583001",
+        "display": "Schistosoma",
+        "via": "Schistosoma"
+      }
+    },
+    {
+      "tax": "tax-126",
+      "nombre": "Schistosoma haematobium",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Plexo venoso vesical y pélvico (adultos); pared vesical y tracto urinario (huevos)",
+      "enfermedad": "Esquistosomiasis urinaria",
+      "snomed": {
+        "codigo": "3294004",
+        "display": "Schistosoma haematobium"
+      }
+    },
+    {
+      "tax": "tax-127",
+      "nombre": "Schistosoma japonicum",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Venas mesentéricas (adultos); pared intestinal e hígado (huevos/granulomas)",
+      "enfermedad": "Esquistosomiasis intestinal",
+      "snomed": {
+        "codigo": "5249008",
+        "display": "Schistosoma japonicum"
+      }
+    },
+    {
+      "tax": "tax-128",
+      "nombre": "Schistosoma mansoni",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Venas mesentéricas (adultos); pared intestinal e hígado (huevos/granulomas)",
+      "enfermedad": "Esquistosomiasis intestinal/hepatoesplénica",
+      "snomed": {
+        "codigo": "11168007",
+        "display": "Schistosoma mansoni"
+      }
+    },
+    {
+      "tax": "tax-129",
+      "nombre": "Schistosoma mekongi",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Venas mesentéricas (adultos); pared intestinal e hígado (huevos/granulomas)",
+      "enfermedad": "Esquistosomiasis",
+      "snomed": {
+        "codigo": "75475007",
+        "display": "Schistosoma mekongi"
+      }
+    },
+    {
+      "tax": "tax-130",
+      "nombre": "Paragonimus spp.",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Pulmones (parénquima y quistes pulmonares); ocasionalmente SNC y otros tejidos",
+      "enfermedad": "Paragonimiasis",
+      "snomed": {
+        "codigo": "40294009",
+        "display": "Paragonimus",
+        "via": "Paragonimus"
+      }
+    },
+    {
+      "tax": "tax-131",
+      "nombre": "Paragonimus westermani",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "huevo",
+        "adulto"
+      ],
+      "habitat": "Pulmones (parénquima y quistes pulmonares); ocasionalmente SNC y otros tejidos",
+      "enfermedad": "Paragonimiasis",
+      "snomed": null
+    },
+    {
+      "tax": "tax-132",
+      "nombre": "Histoplasma capsulatum",
+      "clasificacion": "Parasitos tisulares y sanguíneos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "660-1"
+      ],
+      "estadios": [],
+      "habitat": "Macrófagos del sistema mononuclear fagocítico (pulmones, ganglios, hígado, bazo y médula ósea)",
+      "enfermedad": "Histoplasmosis",
+      "snomed": {
+        "codigo": "56596006",
+        "display": "Histoplasma capsulatum"
+      }
+    },
+    {
+      "tax": "tax-133",
+      "nombre": "Thelazia callipaeda",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "adult"
+      ],
+      "habitat": "Superficie ocular: saco conjuntival, conjuntiva y conductos lagrimales",
+      "enfermedad": "Thelaziasis",
+      "snomed": {
+        "codigo": "43686006",
+        "display": "Thelazia callipaeda"
+      }
+    },
+    {
+      "tax": "tax-134",
+      "nombre": "Philophthalmus spp.",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4",
+        "106048-2",
+        "106047-4"
+      ],
+      "estadios": [
+        "adulto"
+      ],
+      "habitat": "Conjuntiva y saco conjuntival (trematodos oculares)",
+      "enfermedad": "Philophthalmosis",
+      "snomed": {
+        "codigo": "36069006",
+        "display": "Philophthalmus",
+        "via": "Philophthalmus"
+      }
+    },
+    {
+      "tax": "tax-135",
+      "nombre": "Demodex spp.",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "ácaro",
+        "huevo",
+        "ninfa"
+      ],
+      "habitat": "Folículos pilosos y glándulas sebáceas de piel (cara, pestañas y párpados)",
+      "enfermedad": "Demodicosis",
+      "snomed": {
+        "codigo": "25873009",
+        "display": "Demodex",
+        "via": "Demodex"
+      }
+    },
+    {
+      "tax": "tax-136",
+      "nombre": "Sarcoptes scabiei",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "9787-3"
+      ],
+      "estadios": [
+        "ácaro",
+        "huevo",
+        "ninfa"
+      ],
+      "habitat": "Estrato córneo de la epidermis (surcos cutáneos)",
+      "enfermedad": "Escabiosis",
+      "snomed": {
+        "codigo": "67333007",
+        "display": "Sarcoptes scabiei"
+      }
+    },
+    {
+      "tax": "tax-137",
+      "nombre": "Cochliomyia hominivorax",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "larva"
+      ],
+      "habitat": "Piel, tejido subcutáneo y heridas (larvas causantes de miasis)",
+      "enfermedad": "Miasis traumática",
+      "snomed": {
+        "codigo": "90250002",
+        "display": "Cochliomyia hominivorax"
+      }
+    },
+    {
+      "tax": "tax-138",
+      "nombre": "Cordylobia anthropophaga",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "larva"
+      ],
+      "habitat": "Piel, tejido subcutáneo y heridas (larvas causantes de miasis)",
+      "enfermedad": "Miasis cutánea",
+      "snomed": {
+        "codigo": "30830009",
+        "display": "Cordylobia anthropophaga"
+      }
+    },
+    {
+      "tax": "tax-139",
+      "nombre": "Dermatobia hominis",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "larva"
+      ],
+      "habitat": "Piel, tejido subcutáneo y heridas (larvas causantes de miasis)",
+      "enfermedad": "Miasis furuncular",
+      "snomed": {
+        "codigo": "37096001",
+        "display": "Dermatobia hominis"
+      }
+    },
+    {
+      "tax": "tax-140",
+      "nombre": "Ctenocephalides spp.",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "huevo",
+        "larva",
+        "pupa",
+        "adulto"
+      ],
+      "habitat": "Superficie cutánea del hospedador para alimentación; adultos habitualmente en ambiente, ropa o suelo, según especie",
+      "enfermedad": "",
+      "snomed": {
+        "codigo": "17845007",
+        "display": "Ctenocephalides",
+        "via": "Ctenocephalides"
+      }
+    },
+    {
+      "tax": "tax-141",
+      "nombre": "Pulex irritans",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "huevo",
+        "larva",
+        "pupa",
+        "adulto"
+      ],
+      "habitat": "Superficie cutánea del hospedador para alimentación; adultos habitualmente en ambiente, ropa o suelo, según especie",
+      "enfermedad": "Pulicosis / dermatitis por picadura; puede actuar como hospedero intermediario de Dipylidium caninum e Hymenolepis spp.",
+      "snomed": {
+        "codigo": "47820000",
+        "display": "Pulex irritans"
+      }
+    },
+    {
+      "tax": "tax-142",
+      "nombre": "Cimex lectularius",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [
+        "Cimex lectularis"
+      ],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "adulto",
+        "ninfa",
+        "huevo"
+      ],
+      "habitat": "Piel durante alimentación; refugios ambientales (grietas, colchones y camas)",
+      "enfermedad": "Picaduras por chinche de cama",
+      "snomed": {
+        "codigo": "67052007",
+        "display": "Cimex lectularius"
+      }
+    },
+    {
+      "tax": "tax-143",
+      "nombre": "Pediculus humanus",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [
+        "Pediculus humanus"
+      ],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "adulto",
+        "ninfa",
+        "huevo"
+      ],
+      "habitat": "Cabello/cuero cabelludo, ropa y piel corporal o vello púbico, según taxón",
+      "enfermedad": "Pediculosis",
+      "snomed": {
+        "codigo": "84936006",
+        "display": "Pediculus humanus"
+      }
+    },
+    {
+      "tax": "tax-144",
+      "nombre": "Pediculus humanus capitis",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "adulto",
+        "ninfa",
+        "huevo"
+      ],
+      "habitat": "Cabello/cuero cabelludo, ropa y piel corporal o vello púbico, según taxón",
+      "enfermedad": "Pediculosis capitis",
+      "snomed": {
+        "codigo": "29568001",
+        "display": "Pediculus humanus capitis"
+      }
+    },
+    {
+      "tax": "tax-145",
+      "nombre": "Pediculus humanus humanus",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [
+        "Pediculus humanus corporis"
+      ],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "adulto",
+        "ninfa",
+        "huevo"
+      ],
+      "habitat": "Cabello/cuero cabelludo, ropa y piel corporal o vello púbico, según taxón",
+      "enfermedad": "Pediculosis corporis",
+      "snomed": {
+        "codigo": "83241002",
+        "display": "Pediculus humanus humanus"
+      }
+    },
+    {
+      "tax": "tax-146",
+      "nombre": "Pthirus pubis",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [
+        "Phthirus pubis"
+      ],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "adulto",
+        "ninfa",
+        "huevo"
+      ],
+      "habitat": "Cabello/cuero cabelludo, ropa y piel corporal o vello púbico, según taxón",
+      "enfermedad": "Pediculosis púbica",
+      "snomed": {
+        "codigo": "45776000",
+        "display": "Pthirus pubis"
+      }
+    },
+    {
+      "tax": "tax-147",
+      "nombre": "Tunga penetrans",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "huevo",
+        "larva",
+        "pupa",
+        "adulto"
+      ],
+      "habitat": "Superficie cutánea del hospedador para alimentación; adultos habitualmente en ambiente, ropa o suelo, según especie",
+      "enfermedad": "Tungiasis",
+      "snomed": {
+        "codigo": "32220002",
+        "display": "Tunga penetrans"
+      }
+    },
+    {
+      "tax": "tax-148",
+      "nombre": "Musca doméstica",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "huevo",
+        "larva",
+        "pupa",
+        "adulto"
+      ],
+      "habitat": "Ambiente (materia orgánica en descomposición); contacto transitorio con alimentos y superficies; vector mecánico, no parásito tisular",
+      "enfermedad": "Vector mecánico potencial de bacterias, virus, hongos y parásitos; contaminación de alimentos/superficies",
+      "snomed": {
+        "codigo": "22372002",
+        "display": "Musca domestica",
+        "via": "Musca domestica"
+      }
+    },
+    {
+      "tax": "tax-149",
+      "nombre": "Dermatophagoides spp",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "huevo",
+        "larva",
+        "ninfa",
+        "adulto"
+      ],
+      "habitat": "Ambiente doméstico (polvo, colchones, ropa de cama); ácaro alergénico no parasitario",
+      "enfermedad": "Alergia a ácaros del polvo; sensibilización asociada a rinitis alérgica, asma y dermatitis atópica",
+      "snomed": {
+        "codigo": "20037001",
+        "display": "Dermatophagoides",
+        "via": "Dermatophagoides"
+      }
+    },
+    {
+      "tax": "tax-150",
+      "nombre": "Ornithodoros spp.",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "huevo",
+        "larva",
+        "ninfa",
+        "adulto"
+      ],
+      "habitat": "Piel del hospedador durante hematofagia; hábitat ambiental variable según especie y estadio",
+      "enfermedad": "Picadura de garrapata blanda; fiebre recurrente transmitida por garrapatas (Borrelia spp.) según especie/región",
+      "snomed": {
+        "codigo": "15507002",
+        "display": "Ornithodoros",
+        "via": "Ornithodoros"
+      }
+    },
+    {
+      "tax": "tax-151",
+      "nombre": "Dermacentor spp.",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "huevo",
+        "larva",
+        "ninfa",
+        "adulto"
+      ],
+      "habitat": "Piel del hospedador durante hematofagia; hábitat ambiental variable según especie y estadio",
+      "enfermedad": "Picadura de garrapata; rickettsiosis/fiebre maculosa, tularemia, fiebre por garrapata de Colorado y parálisis por garrapata según especie/región",
+      "snomed": {
+        "codigo": "70372009",
+        "display": "Dermacentor",
+        "via": "Dermacentor"
+      }
+    },
+    {
+      "tax": "tax-152",
+      "nombre": "Amblyomma spp.",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "huevo",
+        "larva",
+        "ninfa",
+        "adulto"
+      ],
+      "habitat": "Piel del hospedador durante hematofagia; hábitat ambiental variable según especie y estadio",
+      "enfermedad": "Picadura de garrapata; ehrlichiosis, tularemia, rickettsiosis/fiebre maculosa y otras asociaciones según especie/región",
+      "snomed": {
+        "codigo": "47181001",
+        "display": "Amblyomma",
+        "via": "Amblyomma"
+      }
+    },
+    {
+      "tax": "tax-153",
+      "nombre": "Ixodes spp.",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "huevo",
+        "larva",
+        "ninfa",
+        "adulto"
+      ],
+      "habitat": "Piel del hospedador durante hematofagia; hábitat ambiental variable según especie y estadio",
+      "enfermedad": "Picadura de garrapata; enfermedad de Lyme, babesiosis, anaplasmosis y encefalitis/Powassan según especie y región",
+      "snomed": {
+        "codigo": "27524005",
+        "display": "Ixodes",
+        "via": "Ixodes"
+      }
+    },
+    {
+      "tax": "tax-154",
+      "nombre": "Rhipicephalus spp.",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "huevo",
+        "larva",
+        "ninfa",
+        "adulto"
+      ],
+      "habitat": "Piel del hospedador durante hematofagia; hábitat ambiental variable según especie y estadio",
+      "enfermedad": "Picadura de garrapata; rickettsiosis/fiebre maculosa y fiebre botonosa según especie/región; importancia veterinaria marcada",
+      "snomed": {
+        "codigo": "45869004",
+        "display": "Rhipicephalus",
+        "via": "Rhipicephalus"
+      }
+    },
+    {
+      "tax": "tax-155",
+      "nombre": "Aedes spp.",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "huevo",
+        "larva",
+        "pupa",
+        "adulto"
+      ],
+      "habitat": "Piel del hospedador durante hematofagia (hembras); criaderos acuáticos para fases inmaduras",
+      "enfermedad": "Dengue/Zika",
+      "snomed": {
+        "codigo": "57637003",
+        "display": "Aedes",
+        "via": "Aedes"
+      }
+    },
+    {
+      "tax": "tax-156",
+      "nombre": "Anopheles spp.",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "huevo",
+        "larva",
+        "pupa",
+        "adulto"
+      ],
+      "habitat": "Piel del hospedador durante hematofagia (hembras); criaderos acuáticos para fases inmaduras",
+      "enfermedad": "Malaria",
+      "snomed": {
+        "codigo": "54190007",
+        "display": "Anopheles",
+        "via": "Anopheles"
+      }
+    },
+    {
+      "tax": "tax-157",
+      "nombre": "Culex spp.",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "huevo",
+        "larva",
+        "pupa",
+        "adulto"
+      ],
+      "habitat": "Piel del hospedador durante hematofagia (hembras); criaderos acuáticos para fases inmaduras",
+      "enfermedad": "West Nile",
+      "snomed": {
+        "codigo": "76404002",
+        "display": "Culex",
+        "via": "Culex"
+      }
+    },
+    {
+      "tax": "tax-158",
+      "nombre": "Triatoma infestans",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "adulto",
+        "ninfa",
+        "huevo"
+      ],
+      "habitat": "Piel del hospedador durante hematofagia; refugios terrestres/peridomiciliarios según especie; vector de T. cruzi",
+      "enfermedad": "Chagas",
+      "snomed": {
+        "codigo": "66133008",
+        "display": "Triatoma infestans"
+      }
+    },
+    {
+      "tax": "tax-159",
+      "nombre": "Mepraia gajardoi",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "adulto",
+        "ninfa",
+        "huevo"
+      ],
+      "habitat": "Piel del hospedador durante hematofagia; refugios terrestres/peridomiciliarios según especie; vector de T. cruzi",
+      "enfermedad": "",
+      "snomed": null
+    },
+    {
+      "tax": "tax-160",
+      "nombre": "Mepraia parapatrica",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "adulto",
+        "ninfa",
+        "huevo"
+      ],
+      "habitat": "Piel del hospedador durante hematofagia; refugios terrestres/peridomiciliarios según especie; vector de T. cruzi",
+      "enfermedad": "",
+      "snomed": null
+    },
+    {
+      "tax": "tax-161",
+      "nombre": "Mepraia spinolai",
+      "clasificacion": "Parásitos de piel y vectores biológicos",
+      "rango": "species",
+      "sinonimos": [],
+      "loinc": [
+        "673-4"
+      ],
+      "estadios": [
+        "adulto",
+        "ninfa",
+        "huevo"
+      ],
+      "habitat": "Piel del hospedador durante hematofagia; refugios terrestres/peridomiciliarios según especie; vector de T. cruzi",
+      "enfermedad": "",
+      "snomed": null
+    },
+    {
+      "tax": "tax-162",
+      "nombre": "Entamoeba spp.",
+      "clasificacion": "Parasitos intestinales",
+      "rango": "genus",
+      "sinonimos": [],
+      "loinc": [
+        "10704-5",
+        "673-4"
+      ],
+      "estadios": [
+        "quiste",
+        "trofozoíto"
+      ],
+      "habitat": "Luz del intestino grueso (colon; principalmente ciego y colon)",
+      "enfermedad": "",
+      "snomed": {
+        "codigo": "38324000",
+        "display": "Entamoeba",
+        "via": "Entamoeba"
+      }
+    }
+  ]
+}

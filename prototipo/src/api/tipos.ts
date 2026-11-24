@@ -102,6 +102,11 @@ export interface OpcionTerminologia {
   snomedDisplay?: string | null;
   /** true = la equivalencia debe ser confirmada por una profesional clínica. */
   revisar?: boolean;
+  /** Grupo del catálogo (ej. "Parasitos intestinales"). */
+  grupo?: string;
+  /** Si el código SNOMED se encontró a través de un sinónimo del catálogo. */
+  via?: string;
+  sinonimos?: string[];
   calibracion?: string;
 }
 
