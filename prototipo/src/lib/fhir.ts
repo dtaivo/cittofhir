@@ -1,23 +1,46 @@
-/** Construye recursos FHIR R4 de ejemplo a partir de las decisiones del curador. */
-import type { Caso, DecisionCaso, OpcionTerminologia, Terminologia } from "../api";
+/** Construye recursos FHIR R4 a partir de las decisiones del curador. */
+import type { Caso, DecisionCaso, Terminologia } from "../api";
 
-const buscar = (lista: OpcionTerminologia[], codigo: string) => lista.find((o) => o.codigo === codigo);
+const SNOMED = "http://snomed.info/sct";
+const LOINC = "http://loinc.org";
+
+/**
+ * Devuelve el concepto SNOMED más específico disponible:
+ * especie + estadio (ej. "Giardia lamblia cyst") o, si no existe, solo la especie.
+ */
+export function conceptoOrganismo(t: Terminologia, especie: string, estadio: string) {
+  const especifico = t.especificos.find((e) => e.especie === especie && e.estadio === estadio);
+  if (especifico) return { code: especifico.codigo, display: especifico.display };
+  const esp = t.especies.find((e) => e.codigo === especie);
+  return esp ? { code: esp.codigo, display: esp.display } : null;
+}
 
 export function observacionDesdeCaso(caso: Caso, d: DecisionCaso, t: Terminologia) {
-  const especie = buscar(t.especies, d.especie);
-  const estadio = buscar(t.estadios, d.estadio);
+  const examen = t.examenes.find((e) => e.tipoMuestra === caso.tipoMuestra) ?? t.examenes[0];
+  const organismo = conceptoOrganismo(t, d.especie, d.estadio);
+  const estadio = t.estadios.find((e) => e.codigo === d.estadio);
+  const tincion = t.tinciones.find((e) => e.codigo === d.tincion);
+
   const recurso: Record<string, unknown> = {
     resourceType: "Observation",
     id: `obs-${caso.id.toLowerCase()}-normalized`,
     status: "preliminary",
-    code: {
-      coding: [{ system: "http://loinc.org", code: "10701-1", display: `${especie?.display ?? "Parasite"} [Presence] in Stool by Microscopy` }],
-    },
-    valueCodeableConcept: especie
-      ? { coding: [{ system: "http://snomed.info/sct", code: especie.codigo, display: especie.display }] }
-      : null,
+    code: { coding: [{ system: LOINC, code: examen.codigo, display: examen.display }] },
+    valueCodeableConcept: organismo ? { coding: [{ system: SNOMED, ...organismo }] } : null,
   };
-  if (estadio) recurso.component = [{ code: { text: "life-stage" }, valueString: estadio.display }];
+  if (estadio) {
+    recurso.component = [
+      {
+        code: { text: "life-stage" },
+        valueCodeableConcept: estadio.snomed
+          ? { coding: [{ system: SNOMED, code: estadio.snomed, display: estadio.snomedDisplay }], text: estadio.display }
+          : { text: estadio.display },
+      },
+    ];
+  }
+  if (tincion?.snomed) {
+    recurso.method = { coding: [{ system: SNOMED, code: tincion.snomed, display: tincion.snomedDisplay }], text: tincion.display };
+  }
   if (d.relacion === "repetido" && caso.comparaCon) {
     recurso.derivedFrom = [{ reference: `Media/${caso.comparaCon}-capture`, display: "Escaneo repetido del mismo campo óptico" }];
   }

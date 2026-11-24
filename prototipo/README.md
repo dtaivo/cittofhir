@@ -30,6 +30,7 @@ Otros comandos útiles:
 | Comando | Qué hace |
 |---|---|
 | `npm run typecheck` | Revisa que el código no tenga errores de tipos (como un control de calidad) |
+| `npm run verificar-codigos` | Comprueba en un servidor de terminología que cada código SNOMED CT y LOINC exista y tenga el nombre oficial correcto |
 | `npm run build` | Genera la versión final optimizada en la carpeta `dist/` |
 
 ---
@@ -53,7 +54,7 @@ Otros comandos útiles:
 - Todos los números, casos, láminas, nombres (por ejemplo "Dra. V. Morales") y eventos de auditoría son **sintéticos**. Están en `src/data/*.json`.
 - **El archivo que subes no se lee.** Solo se revisan su nombre, tipo y tamaño. El diagnóstico (1,420 registros, 148 alertas, etc.) siempre es el mismo.
 - Los cambios (casos resueltos, reglas nuevas) se guardan **solo en memoria**. Al recargar la página, todo vuelve al estado inicial.
-- **Los códigos SNOMED CT y LOINC son ilustrativos.** Vienen del diseño y no fueron verificados contra los servidores oficiales. Algunos códigos SNOMED del diseño no pasan la prueba del dígito verificador. Por eso el formulario de reglas muestra una *alerta* en ese caso, en vez de un error.
+- Los **códigos SNOMED CT y LOINC son reales** (ver la sección "Códigos clínicos" más abajo). Lo inventado son los *casos* a los que se aplican.
 - Las imágenes de microscopía fueron generadas por el diseño en Stitch. No son muestras reales.
 
 ### Seguridad
@@ -64,11 +65,32 @@ Otros comandos útiles:
 
 ### Integraciones
 - **No hay conexión con un servidor FHIR.** El botón "Transmitir" espera un momento y muestra un resultado simulado.
-- **No hay conexión con servidores de terminología** (SNOMED, LOINC, NCBI). "Última sincronización: hace 5 min" es fijo.
+- **La app no consulta servidores de terminología mientras se usa.** La lista de códigos está guardada en `src/data/terminologia.json` y se verifica aparte con `npm run verificar-codigos`.
 - "Importar diccionario" solo valida el tipo de archivo. No agrega reglas.
 - Descargas: el **Bundle JSON es real** (se arma con los casos que resolviste). El "Excel curado" se entrega como **.csv**. El paquete **Parquet no existe**.
 - El enlace "Docs HL7/LOINC" abre la documentación pública de FHIR R4.
 - "Comparar con #LAM-…" muestra la misma imagen reflejada. No compara imágenes de verdad.
+
+---
+
+## Códigos clínicos (SNOMED CT y LOINC)
+
+Los códigos del diseño de Stitch **no eran reales**: los SNOMED no existían y los LOINC correspondían a otros exámenes (por ejemplo, 622-1 es "bacterias en esputo"). Se reemplazaron por códigos reales, verificados el 24-11-2026 contra el servidor público de terminología `tx.fhir.org` (SNOMED CT edición internacional y LOINC).
+
+| Qué | Dónde se usa en FHIR | Ejemplo |
+|---|---|---|
+| Examen (LOINC), según el tipo de muestra | `Observation.code` | Heces: **10704-5** · Sangre: **17784-0** |
+| Organismo (SNOMED), lo más específico posible | `Observation.valueCodeableConcept` | *Giardia duodenalis* **78181009**; si es quiste: **608948005** "Giardia lamblia cyst" |
+| Estadio (SNOMED genérico) | `Observation.component` | Trofozoíto: **103551003** |
+| Tinción (SNOMED) | `Observation.method` | Giemsa: **104208006** |
+
+**Por revisar por una profesional clínica** (aparecen con alerta ámbar en la pantalla):
+- *Lugol directo* y *examen en fresco*: SNOMED no tiene un concepto exacto. Se usaron "wet mount with simple stain" (104195008) y "wet and dry mount, for ova and parasites" (104223001).
+- *Larva*: no hay un código genérico. Solo existe el específico de *Ascaris lumbricoides* (609064008).
+
+**Cómo mantenerlos al día:** cada vez que cambies `terminologia.json` o `mapeos.json`, ejecuta `npm run verificar-codigos`. Debe terminar con "N de N códigos correctos". El script solo envía *códigos*, nunca datos de pacientes.
+
+**Licencias:** LOINC es gratuito aceptando su licencia. SNOMED CT requiere licencia para uso en producción: confírmala con tu institución.
 
 ---
 

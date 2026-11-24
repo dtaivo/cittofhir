@@ -2,29 +2,129 @@
   "_nota": "DATOS SINTÉTICOS. Cifras y eventos de ejemplo.",
   "bundleId": "urn:uuid:citto-2025-chg-9884",
   "packageSpec": "v4.0.1",
-  "certificacion": { "verificados": 1420, "total": 1420 },
+  "certificacion": {
+    "verificados": 1420,
+    "total": 1420
+  },
   "resumen": [
-    { "icono": "account_tree", "texto": "Escaneos repetidos jerarquizados", "valor": "52", "unidad": "enlazados" },
-    { "icono": "content_cut", "texto": "Nuevos cortes histológicos", "valor": "35", "unidad": "confirmados" },
-    { "icono": "spellcheck", "texto": "Discrepancias de nomenclatura", "valor": "0", "unidad": "errores" }
+    {
+      "icono": "account_tree",
+      "texto": "Escaneos repetidos jerarquizados",
+      "valor": "52",
+      "unidad": "enlazados"
+    },
+    {
+      "icono": "content_cut",
+      "texto": "Nuevos cortes histológicos",
+      "valor": "35",
+      "unidad": "confirmados"
+    },
+    {
+      "icono": "spellcheck",
+      "texto": "Discrepancias de nomenclatura",
+      "valor": "0",
+      "unidad": "errores"
+    }
   ],
   "kpis": [
-    { "titulo": "Cohorte de estudio", "icono": "group", "valor": "340", "descripcion": "Pacientes / Casos Clínicos Curados", "pie": "Anonimización HIPAA / GDPR OK", "pieIcono": "check" },
-    { "titulo": "Especímenes digitalizados", "icono": "biotech", "valor": "1,420", "descripcion": "Láminas WSI (40x / 100x Oil)", "pie": "Metadatos DICOM/TIFF vinculados", "pieIcono": "link" },
-    { "titulo": "Taxonomía parasitaria", "icono": "bug_report", "valor": "14", "descripcion": "Especies Validadas (SNOMED-CT)", "pie": "T. cruzi, G. lamblia, E. hist.", "pieIcono": null, "pieMono": true },
-    { "titulo": "Codificación LOINC", "icono": "terminal", "valor": "100%", "descripcion": "Métodos Diagnósticos Alineados", "pie": "Frotis, Giemsa, Concentrado Ritchie", "pieIcono": "fact_check" }
+    {
+      "titulo": "Cohorte de estudio",
+      "icono": "group",
+      "valor": "340",
+      "descripcion": "Pacientes / Casos Clínicos Curados",
+      "pie": "Anonimización HIPAA / GDPR OK",
+      "pieIcono": "check"
+    },
+    {
+      "titulo": "Especímenes digitalizados",
+      "icono": "biotech",
+      "valor": "1,420",
+      "descripcion": "Láminas WSI (40x / 100x Oil)",
+      "pie": "Metadatos DICOM/TIFF vinculados",
+      "pieIcono": "link"
+    },
+    {
+      "titulo": "Taxonomía parasitaria",
+      "icono": "bug_report",
+      "valor": "14",
+      "descripcion": "Especies Validadas (SNOMED-CT)",
+      "pie": "T. cruzi, G. lamblia, E. hist.",
+      "pieIcono": null,
+      "pieMono": true
+    },
+    {
+      "titulo": "Codificación LOINC",
+      "icono": "terminal",
+      "valor": "100%",
+      "descripcion": "Métodos Diagnósticos Alineados",
+      "pie": "Frotis, Giemsa, Concentrado Ritchie",
+      "pieIcono": "fact_check"
+    }
   ],
-  "servidorDestino": { "url": "https://fhir.cittofhir.org/baseR4", "token": "lab_bearer_citto_9942a8b0f1", "nombre": "HAPI FHIR JPA Server / CittoFHIR Core Repository" },
+  "servidorDestino": {
+    "url": "https://fhir.cittofhir.org/baseR4",
+    "token": "lab_bearer_citto_9942a8b0f1",
+    "nombre": "HAPI FHIR JPA Server / CittoFHIR Core Repository"
+  },
   "descargas": [
-    { "id": "json", "icono": "data_object", "titulo": "FHIR JSON Bundle (.json / .ndjson)", "descripcion": "Estructura pura HL7 FHIR R4", "tamano": "18.4 MB", "boton": "JSON" },
-    { "id": "xlsx", "icono": "table_view", "titulo": "Excel Clínico Curado (.xlsx)", "descripcion": "Con diccionarios LOINC/SNOMED embebidos", "tamano": "6.2 MB", "boton": "XLSX" },
-    { "id": "parquet", "icono": "frame_inspect", "titulo": "Paquete Parquet + Bounding Boxes", "descripcion": "Ideal para pipelines de IA y PyTorch", "tamano": "11.5 MB", "boton": "Parquet" }
+    {
+      "id": "json",
+      "icono": "data_object",
+      "titulo": "FHIR JSON Bundle (.json / .ndjson)",
+      "descripcion": "Estructura pura HL7 FHIR R4",
+      "tamano": "18.4 MB",
+      "boton": "JSON"
+    },
+    {
+      "id": "xlsx",
+      "icono": "table_view",
+      "titulo": "Excel Clínico Curado (.xlsx)",
+      "descripcion": "Con diccionarios LOINC/SNOMED embebidos",
+      "tamano": "6.2 MB",
+      "boton": "XLSX"
+    },
+    {
+      "id": "parquet",
+      "icono": "frame_inspect",
+      "titulo": "Paquete Parquet + Bounding Boxes",
+      "descripcion": "Ideal para pipelines de IA y PyTorch",
+      "tamano": "11.5 MB",
+      "boton": "Parquet"
+    }
   ],
   "auditoria": [
-    { "fecha": "2025-02-24T14:38:12Z", "muestra": "LAM-0842-B", "operador": "Dra. V. Morales", "accion": "Clasificado como corte secundario repetido", "binding": "Specimen.parent", "resultado": "Conciliado" },
-    { "fecha": "2025-02-24T14:35:49Z", "muestra": "LAM-0219-A", "operador": "Algoritmo Auto-Mapper v2", "accion": "Corrección ortográfica 'Entamoeba histolytica'", "binding": "SNOMED: 243644005", "resultado": "Normalizado" },
-    { "fecha": "2025-02-24T14:32:01Z", "muestra": "LAM-0104-D", "operador": "Algoritmo Auto-Mapper v2", "accion": "Asignación de código de tinción Giemsa", "binding": "LOINC: 10701-1", "resultado": "Mapeado" },
-    { "fecha": "2025-02-24T14:28:15Z", "muestra": "LAM-0051-A..C", "operador": "Dra. V. Morales", "accion": "Unificación de 3 campos visuales en 1 espécimen", "binding": "Specimen.container", "resultado": "Resuelto" }
+    {
+      "fecha": "2025-02-24T14:38:12Z",
+      "muestra": "LAM-0842-B",
+      "operador": "Dra. V. Morales",
+      "accion": "Clasificado como corte secundario repetido",
+      "binding": "Specimen.parent",
+      "resultado": "Conciliado"
+    },
+    {
+      "fecha": "2025-02-24T14:35:49Z",
+      "muestra": "LAM-0219-A",
+      "operador": "Algoritmo Auto-Mapper v2",
+      "accion": "Corrección ortográfica 'Entamoeba histolytica'",
+      "binding": "SNOMED: 4716008",
+      "resultado": "Normalizado"
+    },
+    {
+      "fecha": "2025-02-24T14:32:01Z",
+      "muestra": "LAM-0104-D",
+      "operador": "Algoritmo Auto-Mapper v2",
+      "accion": "Asignación de código de tinción Giemsa",
+      "binding": "SNOMED: 104208006",
+      "resultado": "Mapeado"
+    },
+    {
+      "fecha": "2025-02-24T14:28:15Z",
+      "muestra": "LAM-0051-A..C",
+      "operador": "Dra. V. Morales",
+      "accion": "Unificación de 3 campos visuales en 1 espécimen",
+      "binding": "Specimen.container",
+      "resultado": "Resuelto"
+    }
   ],
   "eventosRegistrados": 87
 }

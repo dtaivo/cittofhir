@@ -58,6 +58,7 @@ export interface Caso {
   titulo: string;
   muestra: string;
   categoria: "snomed" | "duplicados";
+  tipoMuestra: TipoMuestra;
   imagen: string;
   imagenGrande: string;
   imagenAlt: string;
@@ -91,18 +92,36 @@ export interface ColaLimpieza {
 }
 
 export interface OpcionTerminologia {
+  /** Código propio (estadios, tinciones, aumentos) o código SNOMED (especies). */
   codigo: string;
   display: string;
-  sistema?: string;
+  /** Nombre en español para mostrar en pantalla (especies). */
+  nombreLocal?: string;
+  /** Código SNOMED CT asociado (estadios y tinciones). */
+  snomed?: string | null;
+  snomedDisplay?: string | null;
+  /** true = la equivalencia debe ser confirmada por una profesional clínica. */
+  revisar?: boolean;
   calibracion?: string;
-  ncbi?: string;
 }
+
+/** Concepto SNOMED que combina especie + estadio (ej. "Giardia lamblia cyst"). */
+export interface ConceptoEspecifico {
+  especie: string;
+  estadio: string;
+  codigo: string;
+  display: string;
+}
+
+export type TipoMuestra = "heces" | "heces-concentrado" | "sangre";
 
 export interface Terminologia {
   especies: OpcionTerminologia[];
   estadios: OpcionTerminologia[];
   tinciones: OpcionTerminologia[];
   aumentos: OpcionTerminologia[];
+  especificos: ConceptoEspecifico[];
+  examenes: { tipoMuestra: TipoMuestra; codigo: string; display: string }[];
 }
 
 export type Ontologia = "SNOMED CT" | "LOINC";

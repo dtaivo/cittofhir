@@ -387,7 +387,7 @@ export default function Confirmacion() {
   "total": ${total},
   "entry": [
     { "resource": { "resourceType": "Specimen", "id": "LAM-001", "status": "available" } },
-    { "resource": { "resourceType": "Observation", "code": { "coding": [{ "system": "http://loinc.org", "code": "10701-1" }] } } }
+    { "resource": { "resourceType": "Observation", "code": { "coding": [{ "system": "http://loinc.org", "code": "10704-5" }] } } }
   ]
 }`}</code>
                 </pre>

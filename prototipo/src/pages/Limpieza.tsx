@@ -7,7 +7,7 @@ import { Cargando, ErrorCarga } from "../components/Estados";
 import { Icono } from "../components/Icono";
 import { JsonVivo } from "../components/JsonVivo";
 import { Modal } from "../components/Modal";
-import { observacionDesdeCaso } from "../lib/fhir";
+import { conceptoOrganismo, observacionDesdeCaso } from "../lib/fhir";
 import { cx, numero } from "../lib/formato";
 import { useDatos } from "../lib/useDatos";
 import { requerido } from "../lib/validacion";
@@ -120,6 +120,9 @@ function EditorCaso({
   const t = terminologia;
   const especieSugerida = t.especies.find((e) => e.codigo === caso.propuesta.especie);
   const aumento = t.aumentos.find((a) => a.codigo === form.aumento);
+  const estadioSel = t.estadios.find((e) => e.codigo === form.estadio);
+  const tincionSel = t.tinciones.find((e) => e.codigo === form.tincion);
+  const organismo = form.especie && form.especie !== "otro" ? conceptoOrganismo(t, form.especie, form.estadio) : null;
 
   function validar(f: DecisionCaso): Errores {
     const e: Errores = {};
@@ -140,7 +143,7 @@ function EditorCaso({
   const alertas = {
     especie:
       form.especie && form.especie !== "otro" && especieSugerida && form.especie !== especieSugerida.codigo
-        ? `Difiere de la sugerencia clínica (${especieSugerida.display}).`
+        ? `Difiere de la sugerencia clínica (${especieSugerida.nombreLocal ?? especieSugerida.display}).`
         : null,
     relacion:
       form.relacion === "nuevo" && caso.sospechaDuplicado && caso.sospechaDuplicado.similitud >= 90
@@ -410,7 +413,7 @@ function EditorCaso({
       <div className="flex flex-col gap-space-md pt-space-sm">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-space-xs">
           <h3 className="font-label-sm text-label-sm text-on-surface font-semibold uppercase tracking-wider">Normalización Terminológica Estándar</h3>
-          <span className="font-tag-xs text-tag-xs text-secondary font-code-mono">Sistemas: SNOMED-CT | LOINC | NCBI Taxonomy</span>
+          <span className="font-tag-xs text-tag-xs text-secondary font-code-mono">Sistemas: SNOMED CT | LOINC</span>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-space-md">
           <CampoSelect
@@ -422,7 +425,7 @@ function EditorCaso({
             valor={form.especie}
             onCambio={(v) => cambiar("especie", v)}
             opciones={[
-              ...t.especies.map((e) => ({ valor: e.codigo, texto: `${e.display} (SNOMED: ${e.codigo}${e.ncbi ? ` | NCBI: ${e.ncbi}` : ""})` })),
+              ...t.especies.map((e) => ({ valor: e.codigo, texto: `${e.nombreLocal ?? e.display} (SNOMED: ${e.codigo})` })),
               { valor: "otro", texto: "Buscar otro código en servidor terminológico..." },
             ]}
             error={errores.especie}
@@ -432,10 +435,12 @@ function EditorCaso({
                 <button type="button" onClick={onAbrirMapeos} className="font-tag-xs text-tag-xs text-secondary underline text-left">
                   Abrir Configuración de Mapeos SNOMED / LOINC
                 </button>
-              ) : form.especie ? (
+              ) : organismo ? (
                 <span className="font-tag-xs text-tag-xs text-secondary flex items-center gap-1">
-                  <Icono nombre="check_circle" className="text-[14px]" />
-                  Mapeado canónico a HL7 CodeableReference
+                  <Icono nombre="check_circle" className="text-[14px] shrink-0" />
+                  <span>
+                    Se registrará como <span className="font-code-mono">{organismo.code}</span> | {organismo.display}
+                  </span>
                 </span>
               ) : null
             }
@@ -444,16 +449,17 @@ function EditorCaso({
             id="campo-estadio"
             etiqueta="Estadío Parasitario del Organismo"
             requerido
-            pista="LOINC: 622-1"
+            pista={estadioSel?.snomed ? `SNOMED: ${estadioSel.snomed}` : "Sin código SNOMED"}
             valor={form.estadio}
             onCambio={(v) => cambiar("estadio", v)}
             opciones={t.estadios.map((e) => ({ valor: e.codigo, texto: e.display }))}
             error={errores.estadio}
+            alerta={estadioSel?.revisar ? "Este estadio no tiene código SNOMED genérico: se guardará solo como texto." : null}
             ayuda={
-              form.estadio && (
+              estadioSel && (
                 <span className="font-tag-xs text-tag-xs text-secondary flex items-center gap-1">
                   <Icono nombre="check_circle" className="text-[14px]" />
-                  Observation.component[life-stage]
+                  {estadioSel.snomedDisplay} → Observation.component[life-stage]
                 </span>
               )
             }
@@ -462,11 +468,12 @@ function EditorCaso({
             id="campo-tincion"
             etiqueta="Método de Tinción / Preparación"
             requerido
-            pista="Specimen.processing"
+            pista={tincionSel?.snomed ? `SNOMED: ${tincionSel.snomed}` : "Observation.method"}
             valor={form.tincion}
             onCambio={(v) => cambiar("tincion", v)}
             opciones={t.tinciones.map((e) => ({ valor: e.codigo, texto: e.display }))}
             error={errores.tincion}
+            alerta={tincionSel?.revisar ? `Equivalencia por confirmar: ${tincionSel.snomedDisplay}.` : null}
             ayuda={<span className="font-tag-xs text-tag-xs text-on-surface-variant">Detectado: {caso.deteccionTincion}</span>}
           />
           <CampoSelect

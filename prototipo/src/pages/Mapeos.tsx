@@ -28,7 +28,7 @@ function bindingDe(r: ReglaMapeo) {
     ...(r.ontologia === "LOINC"
       ? { code: { coding } }
       : {
-          code: { coding: [{ system: "http://loinc.org", code: "10701-1", display: "Ova and Parasite preparation [Type] in Stool by Light microscopy" }] },
+          code: { coding: [{ system: "http://loinc.org", code: "10704-5", display: "Ova and parasites identified in Stool by Light microscopy" }] },
           valueCodeableConcept: { coding, text: r.terminos.join(" / ") },
         }),
   };
@@ -173,7 +173,7 @@ function FormularioRegla({
             id="regla-codigo"
             value={f.codigo}
             onChange={(e) => setF({ ...f, codigo: e.target.value })}
-            placeholder={f.ontologia === "LOINC" ? "Ej.: 10701-1" : "Ej.: 243574004"}
+            placeholder={f.ontologia === "LOINC" ? "Ej.: 10704-5" : "Ej.: 78181009"}
             inputMode={f.ontologia === "LOINC" ? "text" : "numeric"}
             aria-invalid={!!visibles.codigo}
             aria-describedby="regla-codigo-msg"
@@ -189,7 +189,7 @@ function FormularioRegla({
             id="regla-display"
             value={f.display}
             onChange={(e) => setF({ ...f, display: e.target.value })}
-            placeholder="Ej.: Giardia intestinalis (organism)"
+            placeholder="Ej.: Giardia duodenalis"
             aria-invalid={!!visibles.display}
             aria-describedby="regla-display-msg"
             className={claseInput(visibles.display)}

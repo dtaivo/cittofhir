@@ -1,18 +1,58 @@
 {
   "_nota": "DATOS SINTÉTICOS. Ningún dato corresponde a pacientes reales.",
-  "estudio": { "nombre": "Chagas & Giardia 2025", "lote": "HEC-900", "perfil": "Observation Parasitology IG-CL", "specimenDb": "v4.0.1", "parser": "v4.1.0-rc", "loinc": "2.76" },
-  "usuario": { "nombre": "Dra. V. Morales", "rol": "Microbiología & FHIR Spec" },
-  "servidor": { "nombre": "FHIR Server R4", "estado": "Online" },
-  "archivoEjemplo": { "nombre": "Metadatos_Muestras_Parasitologia_Lote_2025_02.xlsx", "tamanoBytes": 4404019, "columnas": 16 },
+  "estudio": {
+    "nombre": "Chagas & Giardia 2025",
+    "lote": "HEC-900",
+    "perfil": "Observation Parasitology IG-CL",
+    "specimenDb": "v4.0.1",
+    "parser": "v4.1.0-rc",
+    "loinc": "2.76"
+  },
+  "usuario": {
+    "nombre": "Dra. V. Morales",
+    "rol": "Microbiología & FHIR Spec"
+  },
+  "servidor": {
+    "nombre": "FHIR Server R4",
+    "estado": "Online"
+  },
+  "archivoEjemplo": {
+    "nombre": "Metadatos_Muestras_Parasitologia_Lote_2025_02.xlsx",
+    "tamanoBytes": 4404019,
+    "columnas": 16
+  },
   "esquema": [
-    { "columna": "id_muestra", "destino": "Specimen.identifier" },
-    { "columna": "especie_observada", "destino": "Observation.code (SNOMED/LOINC)" },
-    { "columna": "estadio_evolutivo", "destino": "Observation.component[stage]" },
-    { "columna": "aumento_objetivo", "destino": "DeviceMetric / Specimen.note" },
-    { "columna": "protocolo_tincion", "destino": "Specimen.processing.procedure" },
-    { "columna": "fecha_toma_muestra", "destino": "Specimen.collection.collectedDateTime" }
+    {
+      "columna": "id_muestra",
+      "destino": "Specimen.identifier"
+    },
+    {
+      "columna": "especie_observada",
+      "destino": "Observation.code (SNOMED/LOINC)"
+    },
+    {
+      "columna": "estadio_evolutivo",
+      "destino": "Observation.component[stage]"
+    },
+    {
+      "columna": "aumento_objetivo",
+      "destino": "DeviceMetric / Specimen.note"
+    },
+    {
+      "columna": "protocolo_tincion",
+      "destino": "Specimen.processing.procedure"
+    },
+    {
+      "columna": "fecha_toma_muestra",
+      "destino": "Specimen.collection.collectedDateTime"
+    }
   ],
-  "diagnostico": { "total": 1420, "conformes": 1185, "alertas": 148, "duplicados": 87 },
+  "diagnostico": {
+    "total": 1420,
+    "conformes": 1185,
+    "alertas": 148,
+    "duplicados": 87
+  },
   "hallazgos": [
     {
       "id": "taxonomia",
@@ -20,7 +60,7 @@
       "titulo": "Inconsistencia Taxonómica & Código SNOMED",
       "prioridad": "Alta prioridad",
       "severidad": "alta",
-      "descripcion": "Sinonimias no normalizadas: \"G. lamblia\" vs \"Giardia duodenalis\". Ausencia de código SNOMED CT 243574004.",
+      "descripcion": "Sinonimias no normalizadas: \"G. lamblia\" vs \"Giardia duodenalis\". Ausencia de código SNOMED CT 78181009.",
       "impacta": "Observation.code.coding",
       "detalle": "Campos: especie_observada",
       "casos": 84
@@ -48,5 +88,12 @@
       "casos": 87
     }
   ],
-  "muestraTestigo": { "id": "LAM-094-A", "imagen": "/img/giardia-100x.jpg", "alt": "Campo de microscopía con trofozoítos de Giardia teñidos con Giemsa, 100x inmersión", "objetivo": "100x Inmersión", "tincion": "Giemsa rápida", "alerta": "Taxonomía ambigua" }
+  "muestraTestigo": {
+    "id": "LAM-094-A",
+    "imagen": "/img/giardia-100x.jpg",
+    "alt": "Campo de microscopía con trofozoítos de Giardia teñidos con Giemsa, 100x inmersión",
+    "objetivo": "100x Inmersión",
+    "tincion": "Giemsa rápida",
+    "alerta": "Taxonomía ambigua"
+  }
 }

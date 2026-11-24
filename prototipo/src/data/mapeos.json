@@ -8,7 +8,7 @@
     },
     {
       "id": "metodos",
-      "nombre": "Métodos y Tinciones (LOINC)",
+      "nombre": "Métodos y Tinciones",
       "total": 12
     },
     {
@@ -31,8 +31,8 @@
         "Giardia sp."
       ],
       "ontologia": "SNOMED CT",
-      "codigo": "243574004",
-      "display": "Giardia intestinalis (organism)",
+      "codigo": "78181009",
+      "display": "Giardia duodenalis",
       "autoAplicar": true,
       "confianza": 99,
       "estado": "mapeado"
@@ -45,8 +45,8 @@
         "E. histolytica"
       ],
       "ontologia": "SNOMED CT",
-      "codigo": "243644005",
-      "display": "Entamoeba histolytica (organism)",
+      "codigo": "4716008",
+      "display": "Entamoeba histolytica",
       "autoAplicar": true,
       "confianza": 96,
       "estado": "mapeado"
@@ -58,11 +58,11 @@
         "Tinción Lugol",
         "Lugol directo"
       ],
-      "ontologia": "LOINC",
-      "codigo": "10701-1",
-      "display": "Ova and Parasite preparation [Type] in Stool by Light microscopy",
+      "ontologia": "SNOMED CT",
+      "codigo": "104195008",
+      "display": "Microbiologic smear with interpretation, wet mount with simple stain",
       "autoAplicar": true,
-      "confianza": 98,
+      "confianza": 88,
       "estado": "mapeado"
     },
     {
@@ -72,11 +72,25 @@
         "Giemsa rápida",
         "Frotis Giemsa"
       ],
-      "ontologia": "LOINC",
-      "codigo": "622-1",
-      "display": "Microscopic observation [Identifier] in Specimen by Giemsa stain",
+      "ontologia": "SNOMED CT",
+      "codigo": "104208006",
+      "display": "Giemsa stain method",
       "autoAplicar": true,
       "confianza": 95,
+      "estado": "mapeado"
+    },
+    {
+      "id": "r9",
+      "pestana": "metodos",
+      "terminos": [
+        "Coproparasitológico",
+        "Parasitológico seriado"
+      ],
+      "ontologia": "LOINC",
+      "codigo": "10704-5",
+      "display": "Ova and parasites identified in Stool by Light microscopy",
+      "autoAplicar": true,
+      "confianza": 97,
       "estado": "mapeado"
     },
     {
@@ -100,8 +114,8 @@
         "Tripanosoma cruzi"
       ],
       "ontologia": "SNOMED CT",
-      "codigo": "243602003",
-      "display": "Trypanosoma cruzi (organism)",
+      "codigo": "88274000",
+      "display": "Trypanosoma cruzi",
       "autoAplicar": false,
       "confianza": 72,
       "estado": "conflicto"
@@ -114,8 +128,8 @@
         "forma vegetativa"
       ],
       "ontologia": "SNOMED CT",
-      "codigo": "trofozoito",
-      "display": "Trofozoíto (forma vegetativa)",
+      "codigo": "103551003",
+      "display": "Kingdom Protozoa trophozoite",
       "autoAplicar": true,
       "confianza": 93,
       "estado": "mapeado"
@@ -127,8 +141,8 @@
         "Giardia duodenalis"
       ],
       "ontologia": "SNOMED CT",
-      "codigo": "243574004",
-      "display": "Giardia intestinalis (organism)",
+      "codigo": "78181009",
+      "display": "Giardia duodenalis",
       "autoAplicar": true,
       "confianza": 97,
       "estado": "mapeado"
@@ -137,22 +151,22 @@
   "opcionesPendiente": [
     {
       "ontologia": "SNOMED CT",
-      "codigo": "103514009",
-      "display": "Cryptosporidium oocyst (organism)"
+      "codigo": "608957004",
+      "display": "Genus Cryptosporidium oocyst"
     },
     {
       "ontologia": "SNOMED CT",
-      "codigo": "409822003",
-      "display": "Cyclospora cayetanensis (organism)"
+      "codigo": "608958009",
+      "display": "Cyclospora cayetanensis oocyst"
     },
     {
-      "ontologia": "LOINC",
-      "codigo": "10700-3",
-      "display": "Ova and Parasite preparation [Identifier] in Stool"
+      "ontologia": "SNOMED CT",
+      "codigo": "103541004",
+      "display": "Kingdom Protozoa oocyst"
     }
   ],
   "sincronizacion": {
-    "hace": "Hace 5 min",
-    "versiones": "SNOMED v2025-01 / LOINC 2.76"
+    "hace": "Verificado el 24-11-2026",
+    "versiones": "SNOMED CT Internacional / LOINC vía tx.fhir.org"
   }
 }

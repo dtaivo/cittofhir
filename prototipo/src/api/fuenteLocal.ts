@@ -79,7 +79,7 @@ export const fuenteLocal: FuenteDatos = {
     registrarEvento({
       muestra: `${cola.patron.lote}-*`,
       accion: `Regla aplicada a ${cola.patron.casos} casos similares`,
-      binding: "SNOMED: 243644005",
+      binding: "SNOMED: 4716008",
       resultado: "Normalizado",
     });
     return esperar(cola.patron.casos, 600);

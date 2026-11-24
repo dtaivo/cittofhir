@@ -1,120 +1,55 @@
 {
-  "_nota": "Subconjunto ilustrativo. Los códigos deben verificarse contra los servidores oficiales SNOMED CT y LOINC antes de cualquier uso real.",
+  "_nota": "Códigos SNOMED CT (edición internacional) y LOINC verificados con `npm run verificar-codigos` contra el servidor de terminología tx.fhir.org. Los marcados con \"revisar\": true deben ser confirmados por una profesional clínica antes de uso en producción.",
+  "_verificado": "2026-11-24",
   "especies": [
-    {
-      "codigo": "243644005",
-      "display": "Entamoeba histolytica",
-      "sistema": "http://snomed.info/sct",
-      "ncbi": "5759"
-    },
-    {
-      "codigo": "243645006",
-      "display": "Entamoeba dispar",
-      "sistema": "http://snomed.info/sct",
-      "ncbi": "29838"
-    },
-    {
-      "codigo": "42566000",
-      "display": "Entamoeba coli",
-      "sistema": "http://snomed.info/sct",
-      "ncbi": "5760"
-    },
-    {
-      "codigo": "243574004",
-      "display": "Giardia intestinalis",
-      "sistema": "http://snomed.info/sct",
-      "ncbi": "5741"
-    },
-    {
-      "codigo": "27950002",
-      "display": "Ascaris lumbricoides",
-      "sistema": "http://snomed.info/sct",
-      "ncbi": "6252"
-    },
-    {
-      "codigo": "243590003",
-      "display": "Cryptosporidium parvum",
-      "sistema": "http://snomed.info/sct",
-      "ncbi": "5807"
-    },
-    {
-      "codigo": "243602003",
-      "display": "Trypanosoma cruzi",
-      "sistema": "http://snomed.info/sct",
-      "ncbi": "5693"
-    }
+    { "codigo": "4716008", "display": "Entamoeba histolytica", "nombreLocal": "Entamoeba histolytica" },
+    { "codigo": "415987008", "display": "Entamoeba dispar", "nombreLocal": "Entamoeba dispar" },
+    { "codigo": "363769000", "display": "Entamoeba histolytica/Entamoeba dispar complex", "nombreLocal": "Complejo E. histolytica / E. dispar" },
+    { "codigo": "79235009", "display": "Entamoeba coli", "nombreLocal": "Entamoeba coli" },
+    { "codigo": "78181009", "display": "Giardia duodenalis", "nombreLocal": "Giardia duodenalis (lamblia / intestinalis)" },
+    { "codigo": "19061001", "display": "Ascaris lumbricoides", "nombreLocal": "Ascaris lumbricoides" },
+    { "codigo": "51504002", "display": "Cryptosporidium parvum", "nombreLocal": "Cryptosporidium parvum" },
+    { "codigo": "103561005", "display": "Cyclospora cayetanensis", "nombreLocal": "Cyclospora cayetanensis" },
+    { "codigo": "88274000", "display": "Trypanosoma cruzi", "nombreLocal": "Trypanosoma cruzi" }
   ],
   "estadios": [
-    {
-      "codigo": "trofozoito",
-      "display": "Trofozoíto (Forma vegetativa móvil)"
-    },
-    {
-      "codigo": "quiste",
-      "display": "Quiste (Forma de resistencia / maduro)"
-    },
-    {
-      "codigo": "prequiste",
-      "display": "Pre-quiste"
-    },
-    {
-      "codigo": "ooquiste",
-      "display": "Ooquiste"
-    },
-    {
-      "codigo": "huevo",
-      "display": "Huevo fértil / infértil"
-    },
-    {
-      "codigo": "larva",
-      "display": "Larva (Rhabditoide / Filariforme)"
-    },
-    {
-      "codigo": "tripomastigote",
-      "display": "Tripomastigote sanguíneo"
-    }
+    { "codigo": "trofozoito", "display": "Trofozoíto (Forma vegetativa móvil)", "snomed": "103551003", "snomedDisplay": "Kingdom Protozoa trophozoite" },
+    { "codigo": "quiste", "display": "Quiste (Forma de resistencia / maduro)", "snomed": "103552005", "snomedDisplay": "Kingdom Protozoa cyst" },
+    { "codigo": "ooquiste", "display": "Ooquiste", "snomed": "103541004", "snomedDisplay": "Kingdom Protozoa oocyst" },
+    { "codigo": "tripomastigote", "display": "Tripomastigote sanguíneo", "snomed": "103550002", "snomedDisplay": "Kingdom Protozoa trypomastigote" },
+    { "codigo": "huevo", "display": "Huevo (nematodo)", "snomed": "284723004", "snomedDisplay": "Nematode egg" },
+    { "codigo": "larva", "display": "Larva (Rhabditoide / Filariforme)", "snomed": null, "snomedDisplay": null, "revisar": true }
+  ],
+  "especificos": [
+    { "especie": "4716008", "estadio": "trofozoito", "codigo": "110389002", "display": "Entamoeba histolytica trophozoite" },
+    { "especie": "4716008", "estadio": "quiste", "codigo": "110390006", "display": "Entamoeba histolytica cyst" },
+    { "especie": "363769000", "estadio": "trofozoito", "codigo": "699415006", "display": "Entamoeba histolytica-Entamoeba dispar complex trophozoite" },
+    { "especie": "363769000", "estadio": "quiste", "codigo": "699416007", "display": "Entamoeba histolytica-Entamoeba dispar complex cyst" },
+    { "especie": "79235009", "estadio": "trofozoito", "codigo": "699396005", "display": "Entamoeba coli trophozoite" },
+    { "especie": "79235009", "estadio": "quiste", "codigo": "699408003", "display": "Entamoeba coli cyst" },
+    { "especie": "78181009", "estadio": "trofozoito", "codigo": "608932009", "display": "Giardia lamblia trophozoite" },
+    { "especie": "78181009", "estadio": "quiste", "codigo": "608948005", "display": "Giardia lamblia cyst" },
+    { "especie": "19061001", "estadio": "huevo", "codigo": "699574003", "display": "Ascaris lumbricoides egg" },
+    { "especie": "19061001", "estadio": "larva", "codigo": "609064008", "display": "Ascaris lumbricoides larva" },
+    { "especie": "51504002", "estadio": "ooquiste", "codigo": "608957004", "display": "Genus Cryptosporidium oocyst" },
+    { "especie": "103561005", "estadio": "ooquiste", "codigo": "608958009", "display": "Cyclospora cayetanensis oocyst" }
   ],
   "tinciones": [
-    {
-      "codigo": "lugol",
-      "display": "Lugol directo (Solución yodo-yodurada)"
-    },
-    {
-      "codigo": "fresco",
-      "display": "Examen en fresco con solución salina 0.9%"
-    },
-    {
-      "codigo": "hematoxilina",
-      "display": "Hematoxilina férrica de Heidenhain"
-    },
-    {
-      "codigo": "ziehl",
-      "display": "Tinción de Kinyoun (Ácido-alcohol resistente mod.)"
-    },
-    {
-      "codigo": "gomori",
-      "display": "Tricrómica de Gomori"
-    },
-    {
-      "codigo": "giemsa",
-      "display": "Tinción Giemsa rápida"
-    }
+    { "codigo": "lugol", "display": "Lugol directo (Solución yodo-yodurada)", "snomed": "104195008", "snomedDisplay": "Microbiologic smear with interpretation, wet mount with simple stain", "revisar": true },
+    { "codigo": "fresco", "display": "Examen en fresco con solución salina 0.9%", "snomed": "104223001", "snomedDisplay": "Microbiologic smear with interpretation, wet and dry mount, for ova and parasites", "revisar": true },
+    { "codigo": "hematoxilina", "display": "Hematoxilina férrica de Heidenhain", "snomed": "117304008", "snomedDisplay": "Iron hematoxylin stain method" },
+    { "codigo": "ziehl", "display": "Tinción de Kinyoun (Ácido-alcohol resistente mod.)", "snomed": "36878004", "snomedDisplay": "Acid fast Kinyoun's cold carbolfuchsin stain method" },
+    { "codigo": "gomori", "display": "Tricrómica de Gomori-Wheatley", "snomed": "117017001", "snomedDisplay": "Modified Gomori-Wheatley trichrome stain method" },
+    { "codigo": "giemsa", "display": "Tinción Giemsa", "snomed": "104208006", "snomedDisplay": "Giemsa stain method" }
+  ],
+  "examenes": [
+    { "tipoMuestra": "heces", "codigo": "10704-5", "display": "Ova and parasites identified in Stool by Light microscopy" },
+    { "tipoMuestra": "heces-concentrado", "codigo": "10701-1", "display": "Ova and parasites identified in Stool by Concentration" },
+    { "tipoMuestra": "sangre", "codigo": "17784-0", "display": "Parasite identified in Blood by Light microscopy" }
   ],
   "aumentos": [
-    {
-      "codigo": "10x",
-      "display": "10x - Panorámico / Rastreo",
-      "calibracion": "0.88 µm/pixel"
-    },
-    {
-      "codigo": "40x",
-      "display": "40x - Campo seco de alta magnificación",
-      "calibracion": "0.22 µm/pixel"
-    },
-    {
-      "codigo": "100x",
-      "display": "100x - Inmersión en aceite de cedro",
-      "calibracion": "0.09 µm/pixel"
-    }
+    { "codigo": "10x", "display": "10x - Panorámico / Rastreo", "calibracion": "0.88 µm/pixel" },
+    { "codigo": "40x", "display": "40x - Campo seco de alta magnificación", "calibracion": "0.22 µm/pixel" },
+    { "codigo": "100x", "display": "100x - Inmersión en aceite de cedro", "calibracion": "0.09 µm/pixel" }
   ]
 }

@@ -77,15 +77,13 @@ export function validarCodigo(ontologia: string, codigo: string): ResultadoCodig
   const c = codigo.trim();
   if (!c) return { error: "Ingrese el código canónico.", alerta: null };
   if (ontologia === "LOINC") {
-    if (!/^\d{1,7}-\d$/.test(c)) return { error: "Formato LOINC inválido. Ejemplo: 10701-1", alerta: null };
+    if (!/^\d{1,7}-\d$/.test(c)) return { error: "Formato LOINC inválido. Ejemplo: 10704-5", alerta: null };
     if (!loincValido(c)) return { error: "El dígito verificador LOINC no coincide.", alerta: null };
     return { error: null, alerta: null };
   }
   if (!/^\d{6,18}$/.test(c)) return { error: "Un código SNOMED CT tiene entre 6 y 18 dígitos.", alerta: null };
-  if (!verhoeffValido(c)) {
-    return { error: null, alerta: "El dígito verificador SNOMED no coincide. Confirme el código en el navegador oficial." };
-  }
-  return { error: null, alerta: null };
+  if (!verhoeffValido(c)) return { error: "El dígito verificador SNOMED no coincide: el código está mal escrito.", alerta: null };
+  return { error: null, alerta: "Confirme el nombre oficial del código en el navegador SNOMED antes de guardar." };
 }
 
 export function validarUrlFhir(url: string): string | null {
